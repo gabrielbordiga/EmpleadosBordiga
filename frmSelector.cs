@@ -67,6 +67,13 @@ namespace Gestión_Empleados
             Directory.CreateDirectory("Archivos");
             Directory.CreateDirectory("Archivos/Detalles");
             Directory.CreateDirectory("Archivos/Retiros");
+            bool archivo = File.Exists("empleados.txt");
+            if (archivo == false)
+            {                         
+              StreamWriter escribir = new StreamWriter("empleados.txt");                 
+              escribir.Close();
+              escribir.Dispose();              
+            }
         }
     }
 }
