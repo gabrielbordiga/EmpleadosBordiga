@@ -30,11 +30,19 @@ namespace Gestión_Empleados
 
         private void cmdCargar2_Click(object sender, EventArgs e)
         {
-            StreamWriter sw = new StreamWriter("precio.txt", false);
-            sw.WriteLine(txtPrecio.Text);
-            sw.Close();
-            sw.Dispose();
-            txtPrecio.Text = null;
+            if (txtPrecio.Text == "") 
+            {
+                MessageBox.Show("Introduzca el precio!");
+            }
+            else 
+            {
+                StreamWriter sw = new StreamWriter("precio.txt", false);
+                sw.WriteLine(txtPrecio.Text);
+                sw.Close();
+                sw.Dispose();
+                txtPrecio.Text = null;
+                MessageBox.Show("Precio modificado correctamente!");
+            }
         }
 
         private void cmdVolver2_Click(object sender, EventArgs e)
@@ -42,6 +50,41 @@ namespace Gestión_Empleados
             frmSelector Selector = new frmSelector();
             Selector.Show();
             this.Hide();
+        }
+
+        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if (txtPrecio.Text == "")
+                {
+                    MessageBox.Show("Introduzca el precio!");
+                }
+                else
+                {
+                    StreamWriter sw = new StreamWriter("precio.txt", false);
+                    sw.WriteLine(txtPrecio.Text);
+                    sw.Close();
+                    sw.Dispose();
+                    txtPrecio.Text = null;
+                    MessageBox.Show("Precio modificado correctamente!");
+                }
+            }
+        }
+
+        private void txtPrecio_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                frmSelector Selector = new frmSelector();
+                Selector.Show();
+                this.Hide();
+            }
         }
     }
 }

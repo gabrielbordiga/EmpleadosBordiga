@@ -64,7 +64,7 @@
             this.label1.Location = new System.Drawing.Point(12, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(212, 31);
-            this.label1.TabIndex = 2;
+            this.label1.TabIndex = 6;
             this.label1.Text = "Seleccionar Día:";
             // 
             // label2
@@ -74,7 +74,7 @@
             this.label2.Location = new System.Drawing.Point(12, 87);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(292, 31);
-            this.label2.TabIndex = 2;
+            this.label2.TabIndex = 7;
             this.label2.Text = "Seleccionar Empleado:";
             // 
             // cboEmpleado
@@ -85,7 +85,7 @@
             this.cboEmpleado.Location = new System.Drawing.Point(310, 87);
             this.cboEmpleado.Name = "cboEmpleado";
             this.cboEmpleado.Size = new System.Drawing.Size(246, 33);
-            this.cboEmpleado.TabIndex = 3;
+            this.cboEmpleado.TabIndex = 0;
             this.cboEmpleado.SelectedIndexChanged += new System.EventHandler(this.cboEmpleado_SelectedIndexChanged);
             // 
             // UnDia
@@ -96,9 +96,9 @@
             this.UnDia.Location = new System.Drawing.Point(686, 56);
             this.UnDia.Name = "UnDia";
             this.UnDia.Size = new System.Drawing.Size(129, 56);
-            this.UnDia.TabIndex = 4;
+            this.UnDia.TabIndex = 2;
             this.UnDia.TabStop = true;
-            this.UnDia.Text = "1 DIA";
+            this.UnDia.Text = "1 DÍA";
             this.UnDia.UseVisualStyleBackColor = true;
             this.UnDia.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
@@ -110,9 +110,9 @@
             this.MedioDia.Location = new System.Drawing.Point(840, 56);
             this.MedioDia.Name = "MedioDia";
             this.MedioDia.Size = new System.Drawing.Size(162, 56);
-            this.MedioDia.TabIndex = 4;
+            this.MedioDia.TabIndex = 3;
             this.MedioDia.TabStop = true;
-            this.MedioDia.Text = "1/2 DIA";
+            this.MedioDia.Text = "1/2 DÍA";
             this.MedioDia.UseVisualStyleBackColor = true;
             // 
             // label3
@@ -122,7 +122,7 @@
             this.label3.Location = new System.Drawing.Point(12, 152);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(107, 31);
-            this.label3.TabIndex = 2;
+            this.label3.TabIndex = 8;
             this.label3.Text = "Detalle:";
             // 
             // txtDetalle
@@ -132,8 +132,10 @@
             this.txtDetalle.MaxLength = 92;
             this.txtDetalle.Name = "txtDetalle";
             this.txtDetalle.Size = new System.Drawing.Size(853, 30);
-            this.txtDetalle.TabIndex = 5;
+            this.txtDetalle.TabIndex = 4;
             this.txtDetalle.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtDetalle.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDetalle_KeyDown);
+            this.txtDetalle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDetalle_KeyPress);
             // 
             // txtPrecio
             // 
@@ -142,7 +144,7 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.ReadOnly = true;
             this.txtPrecio.Size = new System.Drawing.Size(99, 30);
-            this.txtPrecio.TabIndex = 7;
+            this.txtPrecio.TabIndex = 10;
             // 
             // label4
             // 
@@ -151,7 +153,7 @@
             this.label4.Location = new System.Drawing.Point(6, 226);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 31);
-            this.label4.TabIndex = 8;
+            this.label4.TabIndex = 9;
             this.label4.Text = "$";
             // 
             // chkMantenerDetalle
@@ -160,7 +162,7 @@
             this.chkMantenerDetalle.Location = new System.Drawing.Point(125, 186);
             this.chkMantenerDetalle.Name = "chkMantenerDetalle";
             this.chkMantenerDetalle.Size = new System.Drawing.Size(107, 17);
-            this.chkMantenerDetalle.TabIndex = 10;
+            this.chkMantenerDetalle.TabIndex = 5;
             this.chkMantenerDetalle.Text = "Mantener Detalle";
             this.chkMantenerDetalle.UseVisualStyleBackColor = true;
             // 

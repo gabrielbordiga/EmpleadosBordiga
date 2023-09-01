@@ -34,8 +34,10 @@
             this.cboEmpleado = new System.Windows.Forms.ComboBox();
             this.cmdcargar = new System.Windows.Forms.PictureBox();
             this.listbox = new System.Windows.Forms.ListBox();
+            this.cmdArchivar = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmdcargar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmdArchivar)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox2
@@ -61,6 +63,7 @@
             // 
             // cboEmpleado
             // 
+            this.cboEmpleado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEmpleado.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboEmpleado.FormattingEnabled = true;
             this.cboEmpleado.Location = new System.Drawing.Point(17, 37);
@@ -90,11 +93,23 @@
             this.listbox.TabIndex = 16;
             this.listbox.SelectedIndexChanged += new System.EventHandler(this.listbox_SelectedIndexChanged);
             // 
+            // cmdArchivar
+            // 
+            this.cmdArchivar.Image = ((System.Drawing.Image)(resources.GetObject("cmdArchivar.Image")));
+            this.cmdArchivar.Location = new System.Drawing.Point(1185, 83);
+            this.cmdArchivar.Name = "cmdArchivar";
+            this.cmdArchivar.Size = new System.Drawing.Size(55, 55);
+            this.cmdArchivar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.cmdArchivar.TabIndex = 17;
+            this.cmdArchivar.TabStop = false;
+            this.cmdArchivar.Click += new System.EventHandler(this.cmdArchivar_Click);
+            // 
             // frmDetalles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1243, 719);
+            this.Controls.Add(this.cmdArchivar);
             this.Controls.Add(this.listbox);
             this.Controls.Add(this.cmdcargar);
             this.Controls.Add(this.label2);
@@ -106,6 +121,7 @@
             this.Load += new System.EventHandler(this.frmDetalles_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmdcargar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmdArchivar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,5 +134,6 @@
         private System.Windows.Forms.ComboBox cboEmpleado;
         private System.Windows.Forms.PictureBox cmdcargar;
         private System.Windows.Forms.ListBox listbox;
+        private System.Windows.Forms.PictureBox cmdArchivar;
     }
 }

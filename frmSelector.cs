@@ -20,9 +20,21 @@ namespace Gestión_Empleados
 
         private void cmdRegistrarDias_Click(object sender, EventArgs e)
         {
-            frmRegistrarDias RegistrarDias = new frmRegistrarDias(); 
-            RegistrarDias.Show(); 
-            this.Hide(); 
+            bool existe = File.Exists("precio.txt");
+            if (existe) 
+            {                
+               frmRegistrarDias RegistrarDias = new frmRegistrarDias();
+               RegistrarDias.Show();
+               this.Hide();              
+            }
+            else 
+            {
+                MessageBox.Show("Falta agregar el precio");
+                frmPrecioPorDia PrecioPorDia = new frmPrecioPorDia();
+                PrecioPorDia.Show();
+                this.Hide();
+            }
+    
         }
 
         private void cmdAñadirEmpleado_Click(object sender, EventArgs e)

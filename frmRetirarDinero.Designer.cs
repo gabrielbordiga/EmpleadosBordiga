@@ -56,12 +56,13 @@
             // 
             // cboEmpleado
             // 
+            this.cboEmpleado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEmpleado.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboEmpleado.FormattingEnabled = true;
             this.cboEmpleado.Location = new System.Drawing.Point(31, 198);
             this.cboEmpleado.Name = "cboEmpleado";
             this.cboEmpleado.Size = new System.Drawing.Size(272, 39);
-            this.cboEmpleado.TabIndex = 5;
+            this.cboEmpleado.TabIndex = 0;
             this.cboEmpleado.SelectedIndexChanged += new System.EventHandler(this.cboEmpleado_SelectedIndexChanged);
             // 
             // txtCuenta
@@ -70,7 +71,9 @@
             this.txtCuenta.Location = new System.Drawing.Point(31, 284);
             this.txtCuenta.Name = "txtCuenta";
             this.txtCuenta.Size = new System.Drawing.Size(303, 41);
-            this.txtCuenta.TabIndex = 7;
+            this.txtCuenta.TabIndex = 2;
+            this.txtCuenta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCuenta_KeyDown);
+            this.txtCuenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCuenta_KeyPress);
             // 
             // dtpFecha
             // 
@@ -79,7 +82,7 @@
             this.dtpFecha.Location = new System.Drawing.Point(31, 114);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(183, 38);
-            this.dtpFecha.TabIndex = 8;
+            this.dtpFecha.TabIndex = 1;
             // 
             // label1
             // 
@@ -88,7 +91,7 @@
             this.label1.Location = new System.Drawing.Point(24, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(229, 39);
-            this.label1.TabIndex = 9;
+            this.label1.TabIndex = 4;
             this.label1.Text = "Retirar Dinero";
             // 
             // label2
@@ -98,7 +101,7 @@
             this.label2.Location = new System.Drawing.Point(26, 170);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(106, 25);
-            this.label2.TabIndex = 9;
+            this.label2.TabIndex = 6;
             this.label2.Text = "Empleado:";
             // 
             // label3
@@ -108,7 +111,7 @@
             this.label3.Location = new System.Drawing.Point(28, 256);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 25);
-            this.label3.TabIndex = 9;
+            this.label3.TabIndex = 7;
             this.label3.Text = "Monto:";
             // 
             // pictureBox2
@@ -129,7 +132,7 @@
             this.label4.Location = new System.Drawing.Point(26, 86);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 25);
-            this.label4.TabIndex = 9;
+            this.label4.TabIndex = 5;
             this.label4.Text = "Día:";
             // 
             // cmdTodosLosRetiros
@@ -138,7 +141,7 @@
             this.cmdTodosLosRetiros.Location = new System.Drawing.Point(12, 348);
             this.cmdTodosLosRetiros.Name = "cmdTodosLosRetiros";
             this.cmdTodosLosRetiros.Size = new System.Drawing.Size(120, 45);
-            this.cmdTodosLosRetiros.TabIndex = 11;
+            this.cmdTodosLosRetiros.TabIndex = 3;
             this.cmdTodosLosRetiros.Text = "TODOS LOS RETIROS";
             this.cmdTodosLosRetiros.UseVisualStyleBackColor = true;
             this.cmdTodosLosRetiros.Click += new System.EventHandler(this.cmdTodosLosRetiros_Click);

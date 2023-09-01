@@ -62,7 +62,7 @@
             this.cmdAñadirEmpleado.Location = new System.Drawing.Point(37, 407);
             this.cmdAñadirEmpleado.Name = "cmdAñadirEmpleado";
             this.cmdAñadirEmpleado.Size = new System.Drawing.Size(440, 159);
-            this.cmdAñadirEmpleado.TabIndex = 0;
+            this.cmdAñadirEmpleado.TabIndex = 4;
             this.cmdAñadirEmpleado.Text = "AÑADIR EMPLEADO";
             this.cmdAñadirEmpleado.UseVisualStyleBackColor = false;
             this.cmdAñadirEmpleado.Click += new System.EventHandler(this.cmdAñadirEmpleado_Click);
@@ -76,7 +76,7 @@
             this.cmdModificarPrecio.Location = new System.Drawing.Point(521, 407);
             this.cmdModificarPrecio.Name = "cmdModificarPrecio";
             this.cmdModificarPrecio.Size = new System.Drawing.Size(440, 159);
-            this.cmdModificarPrecio.TabIndex = 0;
+            this.cmdModificarPrecio.TabIndex = 5;
             this.cmdModificarPrecio.Text = "MODIFICAR PRECIO X DÍA";
             this.cmdModificarPrecio.UseVisualStyleBackColor = false;
             this.cmdModificarPrecio.Click += new System.EventHandler(this.cmdModificarPrecio_Click);
@@ -91,7 +91,7 @@
             this.cmdSalir.Location = new System.Drawing.Point(887, 585);
             this.cmdSalir.Name = "cmdSalir";
             this.cmdSalir.Size = new System.Drawing.Size(90, 37);
-            this.cmdSalir.TabIndex = 1;
+            this.cmdSalir.TabIndex = 6;
             this.cmdSalir.Text = "SALIR";
             this.cmdSalir.UseVisualStyleBackColor = false;
             this.cmdSalir.Click += new System.EventHandler(this.cmdSalir_Click);
@@ -120,7 +120,7 @@
             this.cmdRetirarDinero.Location = new System.Drawing.Point(521, 34);
             this.cmdRetirarDinero.Name = "cmdRetirarDinero";
             this.cmdRetirarDinero.Size = new System.Drawing.Size(440, 159);
-            this.cmdRetirarDinero.TabIndex = 4;
+            this.cmdRetirarDinero.TabIndex = 1;
             this.cmdRetirarDinero.Text = "RETIRAR DINERO";
             this.cmdRetirarDinero.UseVisualStyleBackColor = false;
             this.cmdRetirarDinero.Click += new System.EventHandler(this.cmdRetirarDinero_Click);
@@ -134,7 +134,7 @@
             this.cmdDetalles.Location = new System.Drawing.Point(37, 220);
             this.cmdDetalles.Name = "cmdDetalles";
             this.cmdDetalles.Size = new System.Drawing.Size(440, 159);
-            this.cmdDetalles.TabIndex = 5;
+            this.cmdDetalles.TabIndex = 2;
             this.cmdDetalles.Text = "DETALLES";
             this.cmdDetalles.UseVisualStyleBackColor = false;
             this.cmdDetalles.Click += new System.EventHandler(this.cmdDetalles_Click);

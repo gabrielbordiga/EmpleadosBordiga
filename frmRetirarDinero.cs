@@ -54,33 +54,43 @@ namespace Gestión_Empleados
         public void pictureBox1_Click(object sender, EventArgs e)
         {
 
-            restar = int.Parse(txtCuenta.Text);
-
-            List<int> numeros = new List<int>();
-            StreamReader srr = new StreamReader("Plata_" + valor + ".txt");
-            string linea = srr.ReadLine();
-            while (linea != null)
+            if (txtCuenta.Text == "")
             {
-                int numero = int.Parse(linea);
-                numeros.Add(numero);
-                linea = srr.ReadLine();
+                MessageBox.Show("INTRODUZCA LA CANTIDAD", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            srr.Close();
-
-            foreach (int n in numeros)
+            else
             {
-                Console.WriteLine(n);
+                restar = int.Parse(txtCuenta.Text);
+
+                List<int> numeros = new List<int>();
+                StreamReader srr = new StreamReader("Plata_" + valor + ".txt");
+                string linea = srr.ReadLine();
+                while (linea != null)
+                {
+                    int numero = int.Parse(linea);
+                    numeros.Add(numero);
+                    linea = srr.ReadLine();
+                }
+                srr.Close();
+
+                foreach (int n in numeros)
+                {
+                    Console.WriteLine(n);
+
+
+                }
+
+                StreamWriter srr2 = new StreamWriter("Cuenta" + valor + ".txt");
+
+                srr2.WriteLine(numeros.Sum());
+
+                srr2.Close();
+
+                timer.Enabled = !timer.Enabled;
+                txtCuenta.Text = null;
 
 
             }
-            
-            StreamWriter srr2 = new StreamWriter("Cuenta" + valor + ".txt");
-
-            srr2.WriteLine(numeros.Sum());
-
-            srr2.Close();
-
-            timer.Enabled = !timer.Enabled;
 
 
 
@@ -112,9 +122,9 @@ namespace Gestión_Empleados
             sr4.Close();
 
             StreamWriter td = new StreamWriter(valor + ".txt", true);
-            td.WriteLine("***** TOTAL DINERO ANTES DE RETIRO ***** $"+numero);
-            td.WriteLine("***** DINERO RETIRADO ***** -$" + resto);
-            td.WriteLine("***** TOTAL DESPUES DE RETIRO ***** $" + resultado);
+            td.WriteLine("*** TOTAL DINERO ANTES DE RETIRO *** $"+numero);
+            td.WriteLine("*** DINERO RETIRADO *** -$" + resto);
+            td.WriteLine("*** TOTAL DESPUES DE RETIRO *** $" + resultado);
             td.Close();
 
             StreamWriter cc = new StreamWriter("TodosLosRetiros.txt", true);
@@ -127,7 +137,7 @@ namespace Gestión_Empleados
 
             sw.Close();
             timer.Stop();
-            MessageBox.Show("Dinero retirado -$" + resto);
+            MessageBox.Show("DINERO RETIRADO -$" + resto, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 
@@ -141,6 +151,64 @@ namespace Gestión_Empleados
         {
             frmTodosLosRetiros todosLosRetiros = new frmTodosLosRetiros(); todosLosRetiros.Show();
             this.Hide();
+        }
+
+        private void txtCuenta_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                frmSelector Selector = new frmSelector();
+                Selector.Show();
+                this.Hide();
+            }
+        }
+
+        private void txtCuenta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if (txtCuenta.Text == "")
+                {
+                    MessageBox.Show("INTRODUZCA LA CANTIDAD", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    restar = int.Parse(txtCuenta.Text);
+
+                    List<int> numeros = new List<int>();
+                    StreamReader srr = new StreamReader("Plata_" + valor + ".txt");
+                    string linea = srr.ReadLine();
+                    while (linea != null)
+                    {
+                        int numero = int.Parse(linea);
+                        numeros.Add(numero);
+                        linea = srr.ReadLine();
+                    }
+                    srr.Close();
+
+                    foreach (int n in numeros)
+                    {
+                        Console.WriteLine(n);
+
+
+                    }
+
+                    StreamWriter srr2 = new StreamWriter("Cuenta" + valor + ".txt");
+
+                    srr2.WriteLine(numeros.Sum());
+
+                    srr2.Close();
+
+                    timer.Enabled = !timer.Enabled;
+                    txtCuenta.Text = null;
+
+                    
+                }
+            }
         }
     }
 

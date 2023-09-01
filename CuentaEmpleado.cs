@@ -27,6 +27,7 @@ namespace Gestión_Empleados
 
         private void CuentaEmpleado_Load(object sender, EventArgs e)
         {
+
             StreamReader sr = new StreamReader("empleados.txt");
             string Linea = "";
             while (sr.EndOfStream == false)
@@ -37,6 +38,7 @@ namespace Gestión_Empleados
 
             sr.Close();
             sr.Dispose();
+            
         }
 
         
@@ -91,6 +93,16 @@ namespace Gestión_Empleados
             frmSelector Selector = new frmSelector();
             Selector.Show();
             this.Hide();
+        }
+
+        private void txtCuenta_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                frmSelector Selector = new frmSelector();
+                Selector.Show();
+                this.Hide();
+            }
         }
     }
 }

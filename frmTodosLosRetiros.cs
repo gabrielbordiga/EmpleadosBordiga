@@ -46,7 +46,7 @@ namespace Gestión_Empleados
 
         private void cmdBorrarTodo_Click(object sender, EventArgs e)
         {
-            var respuesta = MessageBox.Show("Se borrarán todos los datos", "Advertencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            var respuesta = MessageBox.Show("SE ARCHIVARÁN TODOS LOS DATOS", "ADVERTENCIA", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (respuesta == DialogResult.OK)
             {
                 lsbTodosRetiros.DataSource = null;

@@ -67,7 +67,7 @@ namespace Gestión_Empleados
             sw.Dispose();
             listBox1.DataSource = null;
             listBox1.Refresh();
-            MessageBox.Show("Se añadió correctamente");
+            MessageBox.Show("SE AÑADIÓ CORRECTAMENTE");
             listBox1.DataSource = null;
             listBox1.Items.Clear();
             StreamReader sr = new StreamReader("empleados.txt");
@@ -109,45 +109,56 @@ namespace Gestión_Empleados
 
         private void cmdBorrar_Click(object sender, EventArgs e)
         {
-            var item = listBox1.SelectedItem;
-            string s = item.ToString();
+            DialogResult result = MessageBox.Show("SE ELIMINARÁ EL EMPLEADO SELECCIONADO", "ELIMINAR EMPLEADO", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
-            StreamReader reader = new StreamReader("empleados.txt");
-
-            StreamWriter writer = new StreamWriter("temp.txt");
-            string line;
-            while ((line = reader.ReadLine()) != null)
+            if (result == DialogResult.OK)
             {
+                var item = listBox1.SelectedItem;
+                string s = item.ToString();
 
-                if (!line.Contains(s))
+                StreamReader reader = new StreamReader("empleados.txt");
+
+                StreamWriter writer = new StreamWriter("temp.txt");
+                string line;
+                while ((line = reader.ReadLine()) != null)
                 {
 
-                    writer.WriteLine(line);
+                    if (!line.Contains(s))
+                    {
 
+                        writer.WriteLine(line);
+
+                    }
                 }
+                MessageBox.Show("SE ELIMINÓ CORRECTAMENTE");
+
+
+                reader.Close();
+                writer.Close();
+
+
+                File.Delete("empleados.txt");
+                File.Move("temp.txt", "empleados.txt");
+                listBox1.DataSource = null;
+                listBox1.Items.Clear();
+                StreamReader sr = new StreamReader("empleados.txt");
+                string Linea = "";
+                while (sr.EndOfStream == false)
+                {
+                    Linea = sr.ReadLine();
+                    listBox1.Items.Add(Linea);
+                }
+
+
+                sr.Close();
+                sr.Dispose();
             }
-            MessageBox.Show("Se eliminó correctamente");
-
-
-            reader.Close();
-            writer.Close();
-
-
-            File.Delete("empleados.txt");
-            File.Move("temp.txt", "empleados.txt");
-            listBox1.DataSource = null;
-            listBox1.Items.Clear();
-            StreamReader sr = new StreamReader("empleados.txt");
-            string Linea = "";
-            while (sr.EndOfStream == false)
+            else if (result == DialogResult.Cancel)
             {
-                Linea = sr.ReadLine();
-                listBox1.Items.Add(Linea);
+                // El usuario presionó Cancelar
+                // Aquí puedes poner el código que quieras ejecutar
             }
-
-
-            sr.Close();
-            sr.Dispose();
+            
 
         }
     }

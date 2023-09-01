@@ -27,11 +27,11 @@ namespace Gestión_Empleados
             frmSelector Selector = new frmSelector();
             Selector.Show();
             this.Hide();
-            //bool archivo = File.Exists("Detalles.txt");
-            //if (archivo == false)
-            //{
-            //    File.Create("Detalles.txt");
-            //}
+            bool archivo = File.Exists("Detalles.txt");
+           if (archivo == false)
+           {
+                File.Create("Detalles.txt");
+           }
         }
 
         private void frmDetalles_Load(object sender, EventArgs e)
@@ -75,7 +75,7 @@ namespace Gestión_Empleados
             }
             else
             {
-                MessageBox.Show("Seleccionar Empleado");
+                MessageBox.Show("SELECCIONAR EMPLEADO");
 
             }
         }
@@ -83,6 +83,25 @@ namespace Gestión_Empleados
         private void listbox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void cmdArchivar_Click(object sender, EventArgs e)
+        {
+            string empleado = cboEmpleado.SelectedItem.ToString();
+            var respuesta = MessageBox.Show("SE ARCHIVARÁN TODOS LOS DATOS", "ADVERTENCIA", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (respuesta == DialogResult.OK)
+            {
+                listbox.DataSource = null;
+                listbox.Items.Clear();
+                string origen = (empleado + ".txt");
+                string destino = "Archivos/Retiros/Detalles de " + empleado + hora + " " + fecha + ".txt";
+                File.Move(origen, destino);
+
+            }
+            else
+            {
+
+            }
         }
     }
 }
