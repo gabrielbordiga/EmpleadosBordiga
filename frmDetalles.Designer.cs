@@ -41,7 +41,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(1272, 689);
+            this.pictureBox2.Location = new System.Drawing.Point(1191, 666);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(45, 45);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -86,7 +86,7 @@
             this.listbox.ItemHeight = 24;
             this.listbox.Location = new System.Drawing.Point(17, 83);
             this.listbox.Name = "listbox";
-            this.listbox.Size = new System.Drawing.Size(1239, 652);
+            this.listbox.Size = new System.Drawing.Size(1168, 628);
             this.listbox.TabIndex = 16;
             this.listbox.SelectedIndexChanged += new System.EventHandler(this.listbox_SelectedIndexChanged);
             // 
@@ -94,7 +94,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1329, 746);
+            this.ClientSize = new System.Drawing.Size(1243, 719);
             this.Controls.Add(this.listbox);
             this.Controls.Add(this.cmdcargar);
             this.Controls.Add(this.label2);
