@@ -15,6 +15,8 @@ namespace Gestión_Empleados
 {
     public partial class frmDetalles : Form
     {
+        string fecha = DateTime.Now.ToString("dd-MM-yyyy");
+        string hora = DateTime.Now.ToString("HH.mm.ss");
         public frmDetalles()
         {
             InitializeComponent();
@@ -25,6 +27,11 @@ namespace Gestión_Empleados
             frmSelector Selector = new frmSelector();
             Selector.Show();
             this.Hide();
+            //bool archivo = File.Exists("Detalles.txt");
+            //if (archivo == false)
+            //{
+            //    File.Create("Detalles.txt");
+            //}
         }
 
         private void frmDetalles_Load(object sender, EventArgs e)
@@ -71,6 +78,11 @@ namespace Gestión_Empleados
                 MessageBox.Show("Seleccionar Empleado");
 
             }
+        }
+
+        private void listbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

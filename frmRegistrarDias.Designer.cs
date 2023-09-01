@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cmdVolver = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegistrarDias));
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,21 +37,14 @@
             this.MedioDia = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.txtDetalle = new System.Windows.Forms.TextBox();
-            this.cmdCargar = new System.Windows.Forms.Button();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.cmdCancelar = new System.Windows.Forms.Button();
+            this.chkMantenerDetalle = new System.Windows.Forms.CheckBox();
+            this.cmdVolver2 = new System.Windows.Forms.PictureBox();
+            this.cmdCargar2 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.cmdVolver2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmdCargar2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // cmdVolver
-            // 
-            this.cmdVolver.Location = new System.Drawing.Point(800, 214);
-            this.cmdVolver.Name = "cmdVolver";
-            this.cmdVolver.Size = new System.Drawing.Size(77, 43);
-            this.cmdVolver.TabIndex = 0;
-            this.cmdVolver.Text = "VOLVER";
-            this.cmdVolver.UseVisualStyleBackColor = true;
-            this.cmdVolver.Click += new System.EventHandler(this.cmdVolver_Click);
             // 
             // dtpFecha
             // 
@@ -142,16 +135,6 @@
             this.txtDetalle.TabIndex = 5;
             this.txtDetalle.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // cmdCargar
-            // 
-            this.cmdCargar.Location = new System.Drawing.Point(966, 214);
-            this.cmdCargar.Name = "cmdCargar";
-            this.cmdCargar.Size = new System.Drawing.Size(77, 43);
-            this.cmdCargar.TabIndex = 6;
-            this.cmdCargar.Text = "CARGAR";
-            this.cmdCargar.UseVisualStyleBackColor = true;
-            this.cmdCargar.Click += new System.EventHandler(this.cmdCargar_Click);
-            // 
             // txtPrecio
             // 
             this.txtPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -171,25 +154,48 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "$";
             // 
-            // cmdCancelar
+            // chkMantenerDetalle
             // 
-            this.cmdCancelar.Location = new System.Drawing.Point(883, 214);
-            this.cmdCancelar.Name = "cmdCancelar";
-            this.cmdCancelar.Size = new System.Drawing.Size(77, 43);
-            this.cmdCancelar.TabIndex = 9;
-            this.cmdCancelar.Text = "CANCELAR";
-            this.cmdCancelar.UseVisualStyleBackColor = true;
-            this.cmdCancelar.Click += new System.EventHandler(this.cmdCancelar_Click);
+            this.chkMantenerDetalle.AutoSize = true;
+            this.chkMantenerDetalle.Location = new System.Drawing.Point(125, 186);
+            this.chkMantenerDetalle.Name = "chkMantenerDetalle";
+            this.chkMantenerDetalle.Size = new System.Drawing.Size(107, 17);
+            this.chkMantenerDetalle.TabIndex = 10;
+            this.chkMantenerDetalle.Text = "Mantener Detalle";
+            this.chkMantenerDetalle.UseVisualStyleBackColor = true;
+            // 
+            // cmdVolver2
+            // 
+            this.cmdVolver2.Image = ((System.Drawing.Image)(resources.GetObject("cmdVolver2.Image")));
+            this.cmdVolver2.Location = new System.Drawing.Point(933, 215);
+            this.cmdVolver2.Name = "cmdVolver2";
+            this.cmdVolver2.Size = new System.Drawing.Size(45, 45);
+            this.cmdVolver2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.cmdVolver2.TabIndex = 11;
+            this.cmdVolver2.TabStop = false;
+            this.cmdVolver2.Click += new System.EventHandler(this.cmdVolver2_Click);
+            // 
+            // cmdCargar2
+            // 
+            this.cmdCargar2.Image = ((System.Drawing.Image)(resources.GetObject("cmdCargar2.Image")));
+            this.cmdCargar2.Location = new System.Drawing.Point(998, 215);
+            this.cmdCargar2.Name = "cmdCargar2";
+            this.cmdCargar2.Size = new System.Drawing.Size(45, 45);
+            this.cmdCargar2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.cmdCargar2.TabIndex = 12;
+            this.cmdCargar2.TabStop = false;
+            this.cmdCargar2.Click += new System.EventHandler(this.cmdCargar2_Click);
             // 
             // frmRegistrarDias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1055, 272);
-            this.Controls.Add(this.cmdCancelar);
+            this.Controls.Add(this.cmdCargar2);
+            this.Controls.Add(this.cmdVolver2);
+            this.Controls.Add(this.chkMantenerDetalle);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtPrecio);
-            this.Controls.Add(this.cmdCargar);
             this.Controls.Add(this.txtDetalle);
             this.Controls.Add(this.MedioDia);
             this.Controls.Add(this.UnDia);
@@ -198,18 +204,18 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtpFecha);
-            this.Controls.Add(this.cmdVolver);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmRegistrarDias";
             this.Text = "REGISTRAR DÍAS";
             this.Load += new System.EventHandler(this.frmRegistrarDias_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.cmdVolver2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmdCargar2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button cmdVolver;
         private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -218,9 +224,10 @@
         private System.Windows.Forms.RadioButton MedioDia;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtDetalle;
-        private System.Windows.Forms.Button cmdCargar;
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button cmdCancelar;
+        private System.Windows.Forms.CheckBox chkMantenerDetalle;
+        private System.Windows.Forms.PictureBox cmdVolver2;
+        private System.Windows.Forms.PictureBox cmdCargar2;
     }
 }

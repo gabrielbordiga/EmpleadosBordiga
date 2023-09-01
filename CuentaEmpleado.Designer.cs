@@ -97,8 +97,9 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtCuenta);
             this.Controls.Add(this.cboEmpleado);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CuentaEmpleado";
-            this.Text = "CuentaEmpleado";
+            this.Text = "CUENTA EMPLEADO";
             this.Load += new System.EventHandler(this.CuentaEmpleado_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

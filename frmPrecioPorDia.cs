@@ -20,18 +20,28 @@ namespace Gestión_Empleados
 
         private void cmdVolver_Click(object sender, EventArgs e)
         {
-            frmSelector Selector = new frmSelector();
-            Selector.Show();
-            this.Hide();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cmdCargar2_Click(object sender, EventArgs e)
         {
             StreamWriter sw = new StreamWriter("precio.txt", false);
             sw.WriteLine(txtPrecio.Text);
             sw.Close();
             sw.Dispose();
             txtPrecio.Text = null;
+        }
+
+        private void cmdVolver2_Click(object sender, EventArgs e)
+        {
+            frmSelector Selector = new frmSelector();
+            Selector.Show();
+            this.Hide();
         }
     }
 }

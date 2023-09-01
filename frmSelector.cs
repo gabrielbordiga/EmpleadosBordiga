@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Gestión_Empleados
 {
@@ -59,6 +60,13 @@ namespace Gestión_Empleados
         {
             frmDetalles Detalles = new frmDetalles(); Detalles.Show();
             this.Hide();
+        }
+
+        private void frmSelector_Load(object sender, EventArgs e)
+        {
+            Directory.CreateDirectory("Archivos");
+            Directory.CreateDirectory("Archivos/Detalles");
+            Directory.CreateDirectory("Archivos/Retiros");
         }
     }
 }

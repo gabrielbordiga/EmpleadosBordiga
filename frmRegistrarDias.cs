@@ -23,9 +23,7 @@ namespace Gestión_Empleados
 
         private void cmdVolver_Click(object sender, EventArgs e)
         {
-            frmSelector Selector = new frmSelector(); 
-            Selector.Show(); 
-            this.Hide(); 
+            
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -73,6 +71,16 @@ namespace Gestión_Empleados
 
         private void cmdCargar_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void cboEmpleado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmdCargar2_Click(object sender, EventArgs e)
+        {
             string dia = "";
             string precio = "";
             if (this.UnDia.Checked)
@@ -99,11 +107,18 @@ namespace Gestión_Empleados
             pr.WriteLine(precio);
             pr.Close();
             pr.Dispose();
+            MessageBox.Show("Se cargó exitosamente!");
+            if (!chkMantenerDetalle.Checked) 
+            {
+                txtDetalle.Text = "";
+            }
         }
 
-        private void cboEmpleado_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmdVolver2_Click(object sender, EventArgs e)
         {
-
+            frmSelector Selector = new frmSelector();
+            Selector.Show();
+            this.Hide();
         }
     }
 }

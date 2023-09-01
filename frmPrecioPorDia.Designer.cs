@@ -28,22 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cmdVolver = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrecioPorDia));
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.cmdCargar2 = new System.Windows.Forms.PictureBox();
+            this.cmdVolver2 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.cmdCargar2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmdVolver2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // cmdVolver
-            // 
-            this.cmdVolver.Location = new System.Drawing.Point(193, 116);
-            this.cmdVolver.Name = "cmdVolver";
-            this.cmdVolver.Size = new System.Drawing.Size(73, 39);
-            this.cmdVolver.TabIndex = 0;
-            this.cmdVolver.Text = "VOLVER";
-            this.cmdVolver.UseVisualStyleBackColor = true;
-            this.cmdVolver.Click += new System.EventHandler(this.cmdVolver_Click);
             // 
             // txtPrecio
             // 
@@ -73,39 +66,53 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "$";
             // 
-            // button1
+            // cmdCargar2
             // 
-            this.button1.Location = new System.Drawing.Point(272, 116);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(73, 39);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "GUARDAR";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.cmdCargar2.Image = ((System.Drawing.Image)(resources.GetObject("cmdCargar2.Image")));
+            this.cmdCargar2.Location = new System.Drawing.Point(272, 65);
+            this.cmdCargar2.Name = "cmdCargar2";
+            this.cmdCargar2.Size = new System.Drawing.Size(45, 45);
+            this.cmdCargar2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.cmdCargar2.TabIndex = 13;
+            this.cmdCargar2.TabStop = false;
+            this.cmdCargar2.Click += new System.EventHandler(this.cmdCargar2_Click);
+            // 
+            // cmdVolver2
+            // 
+            this.cmdVolver2.Image = ((System.Drawing.Image)(resources.GetObject("cmdVolver2.Image")));
+            this.cmdVolver2.Location = new System.Drawing.Point(337, 113);
+            this.cmdVolver2.Name = "cmdVolver2";
+            this.cmdVolver2.Size = new System.Drawing.Size(45, 45);
+            this.cmdVolver2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.cmdVolver2.TabIndex = 14;
+            this.cmdVolver2.TabStop = false;
+            this.cmdVolver2.Click += new System.EventHandler(this.cmdVolver2_Click);
             // 
             // frmPrecioPorDia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(356, 164);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(394, 164);
+            this.Controls.Add(this.cmdVolver2);
+            this.Controls.Add(this.cmdCargar2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPrecio);
-            this.Controls.Add(this.cmdVolver);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmPrecioPorDia";
             this.Text = "PRECIO POR DÍA";
+            ((System.ComponentModel.ISupportInitialize)(this.cmdCargar2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmdVolver2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button cmdVolver;
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox cmdCargar2;
+        private System.Windows.Forms.PictureBox cmdVolver2;
     }
 }

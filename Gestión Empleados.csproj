@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>bordiga %282%29.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="CuentaEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +92,12 @@
     <Compile Include="frmSelector.Designer.cs">
       <DependentUpon>frmSelector.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTodosLosRetiros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTodosLosRetiros.Designer.cs">
+      <DependentUpon>frmTodosLosRetiros.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CuentaEmpleado.resx">
@@ -111,6 +121,9 @@
     <EmbeddedResource Include="frmSelector.resx">
       <DependentUpon>frmSelector.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmTodosLosRetiros.resx">
+      <DependentUpon>frmTodosLosRetiros.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -132,6 +145,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bordiga %281%29.ico" />
+    <Content Include="bordiga %282%29.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

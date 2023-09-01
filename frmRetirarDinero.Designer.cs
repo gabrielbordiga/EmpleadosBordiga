@@ -38,6 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.cmdTodosLosRetiros = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -61,6 +62,7 @@
             this.cboEmpleado.Name = "cboEmpleado";
             this.cboEmpleado.Size = new System.Drawing.Size(272, 39);
             this.cboEmpleado.TabIndex = 5;
+            this.cboEmpleado.SelectedIndexChanged += new System.EventHandler(this.cboEmpleado_SelectedIndexChanged);
             // 
             // txtCuenta
             // 
@@ -130,11 +132,23 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Día:";
             // 
+            // cmdTodosLosRetiros
+            // 
+            this.cmdTodosLosRetiros.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdTodosLosRetiros.Location = new System.Drawing.Point(12, 348);
+            this.cmdTodosLosRetiros.Name = "cmdTodosLosRetiros";
+            this.cmdTodosLosRetiros.Size = new System.Drawing.Size(120, 45);
+            this.cmdTodosLosRetiros.TabIndex = 11;
+            this.cmdTodosLosRetiros.Text = "TODOS LOS RETIROS";
+            this.cmdTodosLosRetiros.UseVisualStyleBackColor = true;
+            this.cmdTodosLosRetiros.Click += new System.EventHandler(this.cmdTodosLosRetiros_Click);
+            // 
             // frmRetirarDinero
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(368, 405);
+            this.Controls.Add(this.cmdTodosLosRetiros);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
@@ -144,8 +158,9 @@
             this.Controls.Add(this.txtCuenta);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cboEmpleado);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmRetirarDinero";
-            this.Text = "frmRetirarDinero";
+            this.Text = "RETIRAR DINERO";
             this.Load += new System.EventHandler(this.frmRetirarDinero_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -165,5 +180,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button cmdTodosLosRetiros;
     }
 }

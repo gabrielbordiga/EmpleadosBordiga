@@ -41,7 +41,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(743, 689);
+            this.pictureBox2.Location = new System.Drawing.Point(1272, 689);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(45, 45);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -81,24 +81,28 @@
             // 
             // listbox
             // 
+            this.listbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listbox.FormattingEnabled = true;
+            this.listbox.ItemHeight = 24;
             this.listbox.Location = new System.Drawing.Point(17, 83);
             this.listbox.Name = "listbox";
-            this.listbox.Size = new System.Drawing.Size(714, 654);
+            this.listbox.Size = new System.Drawing.Size(1239, 652);
             this.listbox.TabIndex = 16;
+            this.listbox.SelectedIndexChanged += new System.EventHandler(this.listbox_SelectedIndexChanged);
             // 
             // frmDetalles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 746);
+            this.ClientSize = new System.Drawing.Size(1329, 746);
             this.Controls.Add(this.listbox);
             this.Controls.Add(this.cmdcargar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cboEmpleado);
             this.Controls.Add(this.pictureBox2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmDetalles";
-            this.Text = "frmDetalles";
+            this.Text = "DETALLES";
             this.Load += new System.EventHandler(this.frmDetalles_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmdcargar)).EndInit();
