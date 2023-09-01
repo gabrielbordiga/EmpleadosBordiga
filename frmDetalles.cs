@@ -94,7 +94,7 @@ namespace Gestión_Empleados
                 listbox.DataSource = null;
                 listbox.Items.Clear();
                 string origen = (empleado + ".txt");
-                string destino = "Archivos/Retiros/Detalles de " + empleado + hora + " " + fecha + ".txt";
+                string destino = "Archivos/Detalles/Detalles de " + empleado + hora + " " + fecha + ".txt";
                 File.Move(origen, destino);
 
             }
