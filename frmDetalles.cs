@@ -75,7 +75,7 @@ namespace Gestión_Empleados
             }
             else
             {
-                MessageBox.Show("SELECCIONAR EMPLEADO");
+                MessageBox.Show("SELECCIONAR EMPLEADO", "ADVERTENCIA", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
             }
         }

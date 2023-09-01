@@ -67,7 +67,7 @@ namespace Gestión_Empleados
             sw.Dispose();
             listBox1.DataSource = null;
             listBox1.Refresh();
-            MessageBox.Show("SE AÑADIÓ CORRECTAMENTE");
+            MessageBox.Show("SE AÑADIÓ CORRECTAMENTE", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             listBox1.DataSource = null;
             listBox1.Items.Clear();
             StreamReader sr = new StreamReader("empleados.txt");
@@ -130,7 +130,7 @@ namespace Gestión_Empleados
 
                     }
                 }
-                MessageBox.Show("SE ELIMINÓ CORRECTAMENTE");
+                MessageBox.Show("SE ELIMINÓ CORRECTAMENTE", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 
 
                 reader.Close();
@@ -160,6 +160,44 @@ namespace Gestión_Empleados
             }
             
 
+        }
+
+        private void txtEmpleado_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                frmSelector Selector = new frmSelector();
+                Selector.Show();
+                this.Hide();
+            }
+        }
+
+        private void txtEmpleado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter) 
+            {
+                StreamWriter sw = new StreamWriter("empleados.txt", true);
+                sw.WriteLine(txtEmpleado.Text);
+                sw.Close();
+                sw.Dispose();
+                listBox1.DataSource = null;
+                listBox1.Refresh();
+                MessageBox.Show("SE AÑADIÓ CORRECTAMENTE", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                listBox1.DataSource = null;
+                listBox1.Items.Clear();
+                StreamReader sr = new StreamReader("empleados.txt");
+                string Linea = "";
+                while (sr.EndOfStream == false)
+                {
+                    Linea = sr.ReadLine();
+                    listBox1.Items.Add(Linea);
+                }
+
+
+                sr.Close();
+                sr.Dispose();
+                txtEmpleado.Text = "";
+            }
         }
     }
 }
