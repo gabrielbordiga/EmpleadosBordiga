@@ -9,17 +9,27 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Gestión_Empleados
 {
     public partial class frmDetalles : Form
     {
+        System.Timers.Timer timer;
+        public string valor = "";
+        public int restar = 0;
         string fecha = DateTime.Now.ToString("dd-MM-yyyy");
         string hora = DateTime.Now.ToString("HH.mm.ss");
         public frmDetalles()
         {
             InitializeComponent();
+            timer = new System.Timers.Timer(2);
+            timer.Elapsed += OnTimedEvent;
+
+            // Desactivar el timer por defecto
+            timer.Enabled = false;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -31,6 +41,7 @@ namespace Gestión_Empleados
            if (archivo == false)
            {
                 File.Create("Detalles.txt");
+
            }
         }
 
@@ -79,7 +90,15 @@ namespace Gestión_Empleados
 
             }
         }
+        private void OnTimedEvent(object source, ElapsedEventArgs e)
+        {
 
+            
+            string origen = (valor + ".txt");
+            string destino = "Archivos/Detalles/Detalles de " + valor + hora + " " + fecha + ".txt";
+            File.Move(origen, destino);
+
+        }
         private void listbox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -87,20 +106,57 @@ namespace Gestión_Empleados
 
         private void cmdArchivar_Click(object sender, EventArgs e)
         {
-            string empleado = cboEmpleado.SelectedItem.ToString();
+            string valor = cboEmpleado.SelectedItem.ToString();
             var respuesta = MessageBox.Show("SE ARCHIVARÁN TODOS LOS DATOS", "ADVERTENCIA", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (respuesta == DialogResult.OK)
             {
-                listbox.DataSource = null;
-                listbox.Items.Clear();
-                string origen = (empleado + ".txt");
-                string destino = "Archivos/Detalles/Detalles de " + empleado + hora + " " + fecha + ".txt";
-                File.Move(origen, destino);
+                List<int> numeros = new List<int>();
+                StreamReader srr = new StreamReader("Plata_" + valor + ".txt");
+                string linea = srr.ReadLine();
+                while (linea != null)
+                {
+                    int numero = int.Parse(linea);
+                    numeros.Add(numero);
+                    linea = srr.ReadLine();
+                }
+                srr.Close();
+
+                foreach (int n in numeros)
+                {
+                    Console.WriteLine(n);
+
+
+                }
+
+                StreamWriter srr2 = new StreamWriter("Cuenta" + valor + ".txt");
+
+                srr2.WriteLine(numeros.Sum());
+
+                srr2.Close();
+
+                bool existe = File.Exists("Cuenta.txt");
+                if (existe == true) 
+                {
+                    List<int> numeros2 = new List<int>();
+                    StreamReader pr = new StreamReader("Cuenta" + valor + ".txt");
+                    string linea2 = pr.ReadLine();
+                    pr.Close();
+                    int numero = int.Parse(linea2);
+                    StreamWriter td = new StreamWriter(valor + ".txt", true);
+                    td.WriteLine("*** TOTAL DINERO AL ARCHIVAR *** $" + numero);
+                    td.Close();
+
+                    listbox.DataSource = null;
+                    listbox.Items.Clear();
+                    string origen = (valor + ".txt");
+                    string destino = "Archivos/Detalles/Detalles de " + valor + hora + " " + fecha + ".txt";
+                    File.Move(origen, destino);
+                }
 
             }
             else
             {
-
+                
             }
         }
     }
