@@ -32,7 +32,7 @@ namespace Gestión_Empleados
         {
             if (txtPrecio.Text == "") 
             {
-                MessageBox.Show("Introduzca el precio!");
+                MessageBox.Show("INTRODUZCA EL PRECIO!", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             }
             else 
             {
@@ -41,7 +41,7 @@ namespace Gestión_Empleados
                 sw.Close();
                 sw.Dispose();
                 txtPrecio.Text = null;
-                MessageBox.Show("Precio modificado correctamente!");
+                MessageBox.Show("PRECIO MODIFICADO CORRECTAMENTE!", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             }
         }
 
@@ -63,7 +63,7 @@ namespace Gestión_Empleados
             {
                 if (txtPrecio.Text == "")
                 {
-                    MessageBox.Show("Introduzca el precio!");
+                    MessageBox.Show("INTRODUZCA EL PRECIO!", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -72,7 +72,7 @@ namespace Gestión_Empleados
                     sw.Close();
                     sw.Dispose();
                     txtPrecio.Text = null;
-                    MessageBox.Show("Precio modificado correctamente!");
+                    MessageBox.Show("PRECIO MODIFICADO CORRECTAMENTE!", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 }
             }
         }

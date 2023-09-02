@@ -134,7 +134,7 @@ namespace Gestión_Empleados
 
                 srr2.Close();
 
-                bool existe = File.Exists("Cuenta.txt");
+                bool existe = File.Exists("Cuenta" + valor + ".txt");
                 if (existe == true) 
                 {
                     List<int> numeros2 = new List<int>();
@@ -152,7 +152,10 @@ namespace Gestión_Empleados
                     string destino = "Archivos/Detalles/Detalles de " + valor + hora + " " + fecha + ".txt";
                     File.Move(origen, destino);
                 }
-
+                else 
+                {
+                    MessageBox.Show("NO SE PUDO ARCHIVAR", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
