@@ -32,8 +32,10 @@
             this.cmdVolver = new System.Windows.Forms.PictureBox();
             this.lsbTodosRetiros = new System.Windows.Forms.ListBox();
             this.cmdBorrarTodo = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.cmdVolver)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmdBorrarTodo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // cmdVolver
@@ -69,11 +71,23 @@
             this.cmdBorrarTodo.TabStop = false;
             this.cmdBorrarTodo.Click += new System.EventHandler(this.cmdBorrarTodo_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(65, 393);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(48, 48);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 21;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // frmTodosLosRetiros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(604, 450);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cmdBorrarTodo);
             this.Controls.Add(this.lsbTodosRetiros);
             this.Controls.Add(this.cmdVolver);
@@ -83,6 +97,7 @@
             this.Load += new System.EventHandler(this.frmTodosLosRetiros_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cmdVolver)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmdBorrarTodo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -92,5 +107,6 @@
         private System.Windows.Forms.PictureBox cmdVolver;
         private System.Windows.Forms.ListBox lsbTodosRetiros;
         private System.Windows.Forms.PictureBox cmdBorrarTodo;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

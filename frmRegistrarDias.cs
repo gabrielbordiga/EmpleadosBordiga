@@ -115,7 +115,7 @@ namespace Gestión_Empleados
 
                             if (fecha == fehca2)
                             {
-                                MessageBox.Show("ESTA FECHA YA FUE REGISTRADA", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("ESTA FECHA YA FUÉ REGISTRADA", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 fecha3 = fehca2;
 
                             }
@@ -272,12 +272,82 @@ namespace Gestión_Empleados
                     }
 
                 }
-                else
+                else if (existefile == false)
                 {
                     StreamWriter escritura = new StreamWriter(valor + ".txt");
                     escritura.Close();
                     escritura.Dispose();
-                    MessageBox.Show("SE CREÓ UN ARCHIVO NO EXISTENTE, POR FAVOR REINTENTAR", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    
+                    
+
+                        string Detalles = "";
+                        DateTime fechaActual = DateTime.Now;
+                        DateTime fechaSeleccionado = dtpFecha.Value;
+                        StreamReader leer = new StreamReader(valor + ".txt");
+                        string fehca2 = dtpFecha.Text.ToString();
+                        leer.Close();
+                        leer.Dispose();
+                    if (fechaSeleccionado <= fechaActual)
+                    {
+                        if (txtDetalle.Text != Detalles)
+                        {
+                            if (cboEmpleado.SelectedIndex != -1)
+                            {
+                                if (this.UnDia.Checked || this.MedioDia.Checked)
+                                {
+                                    string dia = "";
+                                    string precio = "";
+                                    if (this.UnDia.Checked)
+                                    {
+                                        dia = "1 Día";
+                                        precio = txtPrecio.Text;
+                                    }
+                                    else if (this.MedioDia.Checked)
+                                    {
+                                        dia = "1/2 Día";
+                                        double numero = Convert.ToDouble(this.txtPrecio.Text);
+                                        precio = (numero / 2).ToString();
+                                    }
+
+                                    StreamWriter sw = new StreamWriter(valor + ".txt", true);
+                                    sw.Write(dtpFecha.Text + ", ");
+                                    sw.Write(dia + ", ");
+                                    sw.Write(txtDetalle.Text + ", ");
+                                    sw.WriteLine(precio);
+                                    this.cboEmpleado.SelectedIndex = -1;
+                                    sw.Close();
+                                    sw.Dispose();
+                                    StreamWriter pr = new StreamWriter("Plata_" + valor + ".txt", true);
+                                    pr.WriteLine(precio);
+                                    pr.Close();
+                                    pr.Dispose();
+                                    MessageBox.Show("SE CARGÓ EXITOSAMENTE!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    if (!chkMantenerDetalle.Checked)
+                                    {
+                                        txtDetalle.Text = "";
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("SELECCIONE 1 DÍA O 1/2 DÍA", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("SELECCIONE UN EMPLEADO", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("INTRODUCIR DETALLE", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("INTRODUCIR UNA FECHA ACTUAL O ANTERIOR", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
 
             }
@@ -378,7 +448,7 @@ namespace Gestión_Empleados
 
                                 if (fecha == fehca2)
                                 {
-                                    MessageBox.Show("ESTA FECHA YA FUE REGISTRADA", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("ESTA FECHA YA FUÉ REGISTRADA", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     fecha3 = fehca2;
 
                                 }
@@ -535,12 +605,82 @@ namespace Gestión_Empleados
                         }
 
                     }
-                    else
+                    else if (existefile == false)
                     {
                         StreamWriter escritura = new StreamWriter(valor + ".txt");
                         escritura.Close();
                         escritura.Dispose();
-                        MessageBox.Show("SE CREÓ UN ARCHIVO NO EXISTENTE, POR FAVOR REINTENTAR", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+
+
+                        string Detalles = "";
+                        DateTime fechaActual = DateTime.Now;
+                        DateTime fechaSeleccionado = dtpFecha.Value;
+                        StreamReader leer = new StreamReader(valor + ".txt");
+                        string fehca2 = dtpFecha.Text.ToString();
+                        leer.Close();
+                        leer.Dispose();
+                        if (fechaSeleccionado <= fechaActual)
+                        {
+                            if (txtDetalle.Text != Detalles)
+                            {
+                                if (cboEmpleado.SelectedIndex != -1)
+                                {
+                                    if (this.UnDia.Checked || this.MedioDia.Checked)
+                                    {
+                                        string dia = "";
+                                        string precio = "";
+                                        if (this.UnDia.Checked)
+                                        {
+                                            dia = "1 Día";
+                                            precio = txtPrecio.Text;
+                                        }
+                                        else if (this.MedioDia.Checked)
+                                        {
+                                            dia = "1/2 Día";
+                                            double numero = Convert.ToDouble(this.txtPrecio.Text);
+                                            precio = (numero / 2).ToString();
+                                        }
+
+                                        StreamWriter sw = new StreamWriter(valor + ".txt", true);
+                                        sw.Write(dtpFecha.Text + ", ");
+                                        sw.Write(dia + ", ");
+                                        sw.Write(txtDetalle.Text + ", ");
+                                        sw.WriteLine(precio);
+                                        this.cboEmpleado.SelectedIndex = -1;
+                                        sw.Close();
+                                        sw.Dispose();
+                                        StreamWriter pr = new StreamWriter("Plata_" + valor + ".txt", true);
+                                        pr.WriteLine(precio);
+                                        pr.Close();
+                                        pr.Dispose();
+                                        MessageBox.Show("SE CARGÓ EXITOSAMENTE!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        if (!chkMantenerDetalle.Checked)
+                                        {
+                                            txtDetalle.Text = "";
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("SELECCIONE 1 DÍA O 1/2 DÍA", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    }
+
+                                }
+                                else
+                                {
+                                    MessageBox.Show("SELECCIONE UN EMPLEADO", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("INTRODUCIR DETALLE", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("INTRODUCIR UNA FECHA ACTUAL O ANTERIOR", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
 
                 }

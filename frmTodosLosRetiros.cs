@@ -67,6 +67,20 @@ namespace Gestión_Empleados
         {
 
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("QUIERES VER LOS ARCHIVOS?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes)
+            {
+                string Ruta = System.AppDomain.CurrentDomain.BaseDirectory + "Archivos\\Retiros";
+                System.Diagnostics.Process.Start("explorer.exe", Ruta);
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                // No hacer nada
+            }
+        }
     }
 
 }

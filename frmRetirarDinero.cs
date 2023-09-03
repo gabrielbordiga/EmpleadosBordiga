@@ -54,42 +54,56 @@ namespace Gestión_Empleados
         public void pictureBox1_Click(object sender, EventArgs e)
         {
 
-            if (txtCuenta.Text == "")
+            DateTime fechaActual = DateTime.Now;
+            DateTime fechaSeleccionado = dtpFecha.Value;
+            if (fechaSeleccionado <= fechaActual)
             {
-                MessageBox.Show("INTRODUZCA LA CANTIDAD", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (txtCuenta.Text == "")
+                {
+                    MessageBox.Show("INTRODUZCA LA CANTIDAD", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else if (cboEmpleado.SelectedIndex == -1)
+                {
+                    MessageBox.Show("SELECCIONE UN EMPLEADO", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+                else
+                {
+                    restar = int.Parse(txtCuenta.Text);
+
+                    List<int> numeros = new List<int>();
+                    StreamReader srr = new StreamReader("Plata_" + valor + ".txt");
+                    string linea = srr.ReadLine();
+                    while (linea != null)
+                    {
+                        int numero = int.Parse(linea);
+                        numeros.Add(numero);
+                        linea = srr.ReadLine();
+                    }
+                    srr.Close();
+
+                    foreach (int n in numeros)
+                    {
+                        Console.WriteLine(n);
+
+
+                    }
+
+                    StreamWriter srr2 = new StreamWriter("Cuenta" + valor + ".txt");
+
+                    srr2.WriteLine(numeros.Sum());
+
+                    srr2.Close();
+
+                    timer.Enabled = !timer.Enabled;
+                    txtCuenta.Text = null;
+
+
+                }
             }
-            else
+            else 
             {
-                restar = int.Parse(txtCuenta.Text);
-
-                List<int> numeros = new List<int>();
-                StreamReader srr = new StreamReader("Plata_" + valor + ".txt");
-                string linea = srr.ReadLine();
-                while (linea != null)
-                {
-                    int numero = int.Parse(linea);
-                    numeros.Add(numero);
-                    linea = srr.ReadLine();
-                }
-                srr.Close();
-
-                foreach (int n in numeros)
-                {
-                    Console.WriteLine(n);
-
-
-                }
-
-                StreamWriter srr2 = new StreamWriter("Cuenta" + valor + ".txt");
-
-                srr2.WriteLine(numeros.Sum());
-
-                srr2.Close();
-
-                timer.Enabled = !timer.Enabled;
-                txtCuenta.Text = null;
-
-
+                MessageBox.Show("INTRODUCIR UNA FECHA ACTUAL O ANTERIOR", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
 
@@ -171,42 +185,57 @@ namespace Gestión_Empleados
             }
             if (e.KeyChar == (char)Keys.Enter)
             {
-                if (txtCuenta.Text == "")
+
+                DateTime fechaActual = DateTime.Now;
+                DateTime fechaSeleccionado = dtpFecha.Value;
+                if (fechaSeleccionado <= fechaActual)
                 {
-                    MessageBox.Show("INTRODUZCA LA CANTIDAD", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if (txtCuenta.Text == "")
+                    {
+                        MessageBox.Show("INTRODUZCA LA CANTIDAD", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (cboEmpleado.SelectedIndex == -1)
+                    {
+                        MessageBox.Show("SELECCIONE UN EMPLEADO", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    else
+                    {
+                        restar = int.Parse(txtCuenta.Text);
+
+                        List<int> numeros = new List<int>();
+                        StreamReader srr = new StreamReader("Plata_" + valor + ".txt");
+                        string linea = srr.ReadLine();
+                        while (linea != null)
+                        {
+                            int numero = int.Parse(linea);
+                            numeros.Add(numero);
+                            linea = srr.ReadLine();
+                        }
+                        srr.Close();
+
+                        foreach (int n in numeros)
+                        {
+                            Console.WriteLine(n);
+
+
+                        }
+
+                        StreamWriter srr2 = new StreamWriter("Cuenta" + valor + ".txt");
+
+                        srr2.WriteLine(numeros.Sum());
+
+                        srr2.Close();
+
+                        timer.Enabled = !timer.Enabled;
+                        txtCuenta.Text = null;
+
+
+                    }
                 }
                 else
                 {
-                    restar = int.Parse(txtCuenta.Text);
-
-                    List<int> numeros = new List<int>();
-                    StreamReader srr = new StreamReader("Plata_" + valor + ".txt");
-                    string linea = srr.ReadLine();
-                    while (linea != null)
-                    {
-                        int numero = int.Parse(linea);
-                        numeros.Add(numero);
-                        linea = srr.ReadLine();
-                    }
-                    srr.Close();
-
-                    foreach (int n in numeros)
-                    {
-                        Console.WriteLine(n);
-
-
-                    }
-
-                    StreamWriter srr2 = new StreamWriter("Cuenta" + valor + ".txt");
-
-                    srr2.WriteLine(numeros.Sum());
-
-                    srr2.Close();
-
-                    timer.Enabled = !timer.Enabled;
-                    txtCuenta.Text = null;
-
-                    
+                    MessageBox.Show("INTRODUCIR UNA FECHA ACTUAL O ANTERIOR", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
