@@ -29,7 +29,7 @@ namespace Gestión_Empleados
             }
             else 
             {
-                MessageBox.Show("Falta agregar el precio");
+                MessageBox.Show("FALTA AGREGAR EL PRECIO", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 frmPrecioPorDia PrecioPorDia = new frmPrecioPorDia();
                 PrecioPorDia.Show();
                 this.Hide();

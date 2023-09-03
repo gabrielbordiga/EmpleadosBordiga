@@ -167,7 +167,7 @@ namespace Gestión_Empleados
             }
             else 
             {
-                MessageBox.Show("SELECCIONE UN EMPLEADO", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                MessageBox.Show("SELECCIONE UN EMPLEADO", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -180,7 +180,7 @@ namespace Gestión_Empleados
             }
             else 
             {
-                MessageBox.Show("SELECCIONE UN EMPLEADO", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                MessageBox.Show("SELECCIONE UN EMPLEADO", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }    
             
         }
