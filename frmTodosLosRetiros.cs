@@ -35,13 +35,23 @@ namespace Gestión_Empleados
 
         private void frmTodosLosRetiros_Load(object sender, EventArgs e)
         {
-            lsbTodosRetiros.Items.Clear();
-            StreamReader sr = new StreamReader("TodosLosRetiros.txt");
-            while (!sr.EndOfStream)
+            bool existe = File.Exists("TodosLosRetiros.txt");
+
+            if (existe == true)
             {
-                lsbTodosRetiros.Items.Add(sr.ReadLine());
+                lsbTodosRetiros.Items.Clear();
+                StreamReader sr = new StreamReader("TodosLosRetiros.txt");
+                while (!sr.EndOfStream)
+                {
+                    lsbTodosRetiros.Items.Add(sr.ReadLine());
+                }
+                sr.Close();
             }
-            sr.Close();
+            else 
+            {
+                MessageBox.Show("NO HAY RETIROS", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+                
         }
 
         private void cmdBorrarTodo_Click(object sender, EventArgs e)

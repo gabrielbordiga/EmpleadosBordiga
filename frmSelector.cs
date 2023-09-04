@@ -46,9 +46,9 @@ namespace Gestión_Empleados
 
         private void cmdModificarPrecio_Click(object sender, EventArgs e)
         {
-            frmPrecioPorDia PrecioPorDia = new frmPrecioPorDia();
-            PrecioPorDia.Show(); 
-            this.Hide(); 
+            Class1 class1 = new Class1();
+            class1.PRecioPorDia();
+             
         }
 
         private void cmdSalir_Click(object sender, EventArgs e)

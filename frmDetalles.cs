@@ -152,7 +152,7 @@ namespace Gestión_Empleados
                         listbox.DataSource = null;
                         listbox.Items.Clear();
                         string origen = (valor + ".txt");
-                        string destino = "Archivos/Detalles/Detalles de " + valor + hora + " " + fecha + ".txt";
+                        string destino = "Archivos/Detalles/Detalles de " + valor + "" + hora + " " + fecha + ".txt";
                         File.Move(origen, destino);
                     }
                     else

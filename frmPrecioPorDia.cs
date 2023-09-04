@@ -7,15 +7,22 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 
 namespace Gestión_Empleados
 {
     public partial class frmPrecioPorDia : Form
     {
+        System.Timers.Timer timer;
         public frmPrecioPorDia()
         {
             InitializeComponent();
+            timer = new System.Timers.Timer(2);
+            timer.Elapsed += OnTimedEvent;
+
+            // Desactivar el timer por defecto
+            timer.Enabled = false;
         }
 
         private void cmdVolver_Click(object sender, EventArgs e)
@@ -42,9 +49,21 @@ namespace Gestión_Empleados
                 sw.Dispose();
                 txtPrecio.Text = null;
                 MessageBox.Show("PRECIO MODIFICADO CORRECTAMENTE!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                timer.Enabled = !timer.Enabled;
             }
         }
+        private void OnTimedEvent(object source, ElapsedEventArgs e) 
+        {
+            frmPrecioPorDia form = new frmPrecioPorDia();
+            if (form.IsHandleCreated)
+            {
+                form.Invoke((MethodInvoker)delegate
+                {
+                    form.Hide();
+                });
+            }
 
+        }
         private void cmdVolver2_Click(object sender, EventArgs e)
         {
             frmSelector Selector = new frmSelector();
@@ -73,6 +92,7 @@ namespace Gestión_Empleados
                     sw.Dispose();
                     txtPrecio.Text = null;
                     MessageBox.Show("PRECIO MODIFICADO CORRECTAMENTE!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    timer.Enabled = !timer.Enabled;
                 }
             }
         }

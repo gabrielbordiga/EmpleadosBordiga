@@ -163,8 +163,18 @@ namespace Gestión_Empleados
 
         private void cmdTodosLosRetiros_Click(object sender, EventArgs e)
         {
-            frmTodosLosRetiros todosLosRetiros = new frmTodosLosRetiros(); todosLosRetiros.Show();
-            this.Hide();
+            bool existe = File.Exists("TodosLosRetiros.txt");
+
+            if (existe == true)
+            {
+                frmTodosLosRetiros todosLosRetiros = new frmTodosLosRetiros(); todosLosRetiros.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("NO HAY RETIROS", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void txtCuenta_KeyDown(object sender, KeyEventArgs e)

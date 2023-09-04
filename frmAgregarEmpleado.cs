@@ -61,27 +61,35 @@ namespace Gestión_Empleados
 
         private void cmdCargare_Click(object sender, EventArgs e)
         {
-            StreamWriter sw = new StreamWriter("empleados.txt", true);
-            sw.WriteLine(txtEmpleado.Text);
-            sw.Close();
-            sw.Dispose();
-            listBox1.DataSource = null;
-            listBox1.Refresh();
-            MessageBox.Show("SE AÑADIÓ CORRECTAMENTE", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-            listBox1.DataSource = null;
-            listBox1.Items.Clear();
-            StreamReader sr = new StreamReader("empleados.txt");
-            string Linea = "";
-            while (sr.EndOfStream == false)
+
+            if (txtEmpleado.Text != "")
             {
-                Linea = sr.ReadLine();
-                listBox1.Items.Add(Linea);
+                StreamWriter sw = new StreamWriter("empleados.txt", true);
+                sw.WriteLine(txtEmpleado.Text);
+                sw.Close();
+                sw.Dispose();
+                listBox1.DataSource = null;
+                listBox1.Refresh();
+                MessageBox.Show("SE AÑADIÓ CORRECTAMENTE", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                listBox1.DataSource = null;
+                listBox1.Items.Clear();
+                StreamReader sr = new StreamReader("empleados.txt");
+                string Linea = "";
+                while (sr.EndOfStream == false)
+                {
+                    Linea = sr.ReadLine();
+                    listBox1.Items.Add(Linea);
+                }
+
+
+                sr.Close();
+                sr.Dispose();
+                txtEmpleado.Text = "";
             }
-
-
-            sr.Close();
-            sr.Dispose();
-            txtEmpleado.Text = "";
+            else 
+            {
+                MessageBox.Show("ESCRIBA EL NOMBRE Y APELLDIO DE UN EMPLEDO", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
         }
 
@@ -109,54 +117,57 @@ namespace Gestión_Empleados
 
         private void cmdBorrar_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("SE ELIMINARÁ EL EMPLEADO SELECCIONADO", "ELIMINAR EMPLEADO", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            
 
-            if (result == DialogResult.OK)
+            if (listBox1.SelectedIndex != -1)
             {
-                var item = listBox1.SelectedItem;
-                string s = item.ToString();
-
-                StreamReader reader = new StreamReader("empleados.txt");
-
-                StreamWriter writer = new StreamWriter("temp.txt");
-                string line;
-                while ((line = reader.ReadLine()) != null)
+                DialogResult result = MessageBox.Show("SE ELIMINARÁ EL EMPLEADO SELECCIONADO", "ELIMINAR EMPLEADO", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (result == DialogResult.OK) 
                 {
+                    var item = listBox1.SelectedItem;
+                    string s = item.ToString();
 
-                    if (!line.Contains(s))
+                    StreamReader reader = new StreamReader("empleados.txt");
+
+                    StreamWriter writer = new StreamWriter("temp.txt");
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
                     {
 
-                        writer.WriteLine(line);
+                        if (!line.Contains(s))
+                        {
 
+                            writer.WriteLine(line);
+
+                        }
                     }
+                    MessageBox.Show("SE ELIMINÓ CORRECTAMENTE", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                    reader.Close();
+                    writer.Close();
+
+
+                    File.Delete("empleados.txt");
+                    File.Move("temp.txt", "empleados.txt");
+                    listBox1.DataSource = null;
+                    listBox1.Items.Clear();
+                    StreamReader sr = new StreamReader("empleados.txt");
+                    string Linea = "";
+                    while (sr.EndOfStream == false)
+                    {
+                        Linea = sr.ReadLine();
+                        listBox1.Items.Add(Linea);
+                    }
+
+
+                    sr.Close();
+                    sr.Dispose();
                 }
-                MessageBox.Show("SE ELIMINÓ CORRECTAMENTE", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-
-
-                reader.Close();
-                writer.Close();
-
-
-                File.Delete("empleados.txt");
-                File.Move("temp.txt", "empleados.txt");
-                listBox1.DataSource = null;
-                listBox1.Items.Clear();
-                StreamReader sr = new StreamReader("empleados.txt");
-                string Linea = "";
-                while (sr.EndOfStream == false)
-                {
-                    Linea = sr.ReadLine();
-                    listBox1.Items.Add(Linea);
-                }
-
-
-                sr.Close();
-                sr.Dispose();
             }
-            else if (result == DialogResult.Cancel)
+            else
             {
-                // El usuario presionó Cancelar
-                // Aquí puedes poner el código que quieras ejecutar
+                MessageBox.Show("SELECCIONE UN EMPLEADO DE LA LISTA","", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             
 
@@ -174,30 +185,42 @@ namespace Gestión_Empleados
 
         private void txtEmpleado_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter) 
+            if (txtEmpleado.Text != "") 
             {
-                StreamWriter sw = new StreamWriter("empleados.txt", true);
-                sw.WriteLine(txtEmpleado.Text);
-                sw.Close();
-                sw.Dispose();
-                listBox1.DataSource = null;
-                listBox1.Refresh();
-                MessageBox.Show("SE AÑADIÓ CORRECTAMENTE", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                listBox1.DataSource = null;
-                listBox1.Items.Clear();
-                StreamReader sr = new StreamReader("empleados.txt");
-                string Linea = "";
-                while (sr.EndOfStream == false)
+                if (e.KeyChar == (char)Keys.Enter)
                 {
-                    Linea = sr.ReadLine();
-                    listBox1.Items.Add(Linea);
+                    StreamWriter sw = new StreamWriter("empleados.txt", true);
+                    sw.WriteLine(txtEmpleado.Text);
+                    sw.Close();
+                    sw.Dispose();
+                    listBox1.DataSource = null;
+                    listBox1.Refresh();
+                    MessageBox.Show("SE AÑADIÓ CORRECTAMENTE", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    listBox1.DataSource = null;
+                    listBox1.Items.Clear();
+                    StreamReader sr = new StreamReader("empleados.txt");
+                    string Linea = "";
+                    while (sr.EndOfStream == false)
+                    {
+                        Linea = sr.ReadLine();
+                        listBox1.Items.Add(Linea);
+                    }
+
+
+                    sr.Close();
+                    sr.Dispose();
+                    txtEmpleado.Text = "";
                 }
-
-
-                sr.Close();
-                sr.Dispose();
-                txtEmpleado.Text = "";
             }
+            else
+            {
+                MessageBox.Show("ESCRIBA EL NOMBRE Y APELLDIO DE UN EMPLEDO", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txtEmpleado_TextChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
