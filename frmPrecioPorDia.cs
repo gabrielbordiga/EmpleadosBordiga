@@ -49,25 +49,17 @@ namespace Gestión_Empleados
                 sw.Dispose();
                 txtPrecio.Text = null;
                 MessageBox.Show("PRECIO MODIFICADO CORRECTAMENTE!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                timer.Enabled = !timer.Enabled;
+                this.Hide();
             }
         }
         private void OnTimedEvent(object source, ElapsedEventArgs e) 
         {
-            frmPrecioPorDia form = new frmPrecioPorDia();
-            if (form.IsHandleCreated)
-            {
-                form.Invoke((MethodInvoker)delegate
-                {
-                    form.Hide();
-                });
-            }
+            
 
         }
         private void cmdVolver2_Click(object sender, EventArgs e)
         {
-            frmSelector Selector = new frmSelector();
-            Selector.Show();
+            
             this.Hide();
         }
 
@@ -92,7 +84,7 @@ namespace Gestión_Empleados
                     sw.Dispose();
                     txtPrecio.Text = null;
                     MessageBox.Show("PRECIO MODIFICADO CORRECTAMENTE!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    timer.Enabled = !timer.Enabled;
+                    this.Hide();
                 }
             }
         }
@@ -101,8 +93,7 @@ namespace Gestión_Empleados
         {
             if (e.KeyCode == Keys.Escape)
             {
-                frmSelector Selector = new frmSelector();
-                Selector.Show();
+                
                 this.Hide();
             }
         }

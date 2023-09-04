@@ -32,7 +32,7 @@ namespace Gestión_Empleados
                 MessageBox.Show("FALTA AGREGAR EL PRECIO", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 frmPrecioPorDia PrecioPorDia = new frmPrecioPorDia();
                 PrecioPorDia.Show();
-                this.Hide();
+                
             }
     
         }
@@ -86,6 +86,11 @@ namespace Gestión_Empleados
               escribir.Close();
               escribir.Dispose();              
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

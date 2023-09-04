@@ -185,9 +185,9 @@ namespace Gestión_Empleados
 
         private void txtEmpleado_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (txtEmpleado.Text != "") 
+            if (e.KeyChar == (char)Keys.Enter)
             {
-                if (e.KeyChar == (char)Keys.Enter)
+                if (txtEmpleado.Text != "") 
                 {
                     StreamWriter sw = new StreamWriter("empleados.txt", true);
                     sw.WriteLine(txtEmpleado.Text);
@@ -195,7 +195,7 @@ namespace Gestión_Empleados
                     sw.Dispose();
                     listBox1.DataSource = null;
                     listBox1.Refresh();
-                    MessageBox.Show("SE AÑADIÓ CORRECTAMENTE", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    MessageBox.Show("SE AÑADIÓ CORRECTAMENTE", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     listBox1.DataSource = null;
                     listBox1.Items.Clear();
                     StreamReader sr = new StreamReader("empleados.txt");
@@ -211,11 +211,17 @@ namespace Gestión_Empleados
                     sr.Dispose();
                     txtEmpleado.Text = "";
                 }
+                else if (txtEmpleado.Text == "")
+                {
+                    MessageBox.Show("ESCRIBA EL NOMBRE Y APELLDIO DE UN EMPLEDO", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
             }
-            else
-            {
-                MessageBox.Show("ESCRIBA EL NOMBRE Y APELLDIO DE UN EMPLEDO", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            
+
+
+
+
         }
 
         private void txtEmpleado_TextChanged(object sender, EventArgs e)

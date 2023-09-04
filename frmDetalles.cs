@@ -62,32 +62,41 @@ namespace Gestión_Empleados
 
         private void cmdcargar_Click(object sender, EventArgs e)
         {
-            string valor = "";
-            if (this.cboEmpleado.SelectedItem != null)
+            if (cboEmpleado.SelectedIndex != -1) 
             {
-                valor = this.cboEmpleado.SelectedItem.ToString();
-            }
-            else
-            {
-                // Mostrar un mensaje de error o elegir un valor por defecto
-            }
-            List<int> numeros = new List<int>();
-
-            List<string> lista = new List<string>();
-            string ruta = valor + ".txt";
-            if (File.Exists(ruta))
-            {
-                listbox.Items.Clear();
-                StreamReader sr = new StreamReader(ruta);
-                while (!sr.EndOfStream)
+                string valor = "";
+                if (this.cboEmpleado.SelectedItem != null)
                 {
-                    listbox.Items.Add(sr.ReadLine());
+                    valor = this.cboEmpleado.SelectedItem.ToString();
                 }
-                sr.Close();
+                else
+                {
+                    // Mostrar un mensaje de error o elegir un valor por defecto
+                }
+                List<int> numeros = new List<int>();
+
+                List<string> lista = new List<string>();
+                string ruta = valor + ".txt";
+                if (File.Exists(ruta))
+                {
+                    listbox.Items.Clear();
+                    StreamReader sr = new StreamReader(ruta);
+                    while (!sr.EndOfStream)
+                    {
+                        listbox.Items.Add(sr.ReadLine());
+                    }
+                    sr.Close();
+                }
+                else
+                {
+                    MessageBox.Show("NO HAY DETALLES", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                }
+
             }
             else
             {
-                MessageBox.Show("SELECCIONAR EMPLEADO", "ADVERTENCIA", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                MessageBox.Show("SELECCIONAR EMPLEADO", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
         }
@@ -148,12 +157,19 @@ namespace Gestión_Empleados
                         StreamWriter td = new StreamWriter(valor + ".txt", true);
                         td.WriteLine("*** TOTAL DINERO AL ARCHIVAR *** $" + numero);
                         td.Close();
+                        td.Dispose();
 
                         listbox.DataSource = null;
                         listbox.Items.Clear();
                         string origen = (valor + ".txt");
-                        string destino = "Archivos/Detalles/Detalles de " + valor + "" + hora + " " + fecha + ".txt";
+                        string destino = "Archivos/Detalles/Detalles de " + valor + " " + hora + " " + fecha + ".txt";
                         File.Move(origen, destino);
+                        MessageBox.Show("ARCHIVADO", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        StreamWriter tdr = new StreamWriter(valor + ".txt", true);
+                        tdr.WriteLine("*** TOTAL DINERO *** $" + numero);
+                        tdr.Close();
+                        tdr.Dispose();
+                        listbox.Items.Add("*** TOTAL DINERO *** $" + numero);
                     }
                     else
                     {
@@ -201,5 +217,43 @@ namespace Gestión_Empleados
             }
         }
 
+        private void cboEmpleado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cboEmpleado.SelectedIndex >= 0) 
+            {
+                string valor = "";
+                if (this.cboEmpleado.SelectedItem != null)
+                {
+                    valor = this.cboEmpleado.SelectedItem.ToString();
+                }
+                else
+                {
+                    // Mostrar un mensaje de error o elegir un valor por defecto
+                }
+                List<int> numeros = new List<int>();
+
+                List<string> lista = new List<string>();
+                string ruta = valor + ".txt";
+                if (File.Exists(ruta))
+                {
+                    listbox.Items.Clear();
+                    StreamReader sr = new StreamReader(ruta);
+                    while (!sr.EndOfStream)
+                    {
+                        listbox.Items.Add(sr.ReadLine());
+                    }
+                    sr.Close();
+                }
+                else
+                {
+                    MessageBox.Show("NO HAY DETALLES", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                }
+            }
+        }
+        private void frmDetalles_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+        }
     }
 }

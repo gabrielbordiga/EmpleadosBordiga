@@ -32,7 +32,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cboEmpleado = new System.Windows.Forms.ComboBox();
-            this.cmdcargar = new System.Windows.Forms.PictureBox();
             this.listbox = new System.Windows.Forms.ListBox();
             this.cmdArchivar = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -42,7 +41,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmdcargar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmdArchivar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -78,17 +76,7 @@
             this.cboEmpleado.Name = "cboEmpleado";
             this.cboEmpleado.Size = new System.Drawing.Size(272, 39);
             this.cboEmpleado.TabIndex = 12;
-            // 
-            // cmdcargar
-            // 
-            this.cmdcargar.Image = ((System.Drawing.Image)(resources.GetObject("cmdcargar.Image")));
-            this.cmdcargar.Location = new System.Drawing.Point(295, 32);
-            this.cmdcargar.Name = "cmdcargar";
-            this.cmdcargar.Size = new System.Drawing.Size(45, 45);
-            this.cmdcargar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.cmdcargar.TabIndex = 15;
-            this.cmdcargar.TabStop = false;
-            this.cmdcargar.Click += new System.EventHandler(this.cmdcargar_Click);
+            this.cboEmpleado.SelectedIndexChanged += new System.EventHandler(this.cboEmpleado_SelectedIndexChanged);
             // 
             // listbox
             // 
@@ -187,7 +175,6 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cmdArchivar);
             this.Controls.Add(this.listbox);
-            this.Controls.Add(this.cmdcargar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cboEmpleado);
             this.Controls.Add(this.pictureBox2);
@@ -196,7 +183,6 @@
             this.Text = "DETALLES";
             this.Load += new System.EventHandler(this.frmDetalles_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmdcargar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmdArchivar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -210,7 +196,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cboEmpleado;
-        private System.Windows.Forms.PictureBox cmdcargar;
         private System.Windows.Forms.ListBox listbox;
         private System.Windows.Forms.PictureBox cmdArchivar;
         private System.Windows.Forms.PictureBox pictureBox1;

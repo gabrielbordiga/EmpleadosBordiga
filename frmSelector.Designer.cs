@@ -32,10 +32,12 @@
             this.cmdRegistrarDias = new System.Windows.Forms.Button();
             this.cmdAñadirEmpleado = new System.Windows.Forms.Button();
             this.cmdModificarPrecio = new System.Windows.Forms.Button();
-            this.cmdSalir = new System.Windows.Forms.Button();
             this.cmdCuentaEmpleado = new System.Windows.Forms.Button();
             this.cmdRetirarDinero = new System.Windows.Forms.Button();
             this.cmdDetalles = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // cmdRegistrarDias
@@ -81,21 +83,6 @@
             this.cmdModificarPrecio.UseVisualStyleBackColor = false;
             this.cmdModificarPrecio.Click += new System.EventHandler(this.cmdModificarPrecio_Click);
             // 
-            // cmdSalir
-            // 
-            this.cmdSalir.BackColor = System.Drawing.Color.White;
-            this.cmdSalir.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.cmdSalir.FlatAppearance.BorderSize = 4;
-            this.cmdSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdSalir.Location = new System.Drawing.Point(887, 585);
-            this.cmdSalir.Name = "cmdSalir";
-            this.cmdSalir.Size = new System.Drawing.Size(90, 37);
-            this.cmdSalir.TabIndex = 6;
-            this.cmdSalir.Text = "SALIR";
-            this.cmdSalir.UseVisualStyleBackColor = false;
-            this.cmdSalir.Click += new System.EventHandler(this.cmdSalir_Click);
-            // 
             // cmdCuentaEmpleado
             // 
             this.cmdCuentaEmpleado.BackColor = System.Drawing.Color.White;
@@ -139,16 +126,38 @@
             this.cmdDetalles.UseVisualStyleBackColor = false;
             this.cmdDetalles.Click += new System.EventHandler(this.cmdDetalles_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(934, 572);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(45, 45);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(935, 616);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "SALIR";
+            // 
             // frmSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuBar;
             this.ClientSize = new System.Drawing.Size(991, 634);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cmdDetalles);
             this.Controls.Add(this.cmdRetirarDinero);
             this.Controls.Add(this.cmdCuentaEmpleado);
-            this.Controls.Add(this.cmdSalir);
             this.Controls.Add(this.cmdModificarPrecio);
             this.Controls.Add(this.cmdAñadirEmpleado);
             this.Controls.Add(this.cmdRegistrarDias);
@@ -156,7 +165,9 @@
             this.Name = "frmSelector";
             this.Text = "SELECTOR";
             this.Load += new System.EventHandler(this.frmSelector_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -165,9 +176,10 @@
         private System.Windows.Forms.Button cmdRegistrarDias;
         private System.Windows.Forms.Button cmdAñadirEmpleado;
         private System.Windows.Forms.Button cmdModificarPrecio;
-        private System.Windows.Forms.Button cmdSalir;
         private System.Windows.Forms.Button cmdCuentaEmpleado;
         private System.Windows.Forms.Button cmdRetirarDinero;
         private System.Windows.Forms.Button cmdDetalles;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
     }
 }
