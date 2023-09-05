@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Timers;
 using System.Threading;
+using System.Runtime.InteropServices;
 
 namespace Gestión_Empleados
 {
@@ -18,6 +19,10 @@ namespace Gestión_Empleados
         System.Timers.Timer timer;
         public string valor = "";
         public int restar = 0;
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
         public frmRetirarDinero()
         {
@@ -69,34 +74,73 @@ namespace Gestión_Empleados
 
                 else
                 {
-                    restar = int.Parse(txtCuenta.Text);
-
-                    List<int> numeros = new List<int>();
-                    StreamReader srr = new StreamReader("Plata_" + valor + ".txt");
-                    string linea = srr.ReadLine();
-                    while (linea != null)
+                    bool existepaper = File.Exists("Plata_" + valor + ".txt");
+                    if (existepaper == true)
                     {
-                        int numero = int.Parse(linea);
-                        numeros.Add(numero);
-                        linea = srr.ReadLine();
-                    }
-                    srr.Close();
+                        restar = int.Parse(txtCuenta.Text);
 
-                    foreach (int n in numeros)
+                        List<int> numeros = new List<int>();
+                        StreamReader srr = new StreamReader("Plata_" + valor + ".txt");
+                        string linea = srr.ReadLine();
+                        while (linea != null)
+                        {
+                            int numero = int.Parse(linea);
+                            numeros.Add(numero);
+                            linea = srr.ReadLine();
+                        }
+                        srr.Close();
+
+                        foreach (int n in numeros)
+                        {
+                            Console.WriteLine(n);
+
+
+                        }
+
+                        StreamWriter srr2 = new StreamWriter("Cuenta" + valor + ".txt");
+
+                        srr2.WriteLine(numeros.Sum());
+
+                        srr2.Close();
+
+                        timer.Enabled = !timer.Enabled;
+                        txtCuenta.Text = null;
+                    }
+                    else if (existepaper == false)
                     {
-                        Console.WriteLine(n);
+                        StreamWriter caca = new StreamWriter("Plata_" + valor + ".txt");
+                        caca.Close();
+                        caca.Dispose();
+                        MessageBox.Show("DESEA RETIRAR ESA CANTIDAD?", "", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        restar = int.Parse(txtCuenta.Text);
+
+                        List<int> numeros = new List<int>();
+                        StreamReader srr = new StreamReader("Plata_" + valor + ".txt");
+                        string linea = srr.ReadLine();
+                        while (linea != null)
+                        {
+                            int numero = int.Parse(linea);
+                            numeros.Add(numero);
+                            linea = srr.ReadLine();
+                        }
+                        srr.Close();
+
+                        foreach (int n in numeros)
+                        {
+                            Console.WriteLine(n);
 
 
+                        }
+
+                        StreamWriter srr2 = new StreamWriter("Cuenta" + valor + ".txt");
+
+                        srr2.WriteLine(numeros.Sum());
+
+                        srr2.Close();
+
+                        timer.Enabled = !timer.Enabled;
+                        txtCuenta.Text = null;
                     }
-
-                    StreamWriter srr2 = new StreamWriter("Cuenta" + valor + ".txt");
-
-                    srr2.WriteLine(numeros.Sum());
-
-                    srr2.Close();
-
-                    timer.Enabled = !timer.Enabled;
-                    txtCuenta.Text = null;
 
 
                 }
@@ -248,6 +292,17 @@ namespace Gestión_Empleados
                     MessageBox.Show("INTRODUCIR UNA FECHA ACTUAL O ANTERIOR", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 

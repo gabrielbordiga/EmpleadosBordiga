@@ -16,7 +16,7 @@ namespace Gestión_Empleados
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmSelector());
+            Application.Run(new frmInicio());
         }
     }
 }

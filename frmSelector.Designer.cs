@@ -37,7 +37,11 @@
             this.cmdDetalles = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.cmdMinimizar = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmdMinimizar)).BeginInit();
             this.SuspendLayout();
             // 
             // cmdRegistrarDias
@@ -47,7 +51,7 @@
             this.cmdRegistrarDias.FlatAppearance.BorderSize = 3;
             this.cmdRegistrarDias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdRegistrarDias.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdRegistrarDias.Location = new System.Drawing.Point(37, 34);
+            this.cmdRegistrarDias.Location = new System.Drawing.Point(34, 91);
             this.cmdRegistrarDias.Name = "cmdRegistrarDias";
             this.cmdRegistrarDias.Size = new System.Drawing.Size(440, 159);
             this.cmdRegistrarDias.TabIndex = 0;
@@ -61,7 +65,7 @@
             this.cmdAñadirEmpleado.FlatAppearance.BorderSize = 3;
             this.cmdAñadirEmpleado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdAñadirEmpleado.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdAñadirEmpleado.Location = new System.Drawing.Point(37, 407);
+            this.cmdAñadirEmpleado.Location = new System.Drawing.Point(34, 464);
             this.cmdAñadirEmpleado.Name = "cmdAñadirEmpleado";
             this.cmdAñadirEmpleado.Size = new System.Drawing.Size(440, 159);
             this.cmdAñadirEmpleado.TabIndex = 4;
@@ -75,7 +79,7 @@
             this.cmdModificarPrecio.FlatAppearance.BorderSize = 3;
             this.cmdModificarPrecio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdModificarPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdModificarPrecio.Location = new System.Drawing.Point(521, 407);
+            this.cmdModificarPrecio.Location = new System.Drawing.Point(518, 464);
             this.cmdModificarPrecio.Name = "cmdModificarPrecio";
             this.cmdModificarPrecio.Size = new System.Drawing.Size(440, 159);
             this.cmdModificarPrecio.TabIndex = 5;
@@ -89,7 +93,7 @@
             this.cmdCuentaEmpleado.FlatAppearance.BorderSize = 3;
             this.cmdCuentaEmpleado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdCuentaEmpleado.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdCuentaEmpleado.Location = new System.Drawing.Point(521, 220);
+            this.cmdCuentaEmpleado.Location = new System.Drawing.Point(518, 277);
             this.cmdCuentaEmpleado.Name = "cmdCuentaEmpleado";
             this.cmdCuentaEmpleado.Size = new System.Drawing.Size(440, 159);
             this.cmdCuentaEmpleado.TabIndex = 3;
@@ -104,7 +108,7 @@
             this.cmdRetirarDinero.FlatAppearance.BorderSize = 3;
             this.cmdRetirarDinero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdRetirarDinero.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdRetirarDinero.Location = new System.Drawing.Point(521, 34);
+            this.cmdRetirarDinero.Location = new System.Drawing.Point(518, 91);
             this.cmdRetirarDinero.Name = "cmdRetirarDinero";
             this.cmdRetirarDinero.Size = new System.Drawing.Size(440, 159);
             this.cmdRetirarDinero.TabIndex = 1;
@@ -118,7 +122,7 @@
             this.cmdDetalles.FlatAppearance.BorderSize = 3;
             this.cmdDetalles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdDetalles.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdDetalles.Location = new System.Drawing.Point(37, 220);
+            this.cmdDetalles.Location = new System.Drawing.Point(34, 277);
             this.cmdDetalles.Name = "cmdDetalles";
             this.cmdDetalles.Size = new System.Drawing.Size(440, 159);
             this.cmdDetalles.TabIndex = 2;
@@ -129,7 +133,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(934, 572);
+            this.pictureBox1.Location = new System.Drawing.Point(934, 629);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(45, 45);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -141,18 +145,40 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(935, 616);
+            this.label1.Location = new System.Drawing.Point(935, 673);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 8;
             this.label1.Text = "SALIR";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.panel1.Controls.Add(this.cmdMinimizar);
+            this.panel1.Location = new System.Drawing.Point(-4, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1004, 25);
+            this.panel1.TabIndex = 9;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            // 
+            // cmdMinimizar
+            // 
+            this.cmdMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("cmdMinimizar.Image")));
+            this.cmdMinimizar.Location = new System.Drawing.Point(963, 1);
+            this.cmdMinimizar.Name = "cmdMinimizar";
+            this.cmdMinimizar.Size = new System.Drawing.Size(30, 22);
+            this.cmdMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.cmdMinimizar.TabIndex = 1;
+            this.cmdMinimizar.TabStop = false;
+            this.cmdMinimizar.Click += new System.EventHandler(this.cmdMinimizar_Click);
+            // 
             // frmSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.ClientSize = new System.Drawing.Size(991, 634);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(991, 694);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cmdDetalles);
@@ -161,11 +187,15 @@
             this.Controls.Add(this.cmdModificarPrecio);
             this.Controls.Add(this.cmdAñadirEmpleado);
             this.Controls.Add(this.cmdRegistrarDias);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmSelector";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SELECTOR";
             this.Load += new System.EventHandler(this.frmSelector_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cmdMinimizar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,5 +211,7 @@
         private System.Windows.Forms.Button cmdDetalles;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox cmdMinimizar;
     }
 }
