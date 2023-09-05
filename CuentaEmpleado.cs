@@ -48,43 +48,52 @@ namespace Gestión_Empleados
             if (cboEmpleado.SelectedIndex != -1)
             {
                 string valor = this.cboEmpleado.SelectedItem.ToString();
-                List<int> numeros = new List<int>();
-
-
-                StreamReader sr = new StreamReader("Plata_" + valor + ".txt");
-                string linea = sr.ReadLine();
-                while (linea != null)
+                bool existe = File.Exists(valor + "txt");
+                if (existe == true) 
                 {
-                    int numero = int.Parse(linea);
-                    numeros.Add(numero);
-                    linea = sr.ReadLine();
-                }
-                sr.Close();
+                    List<int> numeros = new List<int>();
 
-                foreach (int n in numeros)
+
+                    StreamReader sr = new StreamReader("Plata_" + valor + ".txt");
+                    string linea = sr.ReadLine();
+                    while (linea != null)
+                    {
+                        int numero = int.Parse(linea);
+                        numeros.Add(numero);
+                        linea = sr.ReadLine();
+                    }
+                    sr.Close();
+
+                    foreach (int n in numeros)
+                    {
+                        Console.WriteLine(n);
+
+
+                    }
+                    StreamWriter sw = new StreamWriter("Cuenta" + valor + ".txt");
+
+                    sw.WriteLine(numeros.Sum());
+
+                    sw.Close();
+
+
+
+                    StreamReader pr = new StreamReader("Cuenta" + valor + ".txt");
+                    string Linea2 = "";
+                    while (pr.EndOfStream == false)
+                    {
+                        txtCuenta.Text = "";
+                        Linea2 = pr.ReadLine();
+                        txtCuenta.AppendText("Saldo: $" + Linea2);
+
+                    }
+                    pr.Close();
+                }
+                else
                 {
-                    Console.WriteLine(n);
-
-
+                    MessageBox.Show("NO TIENE DINERO EN CUENTA", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                StreamWriter sw = new StreamWriter("Cuenta" + valor + ".txt");
 
-                sw.WriteLine(numeros.Sum());
-
-                sw.Close();
-
-
-
-                StreamReader pr = new StreamReader("Cuenta" + valor + ".txt");
-                string Linea2 = "";
-                while (pr.EndOfStream == false)
-                {
-                    txtCuenta.Text = "";
-                    Linea2 = pr.ReadLine();
-                    txtCuenta.AppendText("Saldo: $" + Linea2);
-
-                }
-                pr.Close();
             }
             else 
             {

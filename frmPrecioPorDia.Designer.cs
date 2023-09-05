@@ -41,9 +41,11 @@
             // txtPrecio
             // 
             this.txtPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrecio.Location = new System.Drawing.Point(53, 65);
+            this.txtPrecio.Location = new System.Drawing.Point(71, 80);
+            this.txtPrecio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPrecio.MaxLength = 10;
             this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(213, 45);
+            this.txtPrecio.Size = new System.Drawing.Size(283, 55);
             this.txtPrecio.TabIndex = 1;
             this.txtPrecio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPrecio_KeyDown);
             this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
@@ -52,9 +54,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(7, 16);
+            this.label1.Location = new System.Drawing.Point(9, 20);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(348, 46);
+            this.label1.Size = new System.Drawing.Size(433, 58);
             this.label1.TabIndex = 2;
             this.label1.Text = "PRECIO POR DÍA";
             // 
@@ -62,18 +65,20 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 64);
+            this.label2.Location = new System.Drawing.Point(16, 79);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 46);
+            this.label2.Size = new System.Drawing.Size(53, 58);
             this.label2.TabIndex = 2;
             this.label2.Text = "$";
             // 
             // cmdCargar2
             // 
             this.cmdCargar2.Image = ((System.Drawing.Image)(resources.GetObject("cmdCargar2.Image")));
-            this.cmdCargar2.Location = new System.Drawing.Point(272, 65);
+            this.cmdCargar2.Location = new System.Drawing.Point(363, 80);
+            this.cmdCargar2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdCargar2.Name = "cmdCargar2";
-            this.cmdCargar2.Size = new System.Drawing.Size(45, 45);
+            this.cmdCargar2.Size = new System.Drawing.Size(60, 55);
             this.cmdCargar2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.cmdCargar2.TabIndex = 13;
             this.cmdCargar2.TabStop = false;
@@ -82,9 +87,10 @@
             // cmdVolver2
             // 
             this.cmdVolver2.Image = ((System.Drawing.Image)(resources.GetObject("cmdVolver2.Image")));
-            this.cmdVolver2.Location = new System.Drawing.Point(337, 113);
+            this.cmdVolver2.Location = new System.Drawing.Point(449, 139);
+            this.cmdVolver2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdVolver2.Name = "cmdVolver2";
-            this.cmdVolver2.Size = new System.Drawing.Size(45, 45);
+            this.cmdVolver2.Size = new System.Drawing.Size(60, 55);
             this.cmdVolver2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.cmdVolver2.TabIndex = 14;
             this.cmdVolver2.TabStop = false;
@@ -92,15 +98,16 @@
             // 
             // frmPrecioPorDia
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(394, 164);
+            this.ClientSize = new System.Drawing.Size(525, 202);
             this.Controls.Add(this.cmdVolver2);
             this.Controls.Add(this.cmdCargar2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPrecio);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmPrecioPorDia";
             this.Text = "PRECIO POR DÍA";
             ((System.ComponentModel.ISupportInitialize)(this.cmdCargar2)).EndInit();
