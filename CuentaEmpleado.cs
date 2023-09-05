@@ -48,7 +48,7 @@ namespace Gestión_Empleados
             if (cboEmpleado.SelectedIndex != -1)
             {
                 string valor = this.cboEmpleado.SelectedItem.ToString();
-                bool existe = File.Exists(valor + "txt");
+                bool existe = File.Exists(valor + ".txt");
                 if (existe == true) 
                 {
                     List<int> numeros = new List<int>();
@@ -117,6 +117,65 @@ namespace Gestión_Empleados
                 frmSelector Selector = new frmSelector();
                 Selector.Show();
                 this.Hide();
+            }
+        }
+
+        private void cboEmpleado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtCuenta.Text = "";
+            if (cboEmpleado.SelectedIndex != -1)
+            {
+                string valor = this.cboEmpleado.SelectedItem.ToString();
+                bool existe = File.Exists(valor + ".txt");
+                if (existe == true)
+                {
+                    List<int> numeros = new List<int>();
+
+
+                    StreamReader sr = new StreamReader("Plata_" + valor + ".txt");
+                    string linea = sr.ReadLine();
+                    while (linea != null)
+                    {
+                        int numero = int.Parse(linea);
+                        numeros.Add(numero);
+                        linea = sr.ReadLine();
+                    }
+                    sr.Close();
+
+                    foreach (int n in numeros)
+                    {
+                        Console.WriteLine(n);
+
+
+                    }
+                    StreamWriter sw = new StreamWriter("Cuenta" + valor + ".txt");
+
+                    sw.WriteLine(numeros.Sum());
+
+                    sw.Close();
+
+
+
+                    StreamReader pr = new StreamReader("Cuenta" + valor + ".txt");
+                    string Linea2 = "";
+                    while (pr.EndOfStream == false)
+                    {
+                        txtCuenta.Text = "";
+                        Linea2 = pr.ReadLine();
+                        txtCuenta.AppendText("Saldo: $" + Linea2);
+
+                    }
+                    pr.Close();
+                }
+                else
+                {
+                    MessageBox.Show("NO TIENE DINERO EN CUENTA", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("SELECCIONE UN EMPLEADO", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }
