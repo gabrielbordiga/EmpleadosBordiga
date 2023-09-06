@@ -27,13 +27,13 @@ namespace Gestión_Empleados
 
             // Crear el Timer
             System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer(); // Usar el nombre completo
-            timer1.Interval = 2000;
+            timer1.Interval = 1000;
             timer1.Tick += new EventHandler(timer1_Tick);
 
             // Iniciar el Timer
             timer1.Start();
             System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer(); // Usar el nombre completo
-            timer.Interval = 2400;
+            timer.Interval = 1400;
             timer.Tick += new EventHandler(timer2_Tick);
 
             // Iniciar el Timer
@@ -63,6 +63,11 @@ namespace Gestión_Empleados
         private void OnTimedEvent(object source, ElapsedEventArgs e) 
         {
             
+        }
+
+        private void frmInicio_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
