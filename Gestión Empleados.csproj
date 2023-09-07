@@ -56,6 +56,12 @@
     <Compile Include="CuentaEmpleado.Designer.cs">
       <DependentUpon>CuentaEmpleado.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdmin.Designer.cs">
+      <DependentUpon>frmAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAgregarEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,12 @@
     </Compile>
     <Compile Include="frmInicio.Designer.cs">
       <DependentUpon>frmInicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLoginAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLoginAdmin.Designer.cs">
+      <DependentUpon>frmLoginAdmin.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPrecioPorDia.cs">
       <SubType>Form</SubType>
@@ -109,6 +121,9 @@
     <EmbeddedResource Include="CuentaEmpleado.resx">
       <DependentUpon>CuentaEmpleado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAdmin.resx">
+      <DependentUpon>frmAdmin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAgregarEmpleado.resx">
       <DependentUpon>frmAgregarEmpleado.cs</DependentUpon>
     </EmbeddedResource>
@@ -117,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmInicio.resx">
       <DependentUpon>frmInicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLoginAdmin.resx">
+      <DependentUpon>frmLoginAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrecioPorDia.resx">
       <DependentUpon>frmPrecioPorDia.cs</DependentUpon>

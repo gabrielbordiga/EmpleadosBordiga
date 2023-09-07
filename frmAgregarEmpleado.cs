@@ -133,6 +133,7 @@ namespace Gestión_Empleados
             {
                 MessageBox.Show("EL EMPLEADO YA ESTA AÑADIDO", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 existe = false;
+                txtEmpleado.Text = "";
             }
 
 
@@ -302,6 +303,7 @@ namespace Gestión_Empleados
                 {
                     MessageBox.Show("EL EMPLEADO YA ESTA AÑADIDO", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     existe = false;
+                    txtEmpleado.Text = "";
                 }
 
             }
