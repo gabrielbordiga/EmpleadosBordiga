@@ -249,33 +249,59 @@ namespace Gestión_Empleados
             }
             if (e.KeyChar == (char)Keys.Enter)
             {
-                if (txtEmpleado.Text != "") 
+                string valor = txtEmpleado.Text;
+                bool existe = File.Exists("empleados.txt");
+                bool existe2 = false;
+                if (existe == true)
                 {
-                    StreamWriter sw = new StreamWriter("empleados.txt", true);
-                    sw.WriteLine(txtEmpleado.Text);
-                    sw.Close();
-                    sw.Dispose();
-                    listBox1.DataSource = null;
-                    listBox1.Refresh();
-                    MessageBox.Show("SE AÑADIÓ CORRECTAMENTE", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    listBox1.DataSource = null;
-                    listBox1.Items.Clear();
-                    StreamReader sr = new StreamReader("empleados.txt");
+                    StreamReader srg = new StreamReader("empleados.txt");
                     string Linea = "";
-                    while (sr.EndOfStream == false)
+                    while (srg.EndOfStream == false)
                     {
-                        Linea = sr.ReadLine();
-                        listBox1.Items.Add(Linea);
+                        Linea = srg.ReadLine();
+                        if (Linea == valor)
+                        {
+                            existe2 = true;
+                        }
                     }
-
-
-                    sr.Close();
-                    sr.Dispose();
-                    txtEmpleado.Text = "";
+                    srg.Close();
+                    srg.Dispose();
                 }
-                else if (txtEmpleado.Text == "")
+                if (existe2 == false)
                 {
-                    MessageBox.Show("ESCRIBA EL NOMBRE Y APELLDIO DE UN EMPLEDO", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if (txtEmpleado.Text != "")
+                    {
+                        StreamWriter sw = new StreamWriter("empleados.txt", true);
+                        sw.WriteLine(txtEmpleado.Text);
+                        sw.Close();
+                        sw.Dispose();
+                        listBox1.DataSource = null;
+                        listBox1.Refresh();
+                        MessageBox.Show("SE AÑADIÓ CORRECTAMENTE", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        listBox1.DataSource = null;
+                        listBox1.Items.Clear();
+                        StreamReader sr = new StreamReader("empleados.txt");
+                        string Linea = "";
+                        while (sr.EndOfStream == false)
+                        {
+                            Linea = sr.ReadLine();
+                            listBox1.Items.Add(Linea);
+                        }
+
+
+                        sr.Close();
+                        sr.Dispose();
+                        txtEmpleado.Text = "";
+                    }
+                    else
+                    {
+                        MessageBox.Show("ESCRIBA EL NOMBRE Y APELLDIO DE UN EMPLEDO", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("EL EMPLEADO YA ESTA AÑADIDO", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    existe = false;
                 }
 
             }
