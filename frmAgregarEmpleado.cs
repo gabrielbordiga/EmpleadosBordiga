@@ -9,25 +9,40 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Net.NetworkInformation;
+using System.Timers;
 
 namespace Gestión_Empleados
 {
     public partial class frmAgregarEmpleado : Form
     {
+        System.Timers.Timer timer;
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+        
         public frmAgregarEmpleado()
         {
             InitializeComponent();
+            // Inicializar el timer con un intervalo de 2000 milisegundos y suscribirlo al evento Elapsed
+            timer = new System.Timers.Timer(200);
+            timer.Elapsed += OnTimedEvent;
+
+            // Desactivar el timer por defecto
+            timer.Enabled = false;
         }
 
         private void cmdVolver_Click(object sender, EventArgs e)
         {
             
         }
-
+        private void OnTimedEvent(object source, ElapsedEventArgs e) 
+        {
+            
+            timer.Stop();
+        }
         private void frmAgregarEmpleado_Load(object sender, EventArgs e)
         {
             StreamReader sr = new StreamReader("empleados.txt");
@@ -65,35 +80,61 @@ namespace Gestión_Empleados
 
         private void cmdCargare_Click(object sender, EventArgs e)
         {
-
-            if (txtEmpleado.Text != "")
+            string valor = txtEmpleado.Text;
+            bool existe = File.Exists("empleados.txt");
+            bool existe2 = false;
+            if (existe == true) 
             {
-                StreamWriter sw = new StreamWriter("empleados.txt", true);
-                sw.WriteLine(txtEmpleado.Text);
-                sw.Close();
-                sw.Dispose();
-                listBox1.DataSource = null;
-                listBox1.Refresh();
-                MessageBox.Show("SE AÑADIÓ CORRECTAMENTE", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                listBox1.DataSource = null;
-                listBox1.Items.Clear();
-                StreamReader sr = new StreamReader("empleados.txt");
+                StreamReader srg = new StreamReader("empleados.txt");
                 string Linea = "";
-                while (sr.EndOfStream == false)
+                while (srg.EndOfStream == false)
                 {
-                    Linea = sr.ReadLine();
-                    listBox1.Items.Add(Linea);
+                    Linea = srg.ReadLine();
+                    if (Linea == valor) 
+                    {
+                        existe2 = true;
+                    }
                 }
-
-
-                sr.Close();
-                sr.Dispose();
-                txtEmpleado.Text = "";
+                srg.Close();
+                srg.Dispose();
             }
-            else 
+            if (existe2 == false)
             {
-                MessageBox.Show("ESCRIBA EL NOMBRE Y APELLDIO DE UN EMPLEDO", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (txtEmpleado.Text != "")
+                {
+                    StreamWriter sw = new StreamWriter("empleados.txt", true);
+                    sw.WriteLine(txtEmpleado.Text);
+                    sw.Close();
+                    sw.Dispose();
+                    listBox1.DataSource = null;
+                    listBox1.Refresh();
+                    MessageBox.Show("SE AÑADIÓ CORRECTAMENTE", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    listBox1.DataSource = null;
+                    listBox1.Items.Clear();
+                    StreamReader sr = new StreamReader("empleados.txt");
+                    string Linea = "";
+                    while (sr.EndOfStream == false)
+                    {
+                        Linea = sr.ReadLine();
+                        listBox1.Items.Add(Linea);
+                    }
+
+
+                    sr.Close();
+                    sr.Dispose();
+                    txtEmpleado.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("ESCRIBA EL NOMBRE Y APELLDIO DE UN EMPLEDO", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
+            else
+            {
+                MessageBox.Show("EL EMPLEADO YA ESTA AÑADIDO", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                existe = false;
+            }
+
 
         }
 
@@ -146,8 +187,21 @@ namespace Gestión_Empleados
                         }
                     }
                     MessageBox.Show("SE ELIMINÓ CORRECTAMENTE", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
+                    bool existe1 = File.Exists(item + ".txt");
+                    if (existe1 == true) 
+                    {
+                        File.Delete(item + ".txt");
+                    }
+                    bool existe2 = File.Exists("Plata_" + item + ".txt");
+                    if (existe2 == true)
+                    {
+                        File.Delete("Plata_" + item + ".txt");
+                    }
+                    bool existe3 = File.Exists("Cuenta" + item + ".txt");
+                    if (existe3 == true)
+                    {
+                        File.Delete("Cuenta" + item + ".txt");
+                    }
                     reader.Close();
                     writer.Close();
 
