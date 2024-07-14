@@ -14,6 +14,7 @@ namespace Gestión_Empleados
 {
     public partial class frmSelector : Form
     {
+        private System.Windows.Forms.Timer timer;
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -21,8 +22,35 @@ namespace Gestión_Empleados
         public frmSelector()
         {
             InitializeComponent();
-        }
+            // Inicializar el Timer
+            timer = new System.Windows.Forms.Timer();
+            timer.Interval = 1000; // Intervalo de 1 segundo (1000 milisegundos)
+            timer.Tick += new EventHandler(Timer_Tick); // Suscribirse al evento Tick del Timer
+            timer.Start(); // Iniciar el Timer
 
+        }
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // Código que se ejecutará cada segundo
+            txtPrecio.Text = "";
+            bool precioExiste = File.Exists("precio.txt");
+            if (precioExiste)
+            {
+
+
+                StreamReader pr = new StreamReader("precio.txt");
+                string Linea2 = "";
+                while (pr.EndOfStream == false)
+                {
+                    Linea2 = pr.ReadLine();
+                    txtPrecio.AppendText("(Precio actual $" + Linea2 + ")");
+                }
+                pr.Close();
+                pr.Dispose();
+            }
+
+
+        }
         private void cmdRegistrarDias_Click(object sender, EventArgs e)
         {
             bool existe = File.Exists("precio.txt");
@@ -90,6 +118,21 @@ namespace Gestión_Empleados
               StreamWriter escribir = new StreamWriter("empleados.txt");                 
               escribir.Close();
               escribir.Dispose();              
+            }
+            bool precioExiste = File.Exists("precio.txt");
+            if (precioExiste)
+            {
+                
+
+                StreamReader pr = new StreamReader("precio.txt");
+                string Linea2 = "";
+                while (pr.EndOfStream == false)
+                {
+                    Linea2 = pr.ReadLine();
+                    txtPrecio.AppendText("(Precio actual $" + Linea2 + ")");
+                }
+                pr.Close();
+                pr.Dispose();
             }
         }
 

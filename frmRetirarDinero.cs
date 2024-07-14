@@ -79,19 +79,19 @@ namespace Gestión_Empleados
                     {
                         restar = int.Parse(txtCuenta.Text);
 
-                        List<int> numeros = new List<int>();
+                        List<double> numeros = new List<double>();
                         StreamReader srr = new StreamReader("Plata_" + valor + ".txt");
                         string linea = srr.ReadLine();
                         while (linea != null)
                         {
-                            int numero = int.Parse(linea);
+                            double numero = double.Parse(linea);
                             numeros.Add(numero);
                             linea = srr.ReadLine();
                         }
                         srr.Close();
                         srr.Dispose();
 
-                        foreach (int n in numeros)
+                        foreach (double n in numeros)
                         {
                             Console.WriteLine(n);
 
@@ -132,13 +132,13 @@ namespace Gestión_Empleados
         {
            
             
-            List<int> numeros = new List<int>();
+            List<double> numeros = new List<double>();
             StreamReader pr = new StreamReader("Cuenta" + valor + ".txt");
             string linea = pr.ReadLine();
             pr.Close();
-            int numero = int.Parse(linea);
-            int resto = restar;
-            int resultado = numero - resto;
+            double numero = double.Parse(linea);
+            double resto = restar;
+            double resultado = numero - resto;
 
             Console.WriteLine(resultado);
 
@@ -208,67 +208,7 @@ namespace Gestión_Empleados
             }
             if (e.KeyChar == (char)Keys.Enter)
             {
-                bool existe = File.Exists("Plata_" + valor + ".txt");
-                if (existe == true)
-                {
-                    DateTime fechaActual = DateTime.Now;
-                    DateTime fechaSeleccionado = dtpFecha.Value;
-                    if (fechaSeleccionado <= fechaActual)
-                    {
-                        if (txtCuenta.Text == "")
-                        {
-                            MessageBox.Show("INTRODUZCA LA CANTIDAD", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                        else if (cboEmpleado.SelectedIndex == -1)
-                        {
-                            MessageBox.Show("SELECCIONE UN EMPLEADO", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-
-                        else
-                        {
-                            restar = int.Parse(txtCuenta.Text);
-
-                            List<int> numeros = new List<int>();
-                            StreamReader srr = new StreamReader("Plata_" + valor + ".txt");
-                            string linea = srr.ReadLine();
-                            while (linea != null)
-                            {
-                                int numero = int.Parse(linea);
-                                numeros.Add(numero);
-                                linea = srr.ReadLine();
-                            }
-                            srr.Close();
-                            srr.Dispose();
-
-                            foreach (int n in numeros)
-                            {
-                                Console.WriteLine(n);
-
-
-                            }
-
-                            StreamWriter srr2 = new StreamWriter("Cuenta" + valor + ".txt");
-
-                            srr2.WriteLine(numeros.Sum());
-
-                            srr2.Close();
-
-                            timer.Enabled = !timer.Enabled;
-                            txtCuenta.Text = null;
-
-
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("INTRODUCIR UNA FECHA ACTUAL O ANTERIOR", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-
-                }
-                else
-                {
-                    MessageBox.Show("NO HAY DINERO CARGADO EN ESTE EMPLEADO", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                pictureBox1_Click(sender, e);
 
             }
             

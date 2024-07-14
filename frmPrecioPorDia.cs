@@ -55,6 +55,8 @@ namespace Gestión_Empleados
                 txtPrecio.Text = null;
                 MessageBox.Show("PRECIO MODIFICADO CORRECTAMENTE!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
+                
+                
             }
         }
         private void OnTimedEvent(object source, ElapsedEventArgs e) 
@@ -90,6 +92,7 @@ namespace Gestión_Empleados
                     txtPrecio.Text = null;
                     MessageBox.Show("PRECIO MODIFICADO CORRECTAMENTE!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
+                    
                 }
             }
         }
@@ -112,6 +115,11 @@ namespace Gestión_Empleados
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void frmPrecioPorDia_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
         }
     }
 }

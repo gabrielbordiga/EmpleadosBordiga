@@ -39,6 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmdMinimizar = new System.Windows.Forms.PictureBox();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmdMinimizar)).BeginInit();
@@ -55,7 +56,7 @@
             this.cmdRegistrarDias.Name = "cmdRegistrarDias";
             this.cmdRegistrarDias.Size = new System.Drawing.Size(440, 159);
             this.cmdRegistrarDias.TabIndex = 0;
-            this.cmdRegistrarDias.Text = "REGISTRAR DÍAS";
+            this.cmdRegistrarDias.Text = "REGISTRAR DÍAS Y %";
             this.cmdRegistrarDias.UseVisualStyleBackColor = false;
             this.cmdRegistrarDias.Click += new System.EventHandler(this.cmdRegistrarDias_Click);
             // 
@@ -69,7 +70,7 @@
             this.cmdAñadirEmpleado.Name = "cmdAñadirEmpleado";
             this.cmdAñadirEmpleado.Size = new System.Drawing.Size(440, 159);
             this.cmdAñadirEmpleado.TabIndex = 4;
-            this.cmdAñadirEmpleado.Text = "AÑADIR EMPLEADO";
+            this.cmdAñadirEmpleado.Text = "ADMINISTRAR EMPLEADOS";
             this.cmdAñadirEmpleado.UseVisualStyleBackColor = false;
             this.cmdAñadirEmpleado.Click += new System.EventHandler(this.cmdAñadirEmpleado_Click);
             // 
@@ -172,12 +173,25 @@
             this.cmdMinimizar.TabStop = false;
             this.cmdMinimizar.Click += new System.EventHandler(this.cmdMinimizar_Click);
             // 
+            // txtPrecio
+            // 
+            this.txtPrecio.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txtPrecio.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPrecio.Enabled = false;
+            this.txtPrecio.Location = new System.Drawing.Point(656, 598);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.ReadOnly = true;
+            this.txtPrecio.Size = new System.Drawing.Size(176, 13);
+            this.txtPrecio.TabIndex = 10;
+            this.txtPrecio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // frmSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(991, 694);
+            this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
@@ -213,5 +227,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox cmdMinimizar;
+        private System.Windows.Forms.TextBox txtPrecio;
     }
 }

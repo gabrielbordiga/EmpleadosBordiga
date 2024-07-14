@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -27,6 +28,11 @@ namespace Gestión_Empleados
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        private PrintDocument printDocument;
+        private string filePath = ""; // Ruta del archivo a imprimir
+        private string fileContent = "";
+        private string employeeName = ""; // Nombre del empleado
+        private int employeeBalance = 0; // Saldo del empleado
 
         public frmDetalles()
         {
@@ -36,6 +42,10 @@ namespace Gestión_Empleados
 
             // Desactivar el timer por defecto
             timer.Enabled = false;
+
+            // Configurar el PrintDocument
+            printDocument = new PrintDocument();
+            printDocument.PrintPage += new PrintPageEventHandler(PrintDocument_PrintPage);
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -67,20 +77,9 @@ namespace Gestión_Empleados
 
         private void cmdcargar_Click(object sender, EventArgs e)
         {
-            if (cboEmpleado.SelectedIndex != -1) 
+            if (cboEmpleado.SelectedIndex != -1)
             {
-                string valor = "";
-                if (this.cboEmpleado.SelectedItem != null)
-                {
-                    valor = this.cboEmpleado.SelectedItem.ToString();
-                }
-                else
-                {
-                    // Mostrar un mensaje de error o elegir un valor por defecto
-                }
-                List<int> numeros = new List<int>();
-
-                List<string> lista = new List<string>();
+                string valor = cboEmpleado.SelectedItem.ToString();
                 string ruta = valor + ".txt";
                 if (File.Exists(ruta))
                 {
@@ -88,21 +87,24 @@ namespace Gestión_Empleados
                     StreamReader sr = new StreamReader(ruta);
                     while (!sr.EndOfStream)
                     {
-                        listbox.Items.Add(sr.ReadLine());
+                        string linea = sr.ReadLine();
+                        while (linea.Length > 80) // Ajusta el número 80 según tu preferencia
+                        {
+                            listbox.Items.Add(linea.Substring(0, 80));
+                            linea = linea.Substring(80);
+                        }
+                        listbox.Items.Add(linea);
                     }
                     sr.Close();
                 }
                 else
                 {
                     MessageBox.Show("NO HAY DETALLES", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
                 }
-
             }
             else
             {
                 MessageBox.Show("SELECCIONAR EMPLEADO", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
             }
         }
         private void OnTimedEvent(object source, ElapsedEventArgs e)
@@ -194,16 +196,109 @@ namespace Gestión_Empleados
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            if (cboEmpleado.SelectedIndex != -1) 
+            if (cboEmpleado.SelectedIndex != -1)
             {
-                string valor = cboEmpleado.SelectedItem.ToString();
-                System.Diagnostics.Process.Start(valor + ".txt");
+                employeeName = cboEmpleado.SelectedItem.ToString();
+                filePath = employeeName + ".txt";
+                if (File.Exists(filePath))
+                {
+                    fileContent = File.ReadAllText(filePath);
+
+                    PrintDialog printDialog = new PrintDialog
+                    {
+                        Document = printDocument
+                    };
+
+                    if (printDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        printDocument.Print();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El archivo no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else 
+            else
             {
-                MessageBox.Show("SELECCIONE UN EMPLEADO", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }    
-            
+                MessageBox.Show("SELECCIONE UN EMPLEADO", "ADVERTENCIA", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+        }
+        private int CalculateEmployeeBalance(string employeeName)
+        {
+            // Implementar la lógica para calcular el saldo del empleado
+            // Ejemplo:
+            string valor = cboEmpleado.SelectedItem.ToString();
+            int balance = 0;
+            string balanceFilePath = "Cuenta" + valor + ".txt";
+            if (File.Exists(balanceFilePath))
+            {
+                string balanceContent = File.ReadAllText(balanceFilePath);
+                if (int.TryParse(balanceContent, out balance))
+                {
+                    return balance;
+                }
+            }
+            return balance;
+        }
+        private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            string valor = cboEmpleado.SelectedItem.ToString();
+            string balanceFilePath = "";
+            using (StreamReader pr = new StreamReader("Cuenta" + valor + ".txt"))
+            {
+                balanceFilePath = pr.ReadLine();
+            }
+
+            float yPos = 0;
+            float leftMargin = e.MarginBounds.Left;
+            float topMargin = e.MarginBounds.Top;
+            float rightMargin = e.MarginBounds.Right;
+            float bottomMargin = e.MarginBounds.Bottom;
+            Font printFont = new Font("Arial", 11);
+            SolidBrush myBrush = new SolidBrush(Color.Black);
+
+            // Imprimir el nombre del empleado
+            e.Graphics.DrawString("Empleado: " + employeeName, new Font("Arial", 14, FontStyle.Bold), Brushes.Black, leftMargin, topMargin);
+            yPos = topMargin + 40; // Dejar un espacio después del nombre
+
+            // Imprimir el contenido del archivo
+            using (StringReader sr = new StringReader(fileContent))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    while (line.Length > 0)
+                    {
+                        int charsFitted = 0;
+                        int linesFilled = 0;
+                        SizeF size = e.Graphics.MeasureString(line, printFont, new SizeF(rightMargin - leftMargin, printFont.Height), new StringFormat(), out charsFitted, out linesFilled);
+
+                        // Imprimir la línea ajustada
+                        e.Graphics.DrawString(line.Substring(0, charsFitted), printFont, myBrush, new RectangleF(leftMargin, yPos, rightMargin - leftMargin, printFont.Height));
+
+                        // Quitar la parte de la línea que ya se ha impreso
+                        line = line.Substring(charsFitted);
+
+                        yPos += printFont.GetHeight(e.Graphics);
+
+                        // Verificar si necesitamos una nueva página
+                        if (yPos + printFont.GetHeight(e.Graphics) > bottomMargin)
+                        {
+                            e.HasMorePages = true;
+                            return;
+                        }
+                    }
+                }
+            }
+
+            // Imprimir el saldo del empleado al final
+            yPos += printFont.GetHeight(e.Graphics); // Dejar un espacio antes del saldo
+            e.Graphics.DrawString("Plata en Cuenta: $" + balanceFilePath, new Font("Arial", 13, FontStyle.Bold), Brushes.Black, leftMargin, yPos);
+
+            myBrush.Dispose();
+
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)

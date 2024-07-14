@@ -134,41 +134,39 @@ namespace Gestión_Empleados
                 bool existe = File.Exists(valor + ".txt");
                 if (existe == true)
                 {
-                    List<int> numeros = new List<int>();
-
+                    List<double> numeros = new List<double>();
 
                     StreamReader sr = new StreamReader("Plata_" + valor + ".txt");
                     string linea = sr.ReadLine();
                     while (linea != null)
                     {
-                        int numero = int.Parse(linea);
-                        numeros.Add(numero);
+                        if (double.TryParse(linea, out double numero))
+                        {
+                            numeros.Add(numero);
+                        }
+                        else
+                        {
+                            MessageBox.Show($"El formato de la línea '{linea}' no es válido y no se puede convertir a un número.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                         linea = sr.ReadLine();
                     }
                     sr.Close();
 
-                    foreach (int n in numeros)
+                    foreach (double n in numeros)
                     {
                         Console.WriteLine(n);
-
-
                     }
+
                     StreamWriter sw = new StreamWriter("Cuenta" + valor + ".txt");
-
                     sw.WriteLine(numeros.Sum());
-
                     sw.Close();
-
-
 
                     StreamReader pr = new StreamReader("Cuenta" + valor + ".txt");
                     string Linea2 = "";
-                    while (pr.EndOfStream == false)
+                    while (!pr.EndOfStream)
                     {
-                        txtCuenta.Text = "";
                         Linea2 = pr.ReadLine();
-                        txtCuenta.AppendText("Saldo: $" + Linea2);
-
+                        txtCuenta.AppendText("$" + Linea2);
                     }
                     pr.Close();
                 }
@@ -176,7 +174,6 @@ namespace Gestión_Empleados
                 {
                     MessageBox.Show("NO TIENE DINERO EN CUENTA", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
             }
             else
             {
@@ -198,6 +195,11 @@ namespace Gestión_Empleados
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

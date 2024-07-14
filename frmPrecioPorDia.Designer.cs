@@ -36,14 +36,14 @@
             this.cmdVolver2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.cmdMinimizar = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.cmdMinimizar = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.cmdCargar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmdVolver2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmdMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmdMinimizar)).BeginInit();
             this.SuspendLayout();
             // 
             // txtPrecio
@@ -121,16 +121,6 @@
             this.panel1.TabIndex = 15;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
-            // cmdMinimizar
-            // 
-            this.cmdMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("cmdMinimizar.Image")));
-            this.cmdMinimizar.Location = new System.Drawing.Point(962, 3);
-            this.cmdMinimizar.Name = "cmdMinimizar";
-            this.cmdMinimizar.Size = new System.Drawing.Size(30, 22);
-            this.cmdMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.cmdMinimizar.TabIndex = 1;
-            this.cmdMinimizar.TabStop = false;
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
@@ -141,6 +131,16 @@
             this.pictureBox2.TabIndex = 12;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // cmdMinimizar
+            // 
+            this.cmdMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("cmdMinimizar.Image")));
+            this.cmdMinimizar.Location = new System.Drawing.Point(962, 3);
+            this.cmdMinimizar.Name = "cmdMinimizar";
+            this.cmdMinimizar.Size = new System.Drawing.Size(30, 22);
+            this.cmdMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.cmdMinimizar.TabIndex = 1;
+            this.cmdMinimizar.TabStop = false;
             // 
             // frmPrecioPorDia
             // 
@@ -158,12 +158,13 @@
             this.Name = "frmPrecioPorDia";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PRECIO POR DÍA";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPrecioPorDia_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.cmdCargar2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmdVolver2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cmdMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmdMinimizar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
