@@ -40,6 +40,7 @@ namespace Gestión_Empleados
 
         private void frmRegistrarDias_Load(object sender, EventArgs e)
         {
+            lblTotal.Text = "";
             bool precioExiste = File.Exists("precio.txt");
             if (precioExiste) 
             {
@@ -760,6 +761,102 @@ namespace Gestión_Empleados
             cboEmpleado2.SelectedIndex = -1;
             this.dtpDesde.Value = DateTime.Now;
             this.dtpHasta.Value = DateTime.Now;
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPorcentaje_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPorcentaje.Text != "")
+            {
+                if (txtHectareas.Text != "")
+                {
+                    if (txtMontoPorc.Text != "")
+                    {
+                        string dia = "";
+                        string precio = "";
+                        int hectareasXprecios = 0;
+                        int hectareas = Convert.ToInt32(txtHectareas.Text);
+                        int precioporha = Convert.ToInt32(txtMontoPorc.Text);
+                        double porcentaje = Convert.ToInt32(txtPorcentaje.Text);
+                        double porcentajefin = 0;
+                        double preciofinal = 0;
+                        hectareasXprecios = hectareas * precioporha;
+                        porcentajefin = porcentaje / 100;
+                        preciofinal = hectareasXprecios * porcentajefin;
+                        precio = preciofinal.ToString();
+                        lblTotal.Text = "Total= $" + precio;
+                    }
+                }
+            }
+            else
+            {
+                lblTotal.Text = "";
+            }
+            
+        }
+
+        private void txtHectareas_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPorcentaje.Text != "")
+            {
+                if (txtHectareas.Text != "")
+                {
+                    if (txtMontoPorc.Text != "")
+                    {
+                        string dia = "";
+                        string precio = "";
+                        int hectareasXprecios = 0;
+                        int hectareas = Convert.ToInt32(txtHectareas.Text);
+                        int precioporha = Convert.ToInt32(txtMontoPorc.Text);
+                        double porcentaje = Convert.ToInt32(txtPorcentaje.Text);
+                        double porcentajefin = 0;
+                        double preciofinal = 0;
+                        hectareasXprecios = hectareas * precioporha;
+                        porcentajefin = porcentaje / 100;
+                        preciofinal = hectareasXprecios * porcentajefin;
+                        precio = preciofinal.ToString();
+                        lblTotal.Text = "Total= $" + precio;
+                    }
+                }
+                else
+                {
+                    lblTotal.Text = "";
+                }
+            }
+        }
+
+        private void txtMontoPorc_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPorcentaje.Text != "")
+            {
+                if (txtHectareas.Text != "")
+                {
+                    if (txtMontoPorc.Text != "")
+                    {
+                        string dia = "";
+                        string precio = "";
+                        int hectareasXprecios = 0;
+                        int hectareas = Convert.ToInt32(txtHectareas.Text);
+                        int precioporha = Convert.ToInt32(txtMontoPorc.Text);
+                        double porcentaje = Convert.ToInt32(txtPorcentaje.Text);
+                        double porcentajefin = 0;
+                        double preciofinal = 0;
+                        hectareasXprecios = hectareas * precioporha;
+                        porcentajefin = porcentaje / 100;
+                        preciofinal = hectareasXprecios * porcentajefin;
+                        precio = preciofinal.ToString();
+                        lblTotal.Text = "Total= $" + precio;
+                    }
+                    else
+                    {
+                        lblTotal.Text = "";
+                    }
+                }
+            }
         }
     }
 }

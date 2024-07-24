@@ -46,6 +46,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label14 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtMontoPorc = new System.Windows.Forms.TextBox();
@@ -68,7 +69,7 @@
             this.cboEmpleado2 = new System.Windows.Forms.ComboBox();
             this.chkMantenerDetalle2 = new System.Windows.Forms.CheckBox();
             this.txtDetalle2 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.cmdVolver2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmdCargar2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -283,6 +284,16 @@
             this.tabPage1.Text = "REGISTRAR X DÍA";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(13, 219);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(29, 31);
+            this.label14.TabIndex = 8;
+            this.label14.Text = "$";
+            // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
@@ -290,6 +301,7 @@
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Controls.Add(this.cmdVolver3);
             this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.lblTotal);
             this.tabPage2.Controls.Add(this.cmdCargar3);
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.cboEmpleado2);
@@ -302,6 +314,7 @@
             this.tabPage2.Size = new System.Drawing.Size(1031, 284);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "REGISTRAR X PORCENTAJE";
+            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // groupBox2
             // 
@@ -325,27 +338,33 @@
             // 
             this.txtMontoPorc.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMontoPorc.Location = new System.Drawing.Point(542, 24);
+            this.txtMontoPorc.MaxLength = 7;
             this.txtMontoPorc.Name = "txtMontoPorc";
             this.txtMontoPorc.Size = new System.Drawing.Size(142, 30);
             this.txtMontoPorc.TabIndex = 43;
+            this.txtMontoPorc.TextChanged += new System.EventHandler(this.txtMontoPorc_TextChanged);
             // 
             // txtHectareas
             // 
             this.txtHectareas.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHectareas.Location = new System.Drawing.Point(183, 25);
+            this.txtHectareas.MaxLength = 4;
             this.txtHectareas.Name = "txtHectareas";
             this.txtHectareas.Size = new System.Drawing.Size(86, 30);
             this.txtHectareas.TabIndex = 43;
             this.txtHectareas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtHectareas.TextChanged += new System.EventHandler(this.txtHectareas_TextChanged);
             // 
             // txtPorcentaje
             // 
             this.txtPorcentaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPorcentaje.Location = new System.Drawing.Point(26, 25);
+            this.txtPorcentaje.MaxLength = 3;
             this.txtPorcentaje.Name = "txtPorcentaje";
             this.txtPorcentaje.Size = new System.Drawing.Size(61, 30);
             this.txtPorcentaje.TabIndex = 43;
             this.txtPorcentaje.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPorcentaje.TextChanged += new System.EventHandler(this.txtPorcentaje_TextChanged);
             // 
             // label13
             // 
@@ -530,15 +549,18 @@
             this.txtDetalle2.Size = new System.Drawing.Size(620, 30);
             this.txtDetalle2.TabIndex = 33;
             // 
-            // label14
+            // lblTotal
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(13, 219);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(29, 31);
-            this.label14.TabIndex = 8;
-            this.label14.Text = "$";
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.ForeColor = System.Drawing.Color.DimGray;
+            this.lblTotal.Location = new System.Drawing.Point(482, 234);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(102, 31);
+            this.lblTotal.TabIndex = 37;
+            this.lblTotal.Text = "TOTAL";
+            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblTotal.Click += new System.EventHandler(this.label8_Click);
             // 
             // frmRegistrarDias
             // 
@@ -613,5 +635,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lblTotal;
     }
 }
