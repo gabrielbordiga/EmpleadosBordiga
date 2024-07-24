@@ -343,6 +343,7 @@
             this.txtMontoPorc.Size = new System.Drawing.Size(142, 30);
             this.txtMontoPorc.TabIndex = 43;
             this.txtMontoPorc.TextChanged += new System.EventHandler(this.txtMontoPorc_TextChanged);
+            this.txtMontoPorc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontoPorc_KeyPress);
             // 
             // txtHectareas
             // 
@@ -354,6 +355,7 @@
             this.txtHectareas.TabIndex = 43;
             this.txtHectareas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtHectareas.TextChanged += new System.EventHandler(this.txtHectareas_TextChanged);
+            this.txtHectareas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHectareas_KeyPress);
             // 
             // txtPorcentaje
             // 
@@ -365,6 +367,7 @@
             this.txtPorcentaje.TabIndex = 43;
             this.txtPorcentaje.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPorcentaje.TextChanged += new System.EventHandler(this.txtPorcentaje_TextChanged);
+            this.txtPorcentaje.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPorcentaje_KeyPress);
             // 
             // label13
             // 
