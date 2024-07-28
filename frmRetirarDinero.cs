@@ -16,6 +16,7 @@ namespace Gestión_Empleados
 {
     public partial class frmRetirarDinero : Form
     {
+        string formadepago = "";
         System.Timers.Timer timer;
         public string valor = "";
         public int restar = 0;
@@ -47,6 +48,7 @@ namespace Gestión_Empleados
             }
             sr.Close();
             sr.Dispose();
+            cboFormaDePago.SelectedIndex = 0;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -58,7 +60,7 @@ namespace Gestión_Empleados
 
         public void pictureBox1_Click(object sender, EventArgs e)
         {
-
+            formadepago = cboFormaDePago.Text;
             bool existe = File.Exists("Plata_" + valor + ".txt");
             if (existe == true)
             {
@@ -147,9 +149,9 @@ namespace Gestión_Empleados
             sr4.Close();
 
             StreamWriter td = new StreamWriter(valor + ".txt", true);
-            td.WriteLine("*** TOTAL DINERO ANTES DE RETIRO *** $"+numero);
-            td.WriteLine("*** DINERO RETIRADO *** -$" + resto);
-            td.WriteLine("*** TOTAL DESPUES DE RETIRO *** $" + resultado);
+            td.WriteLine("** PLATA ANTES DE RETIRO ** $" + numero);
+            td.WriteLine("** PLATA RETIRADA EN " + formadepago + "** -$" + resto);
+            td.WriteLine("** PLATA DESPUES DE RETIRO ** $" + resultado);
             td.Close();
 
             StreamWriter cc = new StreamWriter("TodosLosRetiros.txt", true);
