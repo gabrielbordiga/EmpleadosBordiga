@@ -14,6 +14,7 @@ namespace Gestión_Empleados
 {
     public partial class frmSelector : Form
     {
+        
         private System.Windows.Forms.Timer timer;
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -27,8 +28,9 @@ namespace Gestión_Empleados
             timer.Interval = 1000; // Intervalo de 1 segundo (1000 milisegundos)
             timer.Tick += new EventHandler(Timer_Tick); // Suscribirse al evento Tick del Timer
             timer.Start(); // Iniciar el Timer
-
+            
         }
+
         private void Timer_Tick(object sender, EventArgs e)
         {
             // Código que se ejecutará cada segundo
@@ -54,34 +56,39 @@ namespace Gestión_Empleados
         private void cmdRegistrarDias_Click(object sender, EventArgs e)
         {
             bool existe = File.Exists("precio.txt");
-            if (existe) 
-            {                
-               frmRegistrarDias RegistrarDias = new frmRegistrarDias();
-               RegistrarDias.Show();
-               this.Hide();              
+            if (existe)
+            {
+                frmRegistrarDias RegistrarDias = new frmRegistrarDias();
+                RegistrarDias.Show();
+                this.Hide();
             }
-            else 
+            else
             {
                 MessageBox.Show("FALTA AGREGAR EL PRECIO", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                frmPrecioPorDia PrecioPorDia = new frmPrecioPorDia();
-                PrecioPorDia.Show();
-                
+                // Crear una instancia del formulario secundario
+                frmPrecioPorDia dialogForm = new frmPrecioPorDia();
+                // Mostrar el formulario secundario como modal
+                dialogForm.ShowDialog();
+
             }
-    
+
         }
 
         private void cmdAñadirEmpleado_Click(object sender, EventArgs e)
         {
-            frmAgregarEmpleado AgregarEmpleado = new frmAgregarEmpleado(); 
-            AgregarEmpleado.Show(); 
+            frmAgregarEmpleado AgregarEmpleado = new frmAgregarEmpleado();
+            AgregarEmpleado.Show();
             this.Hide();
         }
 
         private void cmdModificarPrecio_Click(object sender, EventArgs e)
         {
-            Class1 class1 = new Class1();
-            class1.PRecioPorDia();
-             
+
+            // Crear una instancia del formulario secundario
+            frmPrecioPorDia dialogForm = new frmPrecioPorDia();
+            // Mostrar el formulario secundario como modal
+            dialogForm.ShowDialog();
+
         }
 
         private void cmdSalir_Click(object sender, EventArgs e)
@@ -114,15 +121,15 @@ namespace Gestión_Empleados
             Directory.CreateDirectory("Archivos/Retiros");
             bool archivo = File.Exists("empleados.txt");
             if (archivo == false)
-            {                         
-              StreamWriter escribir = new StreamWriter("empleados.txt");                 
-              escribir.Close();
-              escribir.Dispose();              
+            {
+                StreamWriter escribir = new StreamWriter("empleados.txt");
+                escribir.Close();
+                escribir.Dispose();
             }
             bool precioExiste = File.Exists("precio.txt");
             if (precioExiste)
             {
-                
+
 
                 StreamReader pr = new StreamReader("precio.txt");
                 string Linea2 = "";
@@ -150,6 +157,19 @@ namespace Gestión_Empleados
         private void cmdMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            // Crear una instancia del formulario secundario
+            frmInfo dialogForm = new frmInfo();
+            // Mostrar el formulario secundario como modal
+            dialogForm.ShowDialog();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

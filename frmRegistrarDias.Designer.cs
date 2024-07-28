@@ -64,12 +64,14 @@
             this.dtpDesde = new System.Windows.Forms.DateTimePicker();
             this.cmdVolver3 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.cmdCargar3 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.cboEmpleado2 = new System.Windows.Forms.ComboBox();
             this.chkMantenerDetalle2 = new System.Windows.Forms.CheckBox();
             this.txtDetalle2 = new System.Windows.Forms.TextBox();
-            this.lblTotal = new System.Windows.Forms.Label();
+            this.chkMantenerEmpleado = new System.Windows.Forms.CheckBox();
+            this.chkMantenerEmpleado2 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.cmdVolver2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmdCargar2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -270,6 +272,7 @@
             this.tabPage1.Controls.Add(this.label14);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.cboEmpleado);
+            this.tabPage1.Controls.Add(this.chkMantenerEmpleado);
             this.tabPage1.Controls.Add(this.chkMantenerDetalle);
             this.tabPage1.Controls.Add(this.UnDia);
             this.tabPage1.Controls.Add(this.txtPrecio);
@@ -305,6 +308,7 @@
             this.tabPage2.Controls.Add(this.cmdCargar3);
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.cboEmpleado2);
+            this.tabPage2.Controls.Add(this.chkMantenerEmpleado2);
             this.tabPage2.Controls.Add(this.chkMantenerDetalle2);
             this.tabPage2.Controls.Add(this.txtDetalle2);
             this.tabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -501,6 +505,19 @@
             this.label7.TabIndex = 36;
             this.label7.Text = "Seleccionar Empleado:";
             // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.ForeColor = System.Drawing.Color.DimGray;
+            this.lblTotal.Location = new System.Drawing.Point(482, 234);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(102, 31);
+            this.lblTotal.TabIndex = 37;
+            this.lblTotal.Text = "TOTAL";
+            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblTotal.Click += new System.EventHandler(this.label8_Click);
+            // 
             // cmdCargar3
             // 
             this.cmdCargar3.Image = ((System.Drawing.Image)(resources.GetObject("cmdCargar3.Image")));
@@ -552,18 +569,25 @@
             this.txtDetalle2.Size = new System.Drawing.Size(620, 30);
             this.txtDetalle2.TabIndex = 33;
             // 
-            // lblTotal
+            // chkMantenerEmpleado
             // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.ForeColor = System.Drawing.Color.DimGray;
-            this.lblTotal.Location = new System.Drawing.Point(482, 234);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(102, 31);
-            this.lblTotal.TabIndex = 37;
-            this.lblTotal.Text = "TOTAL";
-            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.lblTotal.Click += new System.EventHandler(this.label8_Click);
+            this.chkMantenerEmpleado.AutoSize = true;
+            this.chkMantenerEmpleado.Location = new System.Drawing.Point(307, 109);
+            this.chkMantenerEmpleado.Name = "chkMantenerEmpleado";
+            this.chkMantenerEmpleado.Size = new System.Drawing.Size(121, 17);
+            this.chkMantenerEmpleado.TabIndex = 5;
+            this.chkMantenerEmpleado.Text = "Mantener Empleado";
+            this.chkMantenerEmpleado.UseVisualStyleBackColor = true;
+            // 
+            // chkMantenerEmpleado2
+            // 
+            this.chkMantenerEmpleado2.AutoSize = true;
+            this.chkMantenerEmpleado2.Location = new System.Drawing.Point(795, 52);
+            this.chkMantenerEmpleado2.Name = "chkMantenerEmpleado2";
+            this.chkMantenerEmpleado2.Size = new System.Drawing.Size(121, 17);
+            this.chkMantenerEmpleado2.TabIndex = 34;
+            this.chkMantenerEmpleado2.Text = "Mantener Empleado";
+            this.chkMantenerEmpleado2.UseVisualStyleBackColor = true;
             // 
             // frmRegistrarDias
             // 
@@ -639,5 +663,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.CheckBox chkMantenerEmpleado;
+        private System.Windows.Forms.CheckBox chkMantenerEmpleado2;
     }
 }

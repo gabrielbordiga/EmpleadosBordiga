@@ -170,7 +170,7 @@ namespace Gestión_Empleados
                                             sw.Write("$" + precio + ", ");
                                             sw.Write(dia + ", ");
                                             sw.WriteLine(txtDetalle.Text);
-                                            this.cboEmpleado.SelectedIndex = -1;
+                                            //this.cboEmpleado.SelectedIndex = -1;
                                             sw.Close();
                                             sw.Dispose();
                                             StreamWriter pr = new StreamWriter("Plata_" + valor + ".txt", true);
@@ -181,6 +181,10 @@ namespace Gestión_Empleados
                                             if (!chkMantenerDetalle.Checked)
                                             {
                                                 txtDetalle.Text = "";
+                                            }
+                                            if (!chkMantenerEmpleado.Checked) 
+                                            {
+                                                cboEmpleado.SelectedIndex = -1;
                                             }
                                         }
                                         else
@@ -244,7 +248,7 @@ namespace Gestión_Empleados
                                         sw.Write(dia + ", ");
                                         sw.WriteLine(txtDetalle.Text);
                                         sw.WriteLine(precio);
-                                        this.cboEmpleado.SelectedIndex = -1;
+                                        //this.cboEmpleado.SelectedIndex = -1;
                                         sw.Close();
                                         sw.Dispose();
                                         StreamWriter pr = new StreamWriter("Plata_" + valor + ".txt", true);
@@ -255,6 +259,10 @@ namespace Gestión_Empleados
                                         if (!chkMantenerDetalle.Checked)
                                         {
                                             txtDetalle.Text = "";
+                                        }
+                                        if (!chkMantenerEmpleado.Checked)
+                                        {
+                                            cboEmpleado.SelectedIndex = -1;
                                         }
                                     }
                                     else
@@ -327,7 +335,7 @@ namespace Gestión_Empleados
                                     sw.Write("$" + precio + ", ");
                                     sw.Write(dia + ", ");
                                     sw.WriteLine(txtDetalle.Text);
-                                    this.cboEmpleado.SelectedIndex = -1;
+                                    //this.cboEmpleado.SelectedIndex = -1;
                                     sw.Close();
                                     sw.Dispose();
                                     StreamWriter pr = new StreamWriter("Plata_" + valor + ".txt", true);
@@ -338,6 +346,10 @@ namespace Gestión_Empleados
                                     if (!chkMantenerDetalle.Checked)
                                     {
                                         txtDetalle.Text = "";
+                                    }
+                                    if (!chkMantenerEmpleado.Checked)
+                                    {
+                                        cboEmpleado.SelectedIndex = -1;
                                     }
                                 }
                                 else
@@ -611,7 +623,11 @@ namespace Gestión_Empleados
                                                 MessageBox.Show("SE CARGÓ EXITOSAMENTE!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                                 if (!chkMantenerDetalle2.Checked)
                                                 {
-                                                    txtDetalle.Text = "";
+                                                    txtDetalle2.Text = "";
+                                                }
+                                                if (!chkMantenerEmpleado2.Checked)
+                                                {
+                                                    cboEmpleado2.SelectedIndex = -1;
                                                 }
 
                                             }
@@ -710,7 +726,11 @@ namespace Gestión_Empleados
                                                 MessageBox.Show("SE CARGÓ EXITOSAMENTE!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                                 if (!chkMantenerDetalle2.Checked)
                                                 {
-                                                    txtDetalle.Text = "";
+                                                    txtDetalle2.Text = "";
+                                                }
+                                                if (!chkMantenerEmpleado2.Checked)
+                                                {
+                                                    cboEmpleado2.SelectedIndex = -1;
                                                 }
 
                                             }
@@ -758,8 +778,6 @@ namespace Gestión_Empleados
             txtPorcentaje.Text = "";
             txtMontoPorc.Text = "";
             txtHectareas.Text = "";
-            txtDetalle2.Text = "";
-            cboEmpleado2.SelectedIndex = -1;
             this.dtpDesde.Value = DateTime.Now;
             this.dtpHasta.Value = DateTime.Now;
         }

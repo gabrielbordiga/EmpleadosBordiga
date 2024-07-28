@@ -54,58 +54,80 @@ namespace Gestión_Empleados
             if (result == DialogResult.Yes)
             {
                 bool existem = File.Exists("empleados.txt");
-                if (existem == true) 
+                if (existem)
                 {
-                    StreamReader sr = new StreamReader("empleados.txt");
-                    string Linea = "";
-                    while (sr.EndOfStream == false)
+                    using (StreamReader sr = new StreamReader("empleados.txt"))
                     {
-                        Linea = sr.ReadLine();
-                        File.Delete(Linea + ".txt");
-                        File.Delete("Cuenta" + Linea + ".txt");
-                        File.Delete("Plata_" + Linea + ".txt");
+                        string Linea = "";
+                        while (!sr.EndOfStream)
+                        {
+                            Linea = sr.ReadLine();
+                            File.Delete(Linea + ".txt");
+                            File.Delete("Cuenta" + Linea + ".txt");
+                            File.Delete("Plata_" + Linea + ".txt");
+                        }
                     }
-                    sr.Close();
-                    sr.Dispose();
                     File.Delete("empleados.txt");
                 }
+
                 bool exister = File.Exists("TodosLosRetiros.txt");
                 bool existep = File.Exists("precio.txt");
                 bool existed = File.Exists("Detalles.txt");
                 bool existea = Directory.Exists("Archivos");
                 bool existea1 = Directory.Exists("Archivos/Detalles");
                 bool existea2 = Directory.Exists("Archivos/Retiros");
-                if (exister == true) 
+
+                if (exister)
                 {
                     File.Delete("TodosLosRetiros.txt");
                 }
-                if (existep == true) 
+                if (existep)
                 {
                     File.Delete("precio.txt");
                 }
-                if (existed == true) 
+                if (existed)
                 {
                     File.Delete("Detalles.txt");
                 }
-                if (existea1 == true)
+                if (existea1)
                 {
-                    Directory.Delete("Archivos/Detalles");
+                    DeleteDirectory("Archivos/Detalles");
                 }
-                if (existea2 == true)
+                if (existea2)
                 {
-                    Directory.Delete("Archivos/Retiros");
+                    DeleteDirectory("Archivos/Retiros");
                 }
-                if (existea == true) 
+                if (existea)
                 {
-                    Directory.Delete("Archivos");
+                    DeleteDirectory("Archivos");
                 }
+
                 MessageBox.Show("Reseteado Correctamente", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
- 
-            
+        }
+
+        private void DeleteDirectory(string path)
+        {
+            if (Directory.Exists(path))
+            {
+                foreach (string file in Directory.GetFiles(path))
+                {
+                    File.Delete(file);
+                }
+                foreach (string subDir in Directory.GetDirectories(path))
+                {
+                    DeleteDirectory(subDir);
+                }
+                Directory.Delete(path);
+            }
         }
 
         private void frmAdmin_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
