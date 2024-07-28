@@ -48,7 +48,7 @@ namespace Gestión_Empleados
             }
             sr.Close();
             sr.Dispose();
-            cboFormaDePago.SelectedIndex = 0;
+            
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -60,7 +60,15 @@ namespace Gestión_Empleados
 
         public void pictureBox1_Click(object sender, EventArgs e)
         {
-            formadepago = cboFormaDePago.Text;
+            if (optEfectivo.Checked)
+            {
+                formadepago = "EFECTIVO";
+            }
+            else 
+            {
+                formadepago = "TRANSFERENCIA";
+            }
+            
             bool existe = File.Exists("Plata_" + valor + ".txt");
             if (existe == true)
             {

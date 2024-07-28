@@ -43,14 +43,16 @@
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.cmdMinimizar = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cboFormaDePago = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.optEfectivo = new System.Windows.Forms.RadioButton();
+            this.optTransferencia = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmdMinimizar)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -199,41 +201,51 @@
             this.cmdMinimizar.TabIndex = 1;
             this.cmdMinimizar.TabStop = false;
             // 
-            // label5
+            // groupBox1
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(26, 266);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(152, 25);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Forma de Pago:";
+            this.groupBox1.Controls.Add(this.optTransferencia);
+            this.groupBox1.Controls.Add(this.optEfectivo);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(32, 267);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(270, 62);
+            this.groupBox1.TabIndex = 27;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Forma de Pago";
             // 
-            // cboFormaDePago
+            // optEfectivo
             // 
-            this.cboFormaDePago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboFormaDePago.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboFormaDePago.FormattingEnabled = true;
-            this.cboFormaDePago.Items.AddRange(new object[] {
-            "EFECTIVO",
-            "TRANFERENCIA"});
-            this.cboFormaDePago.Location = new System.Drawing.Point(31, 294);
-            this.cboFormaDePago.Name = "cboFormaDePago";
-            this.cboFormaDePago.Size = new System.Drawing.Size(272, 39);
-            this.cboFormaDePago.TabIndex = 27;
+            this.optEfectivo.AutoSize = true;
+            this.optEfectivo.Checked = true;
+            this.optEfectivo.Location = new System.Drawing.Point(9, 27);
+            this.optEfectivo.Name = "optEfectivo";
+            this.optEfectivo.Size = new System.Drawing.Size(99, 29);
+            this.optEfectivo.TabIndex = 0;
+            this.optEfectivo.TabStop = true;
+            this.optEfectivo.Text = "Efectivo";
+            this.optEfectivo.UseVisualStyleBackColor = true;
+            // 
+            // optTransferencia
+            // 
+            this.optTransferencia.AutoSize = true;
+            this.optTransferencia.Location = new System.Drawing.Point(114, 28);
+            this.optTransferencia.Name = "optTransferencia";
+            this.optTransferencia.Size = new System.Drawing.Size(150, 29);
+            this.optTransferencia.TabIndex = 0;
+            this.optTransferencia.Text = "Transferencia";
+            this.optTransferencia.UseVisualStyleBackColor = true;
             // 
             // frmRetirarDinero
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(346, 501);
-            this.Controls.Add(this.cboFormaDePago);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.cmdTodosLosRetiros);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtpFecha);
@@ -252,6 +264,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmdMinimizar)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,7 +287,8 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox cmdMinimizar;
         private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cboFormaDePago;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton optTransferencia;
+        private System.Windows.Forms.RadioButton optEfectivo;
     }
 }

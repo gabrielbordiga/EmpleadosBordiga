@@ -121,5 +121,25 @@ namespace Gestión_Empleados
         {
             
         }
+
+        private void frmPrecioPorDia_Load(object sender, EventArgs e)
+        {
+            lblPrecioActual.Text = "";
+            bool precioExiste = File.Exists("precio.txt");
+            if (precioExiste)
+            {
+
+
+                StreamReader pr = new StreamReader("precio.txt");
+                string Linea2 = "";
+                while (pr.EndOfStream == false)
+                {
+                    Linea2 = pr.ReadLine();
+                    lblPrecioActual.Text = "PRECIO ACTUAL: $" + Linea2 ;
+                }
+                pr.Close();
+                pr.Dispose();
+            }
+        }
     }
 }

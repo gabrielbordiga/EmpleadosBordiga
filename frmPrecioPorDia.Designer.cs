@@ -38,6 +38,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.cmdMinimizar = new System.Windows.Forms.PictureBox();
+            this.lblPrecioActual = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.cmdCargar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmdVolver2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -142,11 +143,22 @@
             this.cmdMinimizar.TabIndex = 1;
             this.cmdMinimizar.TabStop = false;
             // 
+            // lblPrecioActual
+            // 
+            this.lblPrecioActual.AutoSize = true;
+            this.lblPrecioActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrecioActual.Location = new System.Drawing.Point(20, 147);
+            this.lblPrecioActual.Name = "lblPrecioActual";
+            this.lblPrecioActual.Size = new System.Drawing.Size(173, 25);
+            this.lblPrecioActual.TabIndex = 17;
+            this.lblPrecioActual.Text = "PRECIO ACTUAL";
+            // 
             // frmPrecioPorDia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(394, 202);
+            this.Controls.Add(this.lblPrecioActual);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.cmdVolver2);
             this.Controls.Add(this.cmdCargar2);
@@ -159,6 +171,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PRECIO POR DÍA";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPrecioPorDia_FormClosing);
+            this.Load += new System.EventHandler(this.frmPrecioPorDia_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cmdCargar2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmdVolver2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -180,5 +193,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox cmdMinimizar;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label lblPrecioActual;
     }
 }

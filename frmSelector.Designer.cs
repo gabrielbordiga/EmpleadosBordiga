@@ -178,6 +178,7 @@
             this.txtPrecio.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.txtPrecio.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPrecio.Enabled = false;
+            this.txtPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrecio.Location = new System.Drawing.Point(656, 598);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.ReadOnly = true;

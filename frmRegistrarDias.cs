@@ -240,8 +240,9 @@ namespace Gestión_Empleados
 
                                         StreamWriter sw = new StreamWriter(valor + ".txt", true);
                                         sw.Write(dtpFecha.Text + ", ");
+                                        sw.Write("$" + precio + ", ");
                                         sw.Write(dia + ", ");
-                                        sw.Write(txtDetalle.Text + ", ");
+                                        sw.WriteLine(txtDetalle.Text);
                                         sw.WriteLine(precio);
                                         this.cboEmpleado.SelectedIndex = -1;
                                         sw.Close();
@@ -323,9 +324,9 @@ namespace Gestión_Empleados
 
                                     StreamWriter sw = new StreamWriter(valor + ".txt", true);
                                     sw.Write(dtpFecha.Text + ", ");
+                                    sw.Write("$" + precio + ", ");
                                     sw.Write(dia + ", ");
-                                    sw.Write(txtDetalle.Text + ", ");
-                                    sw.WriteLine(precio);
+                                    sw.WriteLine(txtDetalle.Text);
                                     this.cboEmpleado.SelectedIndex = -1;
                                     sw.Close();
                                     sw.Dispose();
@@ -696,7 +697,7 @@ namespace Gestión_Empleados
                                                 StreamWriter sw = new StreamWriter(valor + ".txt", true);
                                                 sw.Write("Registro de porcentaje por: " + txtDetalle2.Text + ", ");
                                                 sw.Write("Desde el día " + dtpDesde.Text + " Hasta el día " + dtpHasta.Text + ", ");
-                                                sw.WriteLine("Con una Ganancia final de $" + precio + ", ");
+                                                sw.Write("Con una Ganancia final de $" + precio + ", ");
                                                 sw.Write("por el " + txtPorcentaje.Text + "% por " + txtHectareas.Text + " Hectáreas ");
                                                 sw.WriteLine("con un valor de $" + txtMontoPorc.Text + " por hectárea");
                                                 this.cboEmpleado.SelectedIndex = -1;
