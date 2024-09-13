@@ -42,21 +42,23 @@ namespace Gestión_Empleados
 
         private void cmdCargar2_Click(object sender, EventArgs e)
         {
-            if (txtPrecio.Text == "") 
+            if (txtPrecio.Text == "")
             {
                 MessageBox.Show("INTRODUZCA EL PRECIO!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else 
+            else
             {
+                // Quitar los puntos antes de guardar el valor en el archivo
+                string valorSinPuntos = txtPrecio.Text.Replace(".", "");
+
                 StreamWriter sw = new StreamWriter("precio.txt", false);
-                sw.WriteLine(txtPrecio.Text);
+                sw.WriteLine(valorSinPuntos);
                 sw.Close();
                 sw.Dispose();
+
                 txtPrecio.Text = null;
                 MessageBox.Show("PRECIO MODIFICADO CORRECTAMENTE!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
-                
-                
             }
         }
         private void OnTimedEvent(object source, ElapsedEventArgs e) 
@@ -85,14 +87,17 @@ namespace Gestión_Empleados
                 }
                 else
                 {
+                    // Quitar los puntos antes de guardar el valor en el archivo
+                    string valorSinPuntos = txtPrecio.Text.Replace(".", "");
+
                     StreamWriter sw = new StreamWriter("precio.txt", false);
-                    sw.WriteLine(txtPrecio.Text);
+                    sw.WriteLine(valorSinPuntos);
                     sw.Close();
                     sw.Dispose();
+
                     txtPrecio.Text = null;
                     MessageBox.Show("PRECIO MODIFICADO CORRECTAMENTE!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
-                    
                 }
             }
         }
@@ -128,17 +133,44 @@ namespace Gestión_Empleados
             bool precioExiste = File.Exists("precio.txt");
             if (precioExiste)
             {
-
-
                 StreamReader pr = new StreamReader("precio.txt");
                 string Linea2 = "";
                 while (pr.EndOfStream == false)
                 {
                     Linea2 = pr.ReadLine();
-                    lblPrecioActual.Text = "PRECIO ACTUAL: $" + Linea2 ;
+
+                    // Verificar que sea un número válido
+                    if (long.TryParse(Linea2, out long precioNumerico))
+                    {
+                        // Formatear el número con puntos de miles
+                        lblPrecioActual.Text = "PRECIO ACTUAL: $" + precioNumerico.ToString("N0");
+                    }
+                    else
+                    {
+                        lblPrecioActual.Text = "PRECIO ACTUAL: $" + Linea2;  // Si no es un número válido, mostrar el texto original
+                    }
                 }
                 pr.Close();
                 pr.Dispose();
+            }
+        }
+
+        private void txtPrecio_TextChanged(object sender, EventArgs e)
+        {
+            // Guardar la posición del cursor antes del formateo
+            int cursorPosition = txtPrecio.SelectionStart;
+
+            // Quitar los puntos existentes antes de reformatear
+            string valorSinFormato = txtPrecio.Text.Replace(".", "");
+
+            // Verificar que sea un número válido
+            if (long.TryParse(valorSinFormato, out long valorNumerico))
+            {
+                // Formatear el número con puntos de miles
+                txtPrecio.Text = valorNumerico.ToString("N0");
+
+                // Restaurar la posición del cursor
+                txtPrecio.SelectionStart = cursorPosition + (txtPrecio.Text.Length - valorSinFormato.Length);
             }
         }
     }

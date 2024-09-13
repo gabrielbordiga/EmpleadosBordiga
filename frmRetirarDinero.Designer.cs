@@ -44,8 +44,8 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.cmdMinimizar = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.optEfectivo = new System.Windows.Forms.RadioButton();
             this.optTransferencia = new System.Windows.Forms.RadioButton();
+            this.optEfectivo = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -84,6 +84,7 @@
             this.txtCuenta.Name = "txtCuenta";
             this.txtCuenta.Size = new System.Drawing.Size(287, 41);
             this.txtCuenta.TabIndex = 2;
+            this.txtCuenta.TextChanged += new System.EventHandler(this.txtCuenta_TextChanged);
             this.txtCuenta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCuenta_KeyDown);
             this.txtCuenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCuenta_KeyPress);
             // 
@@ -213,6 +214,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Forma de Pago";
             // 
+            // optTransferencia
+            // 
+            this.optTransferencia.AutoSize = true;
+            this.optTransferencia.Location = new System.Drawing.Point(114, 28);
+            this.optTransferencia.Name = "optTransferencia";
+            this.optTransferencia.Size = new System.Drawing.Size(150, 29);
+            this.optTransferencia.TabIndex = 0;
+            this.optTransferencia.Text = "Transferencia";
+            this.optTransferencia.UseVisualStyleBackColor = true;
+            // 
             // optEfectivo
             // 
             this.optEfectivo.AutoSize = true;
@@ -224,16 +235,6 @@
             this.optEfectivo.TabStop = true;
             this.optEfectivo.Text = "Efectivo";
             this.optEfectivo.UseVisualStyleBackColor = true;
-            // 
-            // optTransferencia
-            // 
-            this.optTransferencia.AutoSize = true;
-            this.optTransferencia.Location = new System.Drawing.Point(114, 28);
-            this.optTransferencia.Name = "optTransferencia";
-            this.optTransferencia.Size = new System.Drawing.Size(150, 29);
-            this.optTransferencia.TabIndex = 0;
-            this.optTransferencia.Text = "Transferencia";
-            this.optTransferencia.UseVisualStyleBackColor = true;
             // 
             // frmRetirarDinero
             // 

@@ -29,7 +29,7 @@ namespace Gestión_Empleados
         {
             InitializeComponent();
             // Inicializar el timer con un intervalo de 2000 milisegundos y suscribirlo al evento Elapsed
-            timer = new System.Timers.Timer(2);
+            timer = new System.Timers.Timer(500);  // Ajuste del intervalo a 700 ms
             timer.Elapsed += OnTimedEvent;
 
             // Desactivar el timer por defecto
@@ -48,7 +48,6 @@ namespace Gestión_Empleados
             }
             sr.Close();
             sr.Dispose();
-            
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -64,11 +63,11 @@ namespace Gestión_Empleados
             {
                 formadepago = "EFECTIVO";
             }
-            else 
+            else
             {
                 formadepago = "TRANSFERENCIA";
             }
-            
+
             bool existe = File.Exists("Plata_" + valor + ".txt");
             if (existe == true)
             {
@@ -84,10 +83,10 @@ namespace Gestión_Empleados
                     {
                         MessageBox.Show("SELECCIONE UN EMPLEADO", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-
                     else
                     {
-                        restar = int.Parse(txtCuenta.Text);
+                        // Quitar los puntos antes de convertir el valor en número
+                        restar = int.Parse(txtCuenta.Text.Replace(".", ""));
 
                         List<double> numeros = new List<double>();
                         StreamReader srr = new StreamReader("Plata_" + valor + ".txt");
@@ -101,30 +100,26 @@ namespace Gestión_Empleados
                         srr.Close();
                         srr.Dispose();
 
-                        foreach (double n in numeros)
-                        {
-                            Console.WriteLine(n);
-
-
-                        }
-
+                        // Guardar el saldo sin formato
                         StreamWriter srr2 = new StreamWriter("Cuenta" + valor + ".txt");
-
                         srr2.WriteLine(numeros.Sum());
-
                         srr2.Close();
 
-                        timer.Enabled = !timer.Enabled;
+                        // Mostrar el saldo formateado en txtCuenta
+                        txtCuenta.Text = numeros.Sum().ToString("N0");
+
+                        if (!timer.Enabled)  // Verificación para evitar duplicaciones
+                        {
+                            timer.Start();
+                        }
+
                         txtCuenta.Text = null;
-
-
                     }
                 }
                 else
                 {
                     MessageBox.Show("INTRODUCIR UNA FECHA ACTUAL O ANTERIOR", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
             }
             else
             {
@@ -134,14 +129,10 @@ namespace Gestión_Empleados
 
         public void txtCuenta_click(object sender, EventArgs e)
         {
-
         }
-
 
         private void OnTimedEvent(object source, ElapsedEventArgs e)
         {
-           
-            
             List<double> numeros = new List<double>();
             StreamReader pr = new StreamReader("Cuenta" + valor + ".txt");
             string linea = pr.ReadLine();
@@ -152,10 +143,12 @@ namespace Gestión_Empleados
 
             Console.WriteLine(resultado);
 
+            // Guardar sin formato en el archivo
             StreamWriter sr4 = new StreamWriter("Plata_" + valor + ".txt", true);
-            sr4.WriteLine("-"+resto);
+            sr4.WriteLine("-" + resto);
             sr4.Close();
 
+            // Guardar en el log sin formato
             StreamWriter td = new StreamWriter(valor + ".txt", true);
             td.WriteLine("** PLATA ANTES DE RETIRO ** $" + numero);
             td.WriteLine("** PLATA RETIRADA EN " + formadepago + "** -$" + resto);
@@ -163,17 +156,17 @@ namespace Gestión_Empleados
             td.Close();
 
             StreamWriter cc = new StreamWriter("TodosLosRetiros.txt", true);
-            cc.WriteLine("El día " + dtpFecha.Text +" "+ valor + " retiró: $" + resto);
+            cc.WriteLine("El día " + dtpFecha.Text + " " + valor + " retiró en " + formadepago + " : $" + resto);
             cc.Close();
 
+            // Guardar sin formato en el archivo de cuenta
             StreamWriter sw = new StreamWriter("Cuenta" + valor + ".txt");
-
             sw.WriteLine(resultado);
-
             sw.Close();
-            timer.Stop();
-            MessageBox.Show("DINERO RETIRADO -$" + resto, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+            // Detener el timer y mostrar el mensaje
+            timer.Stop();
+            MessageBox.Show("DINERO RETIRADO EN " + formadepago + " -$" + resto, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public void cboEmpleado_SelectedIndexChanged(object sender, EventArgs e)
@@ -188,14 +181,14 @@ namespace Gestión_Empleados
 
             if (existe == true)
             {
-                frmTodosLosRetiros todosLosRetiros = new frmTodosLosRetiros(); todosLosRetiros.Show();
+                frmTodosLosRetiros todosLosRetiros = new frmTodosLosRetiros();
+                todosLosRetiros.Show();
                 this.Hide();
             }
             else
             {
                 MessageBox.Show("NO HAY RETIROS", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
         }
 
         private void txtCuenta_KeyDown(object sender, KeyEventArgs e)
@@ -210,19 +203,15 @@ namespace Gestión_Empleados
 
         private void txtCuenta_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
-            
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
             }
-            if (e.KeyChar == (char)Keys.Enter)
+
+            if (e.KeyChar == (char)Keys.Enter && !timer.Enabled)  // Asegurarse que no se ejecute más de una vez
             {
                 pictureBox1_Click(sender, e);
-
             }
-            
-
         }
 
         private void pictureBox5_Click(object sender, EventArgs e)
@@ -234,6 +223,25 @@ namespace Gestión_Empleados
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void txtCuenta_TextChanged(object sender, EventArgs e)
+        {
+            // Guardar la posición del cursor antes del formateo
+            int cursorPosition = txtCuenta.SelectionStart;
+
+            // Quitar los puntos existentes antes de reformatear
+            string valorSinFormato = txtCuenta.Text.Replace(".", "");
+
+            // Verificar que sea un número válido
+            if (long.TryParse(valorSinFormato, out long valorNumerico))
+            {
+                // Formatear el número con puntos de miles
+                txtCuenta.Text = valorNumerico.ToString("N0");
+
+                // Restaurar la posición del cursor
+                txtCuenta.SelectionStart = cursorPosition + (txtCuenta.Text.Length - valorSinFormato.Length);
+            }
         }
     }
 

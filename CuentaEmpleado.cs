@@ -85,12 +85,12 @@ namespace Gestión_Empleados
 
                     StreamReader pr = new StreamReader("Cuenta" + valor + ".txt");
                     string Linea2 = "";
-                    while (pr.EndOfStream == false)
+                    while (!pr.EndOfStream)
                     {
-                        txtCuenta.Text = "";
                         Linea2 = pr.ReadLine();
-                        txtCuenta.AppendText("Saldo: $" + Linea2);
-
+                        // Aplica el formato con separadores de miles
+                        double saldo = double.Parse(Linea2);
+                        txtCuenta.AppendText("Saldo: $" + saldo.ToString("N0"));
                     }
                     pr.Close();
                 }
@@ -166,7 +166,9 @@ namespace Gestión_Empleados
                     while (!pr.EndOfStream)
                     {
                         Linea2 = pr.ReadLine();
-                        txtCuenta.AppendText("$" + Linea2);
+                        // Aplica el formato con separadores de miles
+                        double saldo = double.Parse(Linea2);
+                        txtCuenta.AppendText("$" + saldo.ToString("N0"));
                     }
                     pr.Close();
                 }

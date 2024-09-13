@@ -38,13 +38,15 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.cmdMinimizar = new System.Windows.Forms.PictureBox();
             this.txtPrecio = new System.Windows.Forms.TextBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.cmdCerrar = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmdMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmdMinimizar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmdCerrar)).BeginInit();
             this.SuspendLayout();
             // 
             // cmdRegistrarDias
@@ -157,6 +159,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.panel1.Controls.Add(this.cmdCerrar);
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.cmdMinimizar);
             this.panel1.Location = new System.Drawing.Point(-4, 0);
@@ -166,10 +169,21 @@
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(6, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 11;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
             // cmdMinimizar
             // 
             this.cmdMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("cmdMinimizar.Image")));
-            this.cmdMinimizar.Location = new System.Drawing.Point(963, 1);
+            this.cmdMinimizar.Location = new System.Drawing.Point(942, 2);
             this.cmdMinimizar.Name = "cmdMinimizar";
             this.cmdMinimizar.Size = new System.Drawing.Size(30, 22);
             this.cmdMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -190,16 +204,16 @@
             this.txtPrecio.TabIndex = 10;
             this.txtPrecio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // pictureBox2
+            // cmdCerrar
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(6, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 11;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.cmdCerrar.Image = ((System.Drawing.Image)(resources.GetObject("cmdCerrar.Image")));
+            this.cmdCerrar.Location = new System.Drawing.Point(972, 2);
+            this.cmdCerrar.Name = "cmdCerrar";
+            this.cmdCerrar.Size = new System.Drawing.Size(20, 20);
+            this.cmdCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.cmdCerrar.TabIndex = 30;
+            this.cmdCerrar.TabStop = false;
+            this.cmdCerrar.Click += new System.EventHandler(this.cmdCerrar_Click);
             // 
             // frmSelector
             // 
@@ -225,8 +239,9 @@
             this.Load += new System.EventHandler(this.frmSelector_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cmdMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmdMinimizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmdCerrar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,5 +261,6 @@
         private System.Windows.Forms.PictureBox cmdMinimizar;
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox cmdCerrar;
     }
 }

@@ -40,6 +40,8 @@ namespace Gestión_Empleados
 
         private void frmRegistrarDias_Load(object sender, EventArgs e)
         {
+            this.UnDia.Checked = false;
+            this.MedioDia.Checked = false;
             lblTotal.Text = "";
             bool precioExiste = File.Exists("precio.txt");
             if (precioExiste) 
@@ -181,6 +183,8 @@ namespace Gestión_Empleados
                                             if (!chkMantenerDetalle.Checked)
                                             {
                                                 txtDetalle.Text = "";
+                                                this.UnDia.Checked = false;
+                                                this.MedioDia.Checked = false;
                                             }
                                             if (!chkMantenerEmpleado.Checked) 
                                             {
@@ -259,6 +263,8 @@ namespace Gestión_Empleados
                                         if (!chkMantenerDetalle.Checked)
                                         {
                                             txtDetalle.Text = "";
+                                            this.UnDia.Checked = false;
+                                            this.MedioDia.Checked = false;
                                         }
                                         if (!chkMantenerEmpleado.Checked)
                                         {
@@ -346,11 +352,14 @@ namespace Gestión_Empleados
                                     if (!chkMantenerDetalle.Checked)
                                     {
                                         txtDetalle.Text = "";
+                                        this.UnDia.Checked = false;
+                                        this.MedioDia.Checked = false;
                                     }
                                     if (!chkMantenerEmpleado.Checked)
                                     {
                                         cboEmpleado.SelectedIndex = -1;
                                     }
+
                                 }
                                 else
                                 {

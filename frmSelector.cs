@@ -38,14 +38,23 @@ namespace Gestión_Empleados
             bool precioExiste = File.Exists("precio.txt");
             if (precioExiste)
             {
-
-
                 StreamReader pr = new StreamReader("precio.txt");
                 string Linea2 = "";
                 while (pr.EndOfStream == false)
                 {
                     Linea2 = pr.ReadLine();
-                    txtPrecio.AppendText("(Precio actual $" + Linea2 + ")");
+
+                    // Verificar que sea un número válido
+                    if (long.TryParse(Linea2, out long precioNumerico))
+                    {
+                        // Formatear el número con puntos de miles
+                        txtPrecio.AppendText("(Precio actual $" + precioNumerico.ToString("N0") + ")");
+                    }
+                    else
+                    {
+                        // Si no es un número válido, mostrar el texto original
+                        txtPrecio.AppendText("(Precio actual $" + Linea2 + ")");
+                    }
                 }
                 pr.Close();
                 pr.Dispose();
@@ -129,14 +138,23 @@ namespace Gestión_Empleados
             bool precioExiste = File.Exists("precio.txt");
             if (precioExiste)
             {
-
-
                 StreamReader pr = new StreamReader("precio.txt");
                 string Linea2 = "";
                 while (pr.EndOfStream == false)
                 {
                     Linea2 = pr.ReadLine();
-                    txtPrecio.AppendText("(Precio actual $" + Linea2 + ")");
+
+                    // Verificar que sea un número válido
+                    if (long.TryParse(Linea2, out long precioNumerico))
+                    {
+                        // Formatear el número con puntos de miles
+                        txtPrecio.AppendText("(Precio actual $" + precioNumerico.ToString("N0") + ")");
+                    }
+                    else
+                    {
+                        // Si no es un número válido, mostrar el texto original
+                        txtPrecio.AppendText("(Precio actual $" + Linea2 + ")");
+                    }
                 }
                 pr.Close();
                 pr.Dispose();
@@ -170,6 +188,11 @@ namespace Gestión_Empleados
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void cmdCerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
