@@ -18,6 +18,13 @@ namespace Gestión_Empleados
     public partial class frmRegistrarDias : Form
     {
         string valor = "";
+        string dia = "";
+        int preciotxt = 0;
+        int precioxhora = 0;
+        int precioextra = 0;
+        //int redondeadohora = 0;
+        int precioglobal = 0;
+        int horas = 0;
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -33,13 +40,12 @@ namespace Gestión_Empleados
             
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
 
-        }
 
         private void frmRegistrarDias_Load(object sender, EventArgs e)
         {
+            precioglobal = preciotxt;
+            lblHorasExtra.Text = ("");
             this.UnDia.Checked = false;
             this.MedioDia.Checked = false;
             lblTotal.Text = "";
@@ -67,13 +73,20 @@ namespace Gestión_Empleados
                 {
                     Linea2 = pr.ReadLine();
                     txtPrecio.AppendText(Linea2);
+                    preciotxt = Convert.ToInt32(Linea2);
                 }
-
+                funcion_precioxhora(sender, e);
                 pr.Close();
                 pr.Dispose();
             }
             
 
+        }
+        private void funcion_precioxhora(object sender, EventArgs e) 
+        {
+            precioxhora = preciotxt / 8;
+            //redondeadohora = (int)Math.Round(precioxhora);
+            lblPrecioXHora.Text = ("Valor x hora $" + precioxhora.ToString());
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -153,24 +166,28 @@ namespace Gestión_Empleados
                                     {
                                         if (this.UnDia.Checked || this.MedioDia.Checked)
                                         {
-                                            string dia = "";
                                             string precio = "";
-                                            if (this.UnDia.Checked)
+                                            precio = txtPrecio.Text;
+                                            if (nudHorasExtra.Value != 0) 
                                             {
-                                                dia = "1 Día";
-                                                precio = txtPrecio.Text;
-                                            }
-                                            else if (this.MedioDia.Checked)
-                                            {
-                                                dia = "1/2 Día";
-                                                double numero = Convert.ToDouble(this.txtPrecio.Text);
-                                                precio = (numero / 2).ToString();
+                                                precio = precioextra.ToString();
                                             }
 
                                             StreamWriter sw = new StreamWriter(valor + ".txt", true);
                                             sw.Write(dtpFecha.Text + ", ");
                                             sw.Write("$" + precio + ", ");
                                             sw.Write(dia + ", ");
+                                            if (horas != 0)
+                                            {
+                                                if (horas > 1)
+                                                {
+                                                    sw.Write(horas + " Horas extra" + ", ");
+                                                }
+                                                else
+                                                {
+                                                    sw.Write(horas + " Hora extra" + ", ");
+                                                }
+                                            }
                                             sw.WriteLine(txtDetalle.Text);
                                             //this.cboEmpleado.SelectedIndex = -1;
                                             sw.Close();
@@ -232,24 +249,29 @@ namespace Gestión_Empleados
                                 {
                                     if (this.UnDia.Checked || this.MedioDia.Checked)
                                     {
-                                        string dia = "";
+
                                         string precio = "";
-                                        if (this.UnDia.Checked)
+                                        precio = txtPrecio.Text;
+                                        if (nudHorasExtra.Value != 0)
                                         {
-                                            dia = "1 Día";
-                                            precio = txtPrecio.Text;
-                                        }
-                                        else if (this.MedioDia.Checked)
-                                        {
-                                            dia = "1/2 Día";
-                                            double numero = Convert.ToDouble(this.txtPrecio.Text);
-                                            precio = (numero / 2).ToString();
+                                            precio = precioextra.ToString();
                                         }
 
                                         StreamWriter sw = new StreamWriter(valor + ".txt", true);
                                         sw.Write(dtpFecha.Text + ", ");
                                         sw.Write("$" + precio + ", ");
                                         sw.Write(dia + ", ");
+                                        if (horas != 0)
+                                        {
+                                            if (horas > 1)
+                                            {
+                                                sw.Write(horas + " Horas extra" + ", ");
+                                            }
+                                            else
+                                            {
+                                                sw.Write(horas + " Hora extra" + ", ");
+                                            }
+                                        }
                                         sw.WriteLine(txtDetalle.Text);
                                         sw.WriteLine(precio);
                                         //this.cboEmpleado.SelectedIndex = -1;
@@ -322,24 +344,28 @@ namespace Gestión_Empleados
                             {
                                 if (this.UnDia.Checked || this.MedioDia.Checked)
                                 {
-                                    string dia = "";
                                     string precio = "";
-                                    if (this.UnDia.Checked)
+                                    precio = txtPrecio.Text;
+                                    if (nudHorasExtra.Value != 0)
                                     {
-                                        dia = "1 Día";
-                                        precio = txtPrecio.Text;
-                                    }
-                                    else if (this.MedioDia.Checked)
-                                    {
-                                        dia = "1/2 Día";
-                                        double numero = Convert.ToDouble(this.txtPrecio.Text);
-                                        precio = (numero / 2).ToString();
+                                        precio = precioextra.ToString();
                                     }
 
                                     StreamWriter sw = new StreamWriter(valor + ".txt", true);
                                     sw.Write(dtpFecha.Text + ", ");
                                     sw.Write("$" + precio + ", ");
                                     sw.Write(dia + ", ");
+                                    if (horas != 0)
+                                    {
+                                        if (horas > 1)
+                                        {
+                                            sw.Write(horas + " Horas extra" + ", ");
+                                        }
+                                        else 
+                                        {
+                                            sw.Write(horas + " Hora extra" + ", ");
+                                        }
+                                    }
                                     sw.WriteLine(txtDetalle.Text);
                                     //this.cboEmpleado.SelectedIndex = -1;
                                     sw.Close();
@@ -908,6 +934,111 @@ namespace Gestión_Empleados
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true; // Cancelar el evento
+            }
+        }
+
+        private void cmdCerrar_Click(object sender, EventArgs e)
+        {
+            cmdVolver2_Click(sender, e);
+        }
+
+        private bool isProgrammaticChange = false;
+
+        private void MedioDia_CheckedChanged(object sender, EventArgs e)
+        {
+            if (MedioDia.Checked)
+            {
+                int precio = preciotxt / 2;
+                int redondeado = (int)Math.Round(precio / 10.0) * 10;
+                isProgrammaticChange = true; // Indicar que es un cambio programático
+
+                txtPrecio.Text = redondeado.ToString();
+                isProgrammaticChange = false; // Restaurar bandera
+                lblPlata.Text = ("(Plata x 1/2 Día)");
+                precioglobal = redondeado;
+                lblPrecioXHora.Text = ("Valor x hora $" + precioxhora.ToString());
+                nudHorasExtra_ValueChanged(sender, e);
+                dia = "1/2 Día";
+            }
+
+        }
+            
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (UnDia.Checked) 
+            {
+                isProgrammaticChange = true; // Indicar que es un cambio programático
+                txtPrecio.Text = preciotxt.ToString();
+                isProgrammaticChange = false; // Restaurar bandera
+
+                lblPlata.Text = ("(Plata x 1 Día)");
+                precioglobal = preciotxt;
+                lblPrecioXHora.Text = ("Valor x hora $"+precioxhora.ToString());
+                dia = "1 Día";
+                nudHorasExtra_ValueChanged(sender, e);
+            }
+            
+        }
+
+        private void txtPrecio_TextChanged(object sender, EventArgs e)
+        {
+            if (!isProgrammaticChange && txtPrecio.Text != "") 
+            {
+                if (MedioDia.Checked)
+                {
+                    int preciomedio = Convert.ToInt32(txtPrecio.Text);
+                    preciotxt = preciomedio * 2;
+                    precioglobal = preciotxt;
+                }
+                else 
+                {
+                    preciotxt = Convert.ToInt32(txtPrecio.Text);
+                    precioglobal = preciotxt;
+                }
+                funcion_precioxhora(sender, e);
+            }
+            nudHorasExtra_ValueChanged(sender, e);
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nudHorasExtra_ValueChanged(object sender, EventArgs e)
+        {
+            int horasExtra = 0;
+            int contador = 0;
+            if (txtPrecio.Text != "" && txtPrecio.Text != "0")
+            {
+                if (nudHorasExtra.Value != 0)
+                {
+                    contador = Convert.ToInt32(nudHorasExtra.Value);
+                    horasExtra = precioxhora * contador;
+                    precioextra = precioglobal + horasExtra;
+                    int redondeado = (int)Math.Round(precioextra / 10.0) * 10;
+                    precioextra = redondeado;
+                    lblHorasExtra.Text = ("+ $" + horasExtra.ToString() + " = $" + precioextra);
+                    horas = contador;
+                }
+                else
+                {
+                    lblHorasExtra.Text = ("");
+                }
+            }
+            else 
+            {
+                lblHorasExtra.Text = ("");
+            }
+            
+        }
+
+        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permitir solo números (tanto números como la tecla de retroceso)
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true; // Cancela la acción si la tecla no es un número o retroceso
             }
         }
     }

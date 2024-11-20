@@ -123,7 +123,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 20);
             this.label1.TabIndex = 31;
-            this.label1.Text = "v1.5.9";
+            this.label1.Text = "v1.6.0";
             // 
             // label2
             // 
@@ -131,9 +131,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 132);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(329, 20);
+            this.label2.Size = new System.Drawing.Size(338, 20);
             this.label2.TabIndex = 32;
-            this.label2.Text = "- Actualización anterior realizada el 28/7/2024";
+            this.label2.Text = "- Actualización anterior realizada el 13/09/2024";
             // 
             // label3
             // 
@@ -143,7 +143,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 20);
             this.label3.TabIndex = 31;
-            this.label3.Text = "v1.6.0";
+            this.label3.Text = "v1.6.1";
             // 
             // label4
             // 
@@ -151,9 +151,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(12, 46);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(354, 20);
+            this.label4.Size = new System.Drawing.Size(364, 20);
             this.label4.TabIndex = 32;
-            this.label4.Text = "Última Actualización realizada el 13/9/2024";
+            this.label4.Text = "Última Actualización realizada el 20/11/2024";
             // 
             // label5
             // 
@@ -161,9 +161,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(12, 66);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(356, 20);
+            this.label5.Size = new System.Drawing.Size(480, 20);
             this.label5.TabIndex = 32;
-            this.label5.Text = "└ Cambios importantes en duplicacion de retiro ⚠️";
+            this.label5.Text = "└ Agregado de funcíón de Horas Extra y visualizador de valor x hora";
             // 
             // label6
             // 
@@ -171,9 +171,9 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(12, 86);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(464, 20);
+            this.label6.Size = new System.Drawing.Size(356, 20);
             this.label6.TabIndex = 32;
-            this.label6.Text = "└ Se agregaron puntos en montos de Retiro/ Cuenta/ PrecioXDia";
+            this.label6.Text = "└ Se agregó botones de x para evitar confusiones";
             // 
             // frmInfo
             // 

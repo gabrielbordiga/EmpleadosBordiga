@@ -39,12 +39,14 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.cmdMinimizar = new System.Windows.Forms.PictureBox();
             this.lblPrecioActual = new System.Windows.Forms.Label();
+            this.cmdCerrar = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.cmdCargar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmdVolver2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmdMinimizar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmdCerrar)).BeginInit();
             this.SuspendLayout();
             // 
             // txtPrecio
@@ -114,6 +116,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.panel1.Controls.Add(this.cmdCerrar);
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.cmdMinimizar);
@@ -126,7 +129,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(537, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(514, 1);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(30, 22);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -154,6 +157,17 @@
             this.lblPrecioActual.TabIndex = 17;
             this.lblPrecioActual.Text = "PRECIO ACTUAL";
             // 
+            // cmdCerrar
+            // 
+            this.cmdCerrar.Image = ((System.Drawing.Image)(resources.GetObject("cmdCerrar.Image")));
+            this.cmdCerrar.Location = new System.Drawing.Point(547, 2);
+            this.cmdCerrar.Name = "cmdCerrar";
+            this.cmdCerrar.Size = new System.Drawing.Size(20, 20);
+            this.cmdCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.cmdCerrar.TabIndex = 30;
+            this.cmdCerrar.TabStop = false;
+            this.cmdCerrar.Click += new System.EventHandler(this.cmdCerrar_Click);
+            // 
             // frmPrecioPorDia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -179,6 +193,7 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmdMinimizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmdCerrar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,5 +210,6 @@
         private System.Windows.Forms.PictureBox cmdMinimizar;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label lblPrecioActual;
+        private System.Windows.Forms.PictureBox cmdCerrar;
     }
 }

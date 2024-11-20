@@ -42,11 +42,17 @@
             this.cmdVolver2 = new System.Windows.Forms.PictureBox();
             this.cmdCargar2 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmdCerrar = new System.Windows.Forms.PictureBox();
             this.cmdMinimizar = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblPlata = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblHorasExtra = new System.Windows.Forms.Label();
+            this.nudHorasExtra = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblPrecioXHora = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.chkMantenerEmpleado = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtMontoPorc = new System.Windows.Forms.TextBox();
@@ -68,16 +74,17 @@
             this.cmdCargar3 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.cboEmpleado2 = new System.Windows.Forms.ComboBox();
+            this.chkMantenerEmpleado2 = new System.Windows.Forms.CheckBox();
             this.chkMantenerDetalle2 = new System.Windows.Forms.CheckBox();
             this.txtDetalle2 = new System.Windows.Forms.TextBox();
-            this.chkMantenerEmpleado = new System.Windows.Forms.CheckBox();
-            this.chkMantenerEmpleado2 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.cmdVolver2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmdCargar2)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmdCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmdMinimizar)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudHorasExtra)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -110,7 +117,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(9, 70);
+            this.label2.Location = new System.Drawing.Point(9, 81);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(292, 31);
             this.label2.TabIndex = 7;
@@ -121,7 +128,7 @@
             this.cboEmpleado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEmpleado.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboEmpleado.FormattingEnabled = true;
-            this.cboEmpleado.Location = new System.Drawing.Point(307, 70);
+            this.cboEmpleado.Location = new System.Drawing.Point(307, 84);
             this.cboEmpleado.Name = "cboEmpleado";
             this.cboEmpleado.Size = new System.Drawing.Size(246, 33);
             this.cboEmpleado.TabIndex = 0;
@@ -132,7 +139,7 @@
             this.UnDia.Appearance = System.Windows.Forms.Appearance.Button;
             this.UnDia.AutoSize = true;
             this.UnDia.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UnDia.Location = new System.Drawing.Point(683, 39);
+            this.UnDia.Location = new System.Drawing.Point(683, 14);
             this.UnDia.Name = "UnDia";
             this.UnDia.Size = new System.Drawing.Size(129, 56);
             this.UnDia.TabIndex = 2;
@@ -146,19 +153,20 @@
             this.MedioDia.Appearance = System.Windows.Forms.Appearance.Button;
             this.MedioDia.AutoSize = true;
             this.MedioDia.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MedioDia.Location = new System.Drawing.Point(837, 39);
+            this.MedioDia.Location = new System.Drawing.Point(837, 14);
             this.MedioDia.Name = "MedioDia";
             this.MedioDia.Size = new System.Drawing.Size(162, 56);
             this.MedioDia.TabIndex = 3;
             this.MedioDia.TabStop = true;
             this.MedioDia.Text = "1/2 DÍA";
             this.MedioDia.UseVisualStyleBackColor = true;
+            this.MedioDia.CheckedChanged += new System.EventHandler(this.MedioDia_CheckedChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(9, 135);
+            this.label3.Location = new System.Drawing.Point(9, 150);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(107, 31);
             this.label3.TabIndex = 8;
@@ -167,7 +175,7 @@
             // txtDetalle
             // 
             this.txtDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDetalle.Location = new System.Drawing.Point(122, 138);
+            this.txtDetalle.Location = new System.Drawing.Point(122, 153);
             this.txtDetalle.MaxLength = 92;
             this.txtDetalle.Name = "txtDetalle";
             this.txtDetalle.Size = new System.Drawing.Size(853, 30);
@@ -184,11 +192,13 @@
             this.txtPrecio.Size = new System.Drawing.Size(130, 30);
             this.txtPrecio.TabIndex = 10;
             this.txtPrecio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPrecio.TextChanged += new System.EventHandler(this.txtPrecio_TextChanged);
+            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // chkMantenerDetalle
             // 
             this.chkMantenerDetalle.AutoSize = true;
-            this.chkMantenerDetalle.Location = new System.Drawing.Point(122, 174);
+            this.chkMantenerDetalle.Location = new System.Drawing.Point(122, 189);
             this.chkMantenerDetalle.Name = "chkMantenerDetalle";
             this.chkMantenerDetalle.Size = new System.Drawing.Size(107, 17);
             this.chkMantenerDetalle.TabIndex = 5;
@@ -220,6 +230,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.panel1.Controls.Add(this.cmdCerrar);
             this.panel1.Controls.Add(this.cmdMinimizar);
             this.panel1.Location = new System.Drawing.Point(-8, 0);
             this.panel1.Name = "panel1";
@@ -227,10 +238,21 @@
             this.panel1.TabIndex = 27;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
+            // cmdCerrar
+            // 
+            this.cmdCerrar.Image = ((System.Drawing.Image)(resources.GetObject("cmdCerrar.Image")));
+            this.cmdCerrar.Location = new System.Drawing.Point(1026, 3);
+            this.cmdCerrar.Name = "cmdCerrar";
+            this.cmdCerrar.Size = new System.Drawing.Size(20, 20);
+            this.cmdCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.cmdCerrar.TabIndex = 30;
+            this.cmdCerrar.TabStop = false;
+            this.cmdCerrar.Click += new System.EventHandler(this.cmdCerrar_Click);
+            // 
             // cmdMinimizar
             // 
             this.cmdMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("cmdMinimizar.Image")));
-            this.cmdMinimizar.Location = new System.Drawing.Point(1012, 3);
+            this.cmdMinimizar.Location = new System.Drawing.Point(992, 2);
             this.cmdMinimizar.Name = "cmdMinimizar";
             this.cmdMinimizar.Size = new System.Drawing.Size(30, 22);
             this.cmdMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -238,14 +260,16 @@
             this.cmdMinimizar.TabStop = false;
             this.cmdMinimizar.Click += new System.EventHandler(this.cmdMinimizar_Click);
             // 
-            // label5
+            // lblPlata
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(73, 252);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(66, 13);
-            this.label5.TabIndex = 28;
-            this.label5.Text = "(Plata x Día)";
+            this.lblPlata.AutoSize = true;
+            this.lblPlata.Location = new System.Drawing.Point(62, 253);
+            this.lblPlata.MinimumSize = new System.Drawing.Size(90, 0);
+            this.lblPlata.Name = "lblPlata";
+            this.lblPlata.Size = new System.Drawing.Size(90, 13);
+            this.lblPlata.TabIndex = 28;
+            this.lblPlata.Text = "(Plata x 1 Día)";
+            this.lblPlata.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // tabControl1
             // 
@@ -263,8 +287,12 @@
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tabPage1.Controls.Add(this.dtpFecha);
+            this.tabPage1.Controls.Add(this.lblHorasExtra);
+            this.tabPage1.Controls.Add(this.nudHorasExtra);
             this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.lblPrecioXHora);
+            this.tabPage1.Controls.Add(this.dtpFecha);
+            this.tabPage1.Controls.Add(this.lblPlata);
             this.tabPage1.Controls.Add(this.cmdVolver2);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.label2);
@@ -287,6 +315,53 @@
             this.tabPage1.Text = "REGISTRAR X DÍA";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
+            // lblHorasExtra
+            // 
+            this.lblHorasExtra.AutoSize = true;
+            this.lblHorasExtra.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHorasExtra.Location = new System.Drawing.Point(176, 223);
+            this.lblHorasExtra.Name = "lblHorasExtra";
+            this.lblHorasExtra.Size = new System.Drawing.Size(75, 25);
+            this.lblHorasExtra.TabIndex = 33;
+            this.lblHorasExtra.Text = "label15";
+            // 
+            // nudHorasExtra
+            // 
+            this.nudHorasExtra.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudHorasExtra.Location = new System.Drawing.Point(903, 99);
+            this.nudHorasExtra.Maximum = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            this.nudHorasExtra.Name = "nudHorasExtra";
+            this.nudHorasExtra.ReadOnly = true;
+            this.nudHorasExtra.Size = new System.Drawing.Size(35, 32);
+            this.nudHorasExtra.TabIndex = 32;
+            this.nudHorasExtra.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nudHorasExtra.ValueChanged += new System.EventHandler(this.nudHorasExtra_ValueChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(760, 99);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(143, 29);
+            this.label5.TabIndex = 31;
+            this.label5.Text = "Horas Extra:";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // lblPrecioXHora
+            // 
+            this.lblPrecioXHora.AutoSize = true;
+            this.lblPrecioXHora.Location = new System.Drawing.Point(30, 266);
+            this.lblPrecioXHora.MinimumSize = new System.Drawing.Size(150, 0);
+            this.lblPrecioXHora.Name = "lblPrecioXHora";
+            this.lblPrecioXHora.Size = new System.Drawing.Size(150, 13);
+            this.lblPrecioXHora.TabIndex = 29;
+            this.lblPrecioXHora.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -296,6 +371,16 @@
             this.label14.Size = new System.Drawing.Size(29, 31);
             this.label14.TabIndex = 8;
             this.label14.Text = "$";
+            // 
+            // chkMantenerEmpleado
+            // 
+            this.chkMantenerEmpleado.AutoSize = true;
+            this.chkMantenerEmpleado.Location = new System.Drawing.Point(307, 123);
+            this.chkMantenerEmpleado.Name = "chkMantenerEmpleado";
+            this.chkMantenerEmpleado.Size = new System.Drawing.Size(121, 17);
+            this.chkMantenerEmpleado.TabIndex = 5;
+            this.chkMantenerEmpleado.Text = "Mantener Empleado";
+            this.chkMantenerEmpleado.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
@@ -550,6 +635,16 @@
             this.cboEmpleado2.Size = new System.Drawing.Size(246, 33);
             this.cboEmpleado2.TabIndex = 29;
             // 
+            // chkMantenerEmpleado2
+            // 
+            this.chkMantenerEmpleado2.AutoSize = true;
+            this.chkMantenerEmpleado2.Location = new System.Drawing.Point(795, 52);
+            this.chkMantenerEmpleado2.Name = "chkMantenerEmpleado2";
+            this.chkMantenerEmpleado2.Size = new System.Drawing.Size(121, 17);
+            this.chkMantenerEmpleado2.TabIndex = 34;
+            this.chkMantenerEmpleado2.Text = "Mantener Empleado";
+            this.chkMantenerEmpleado2.UseVisualStyleBackColor = true;
+            // 
             // chkMantenerDetalle2
             // 
             this.chkMantenerDetalle2.AutoSize = true;
@@ -569,26 +664,6 @@
             this.txtDetalle2.Size = new System.Drawing.Size(620, 30);
             this.txtDetalle2.TabIndex = 33;
             // 
-            // chkMantenerEmpleado
-            // 
-            this.chkMantenerEmpleado.AutoSize = true;
-            this.chkMantenerEmpleado.Location = new System.Drawing.Point(307, 109);
-            this.chkMantenerEmpleado.Name = "chkMantenerEmpleado";
-            this.chkMantenerEmpleado.Size = new System.Drawing.Size(121, 17);
-            this.chkMantenerEmpleado.TabIndex = 5;
-            this.chkMantenerEmpleado.Text = "Mantener Empleado";
-            this.chkMantenerEmpleado.UseVisualStyleBackColor = true;
-            // 
-            // chkMantenerEmpleado2
-            // 
-            this.chkMantenerEmpleado2.AutoSize = true;
-            this.chkMantenerEmpleado2.Location = new System.Drawing.Point(795, 52);
-            this.chkMantenerEmpleado2.Name = "chkMantenerEmpleado2";
-            this.chkMantenerEmpleado2.Size = new System.Drawing.Size(121, 17);
-            this.chkMantenerEmpleado2.TabIndex = 34;
-            this.chkMantenerEmpleado2.Text = "Mantener Empleado";
-            this.chkMantenerEmpleado2.UseVisualStyleBackColor = true;
-            // 
             // frmRegistrarDias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -605,10 +680,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmdVolver2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmdCargar2)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cmdCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmdMinimizar)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudHorasExtra)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -636,7 +713,7 @@
         private System.Windows.Forms.PictureBox cmdCargar2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox cmdMinimizar;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblPlata;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -665,5 +742,10 @@
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.CheckBox chkMantenerEmpleado;
         private System.Windows.Forms.CheckBox chkMantenerEmpleado2;
+        private System.Windows.Forms.PictureBox cmdCerrar;
+        private System.Windows.Forms.Label lblPrecioXHora;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown nudHorasExtra;
+        private System.Windows.Forms.Label lblHorasExtra;
     }
 }

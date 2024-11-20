@@ -203,5 +203,10 @@ namespace Gestión_Empleados
         {
 
         }
+
+        private void cmdCerrar_Click(object sender, EventArgs e)
+        {
+            pictureBox2_Click(sender, e);
+        }
     }
 }

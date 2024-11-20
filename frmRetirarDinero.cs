@@ -243,6 +243,11 @@ namespace Gestión_Empleados
                 txtCuenta.SelectionStart = cursorPosition + (txtCuenta.Text.Length - valorSinFormato.Length);
             }
         }
+
+        private void cmdCerrar_Click(object sender, EventArgs e)
+        {
+            pictureBox2_Click(sender, e);
+        }
     }
 
 }

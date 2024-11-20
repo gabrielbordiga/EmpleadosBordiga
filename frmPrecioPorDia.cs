@@ -173,5 +173,10 @@ namespace Gestión_Empleados
                 txtPrecio.SelectionStart = cursorPosition + (txtPrecio.Text.Length - valorSinFormato.Length);
             }
         }
+
+        private void cmdCerrar_Click(object sender, EventArgs e)
+        {
+            cmdVolver2_Click(sender, e);
+        }
     }
 }

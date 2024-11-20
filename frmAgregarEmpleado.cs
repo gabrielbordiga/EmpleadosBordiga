@@ -329,5 +329,12 @@ namespace Gestión_Empleados
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void cmdCerrar_Click(object sender, EventArgs e)
+        {
+            frmSelector Selector = new frmSelector();
+            Selector.Show();
+            this.Hide();
+        }
     }
 }

@@ -42,12 +42,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmdMinimizar = new System.Windows.Forms.PictureBox();
+            this.cmdCerrar = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmdArchivar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmdMinimizar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmdCerrar)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox2
@@ -170,6 +172,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.panel1.Controls.Add(this.cmdCerrar);
             this.panel1.Controls.Add(this.cmdMinimizar);
             this.panel1.Location = new System.Drawing.Point(-3, 0);
             this.panel1.Name = "panel1";
@@ -181,13 +184,24 @@
             // cmdMinimizar
             // 
             this.cmdMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("cmdMinimizar.Image")));
-            this.cmdMinimizar.Location = new System.Drawing.Point(1227, 1);
+            this.cmdMinimizar.Location = new System.Drawing.Point(1201, 1);
             this.cmdMinimizar.Name = "cmdMinimizar";
             this.cmdMinimizar.Size = new System.Drawing.Size(30, 22);
             this.cmdMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.cmdMinimizar.TabIndex = 1;
             this.cmdMinimizar.TabStop = false;
             this.cmdMinimizar.Click += new System.EventHandler(this.cmdMinimizar_Click);
+            // 
+            // cmdCerrar
+            // 
+            this.cmdCerrar.Image = ((System.Drawing.Image)(resources.GetObject("cmdCerrar.Image")));
+            this.cmdCerrar.Location = new System.Drawing.Point(1235, 2);
+            this.cmdCerrar.Name = "cmdCerrar";
+            this.cmdCerrar.Size = new System.Drawing.Size(20, 20);
+            this.cmdCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.cmdCerrar.TabIndex = 30;
+            this.cmdCerrar.TabStop = false;
+            this.cmdCerrar.Click += new System.EventHandler(this.cmdCerrar_Click);
             // 
             // frmDetalles
             // 
@@ -218,6 +232,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cmdMinimizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmdCerrar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,5 +253,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox cmdMinimizar;
+        private System.Windows.Forms.PictureBox cmdCerrar;
     }
 }
