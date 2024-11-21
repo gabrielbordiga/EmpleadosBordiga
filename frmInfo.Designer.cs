@@ -41,6 +41,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.cmdCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmdMinimiz)).BeginInit();
             this.panel1.SuspendLayout();
@@ -123,7 +125,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 20);
             this.label1.TabIndex = 31;
-            this.label1.Text = "v1.6.0";
+            this.label1.Text = "v1.6.1";
             // 
             // label2
             // 
@@ -133,7 +135,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(338, 20);
             this.label2.TabIndex = 32;
-            this.label2.Text = "- Actualización anterior realizada el 13/09/2024";
+            this.label2.Text = "- Actualización anterior realizada el 20/11/2024";
             // 
             // label3
             // 
@@ -143,7 +145,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 20);
             this.label3.TabIndex = 31;
-            this.label3.Text = "v1.6.1";
+            this.label3.Text = "v1.6.2";
             // 
             // label4
             // 
@@ -153,7 +155,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(364, 20);
             this.label4.TabIndex = 32;
-            this.label4.Text = "Última Actualización realizada el 20/11/2024";
+            this.label4.Text = "Última Actualización realizada el 21/11/2024";
             // 
             // label5
             // 
@@ -161,9 +163,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(12, 66);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(480, 20);
+            this.label5.Size = new System.Drawing.Size(401, 20);
             this.label5.TabIndex = 32;
-            this.label5.Text = "└ Agregado de funcíón de Horas Extra y visualizador de valor x hora";
+            this.label5.Text = "└ Correcto funcionamiento y adicionales en la impresión.";
             // 
             // label6
             // 
@@ -171,15 +173,37 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(12, 86);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(356, 20);
+            this.label6.Size = new System.Drawing.Size(417, 20);
             this.label6.TabIndex = 32;
-            this.label6.Text = "└ Se agregó botones de x para evitar confusiones";
+            this.label6.Text = "└ Agregado de fecha de retiro en detalles y mejora gráfica.";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(20, 164);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(245, 13);
+            this.label7.TabIndex = 33;
+            this.label7.Text = "└ Se agregó botones de x para evitar confusiones.";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(20, 151);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(332, 13);
+            this.label8.TabIndex = 34;
+            this.label8.Text = "└ Agregado de funcíón de Horas Extra y visualizador de valor x hora.";
             // 
             // frmInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(505, 161);
+            this.ClientSize = new System.Drawing.Size(505, 187);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -218,5 +242,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }

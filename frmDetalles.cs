@@ -194,16 +194,56 @@ namespace Gestión_Empleados
             }
         }
 
+        private Queue<string> linesToPrint = new Queue<string>();
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             if (cboEmpleado.SelectedIndex != -1)
             {
                 employeeName = cboEmpleado.SelectedItem.ToString();
                 filePath = employeeName + ".txt";
+                string valor = this.cboEmpleado.SelectedItem.ToString();
+                linesToPrint.Clear();
+                using (StreamReader sr = new StreamReader(filePath))
+                {
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        linesToPrint.Enqueue(line);
+                    }
+                }
+                
                 if (File.Exists(filePath))
                 {
-                    fileContent = File.ReadAllText(filePath);
+                    List<int> numeros = new List<int>();
 
+
+                    StreamReader sr = new StreamReader("Plata_" + valor + ".txt");
+                    string linea = sr.ReadLine();
+                    while (linea != null)
+                    {
+                        int numero = int.Parse(linea);
+                        numeros.Add(numero);
+                        linea = sr.ReadLine();
+                    }
+                    sr.Close();
+
+                    foreach (int n in numeros)
+                    {
+                        Console.WriteLine(n);
+
+
+                    }
+                    StreamWriter sw = new StreamWriter("Cuenta" + valor + ".txt");
+
+                    sw.WriteLine(numeros.Sum());
+
+                    sw.Close();
+                    // Configurar e iniciar el proceso de impresión
+                    PrintDocument printDocument = new PrintDocument();
+                    printDocument.PrintPage += new PrintPageEventHandler(PrintDocument_PrintPage);
+
+                    // Mostrar cuadro de diálogo de impresión (opcional)
                     PrintDialog printDialog = new PrintDialog
                     {
                         Document = printDocument
@@ -242,63 +282,119 @@ namespace Gestión_Empleados
             }
             return balance;
         }
+
+        private int currentPage = 1; // Contador de páginas
         private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
         {
-            string valor = cboEmpleado.SelectedItem.ToString();
-            string balanceFilePath = "";
-            using (StreamReader pr = new StreamReader("Cuenta" + valor + ".txt"))
+            // Datos del empleado y saldo
+            string empleado = cboEmpleado.SelectedItem?.ToString() ?? "Desconocido";
+            string saldo;
+
+            try
             {
-                balanceFilePath = pr.ReadLine();
+                // Leer el saldo desde el archivo
+                using (StreamReader sr = new StreamReader("Cuenta" + empleado + ".txt"))
+                {
+                    saldo = sr.ReadLine();
+                }
+            }
+            catch (Exception)
+            {
+                saldo = "Error al leer el saldo";
             }
 
-            float yPos = 0;
+            // Configuración para impresión
+            float yPos = e.MarginBounds.Top;
             float leftMargin = e.MarginBounds.Left;
-            float topMargin = e.MarginBounds.Top;
             float rightMargin = e.MarginBounds.Right;
             float bottomMargin = e.MarginBounds.Bottom;
             Font printFont = new Font("Arial", 11);
+            Font headerFont = new Font("Arial", 14, FontStyle.Bold);
+            Font boldFont = new Font("Arial", 13, FontStyle.Bold);
             SolidBrush myBrush = new SolidBrush(Color.Black);
 
-            // Imprimir el nombre del empleado
-            e.Graphics.DrawString("Empleado: " + employeeName, new Font("Arial", 14, FontStyle.Bold), Brushes.Black, leftMargin, topMargin);
-            yPos = topMargin + 40; // Dejar un espacio después del nombre
+            // Imprimir encabezado
+            e.Graphics.DrawString("Empleado: " + empleado, headerFont, Brushes.Black, leftMargin, yPos);
+            yPos += 40; // Espacio después del encabezado
 
-            // Imprimir el contenido del archivo
-            using (StringReader sr = new StringReader(fileContent))
+            // Procesar las líneas a imprimir
+            while (linesToPrint.Count > 0)
             {
-                string line;
-                while ((line = sr.ReadLine()) != null)
+                string line = linesToPrint.Dequeue();
+                string[] partes = line.Split(new char[] { ',' }, 2); // Dividir en fecha y detalle
+                string encabezado = partes[0]; // Fecha y salario (ej. "21/11/2024 $28120")
+                string detalle = partes.Length > 1 ? partes[1] : ""; // Detalle (ej. "5 Horas extra, ...")
+
+                //string encabezadoConComa = encabezado.Replace(" ", ", ");
+                // Concatenar encabezado y detalle en una sola línea
+                string textoCompleto = "- " + encabezado + " " + detalle;
+
+                // Ajustar texto largo en caso de que no quepa en una sola línea
+                while (!string.IsNullOrEmpty(textoCompleto))
                 {
-                    while (line.Length > 0)
+                    int charsFitted, linesFilled;
+
+                    // Calcular cuánto texto cabe en la línea actual
+                    e.Graphics.MeasureString(textoCompleto, printFont,
+                        new SizeF(rightMargin - leftMargin, printFont.Height),
+                        new StringFormat(), out charsFitted, out linesFilled);
+
+                    // Imprimir la parte que cabe en la línea actual
+                    e.Graphics.DrawString(textoCompleto.Substring(0, charsFitted), printFont, myBrush, leftMargin, yPos);
+
+                    // Remover la parte ya impresa y ajustar la posición vertical
+                    textoCompleto = textoCompleto.Substring(charsFitted);
+                    yPos += printFont.GetHeight(e.Graphics);
+
+                    if (yPos + printFont.GetHeight(e.Graphics) > bottomMargin)
                     {
-                        int charsFitted = 0;
-                        int linesFilled = 0;
-                        SizeF size = e.Graphics.MeasureString(line, printFont, new SizeF(rightMargin - leftMargin, printFont.Height), new StringFormat(), out charsFitted, out linesFilled);
+                        // Imprimir el número de página en la parte inferior derecha
+                        string pageNumber = currentPage.ToString();
+                        SizeF pageSize = e.Graphics.MeasureString(pageNumber, printFont);
+                        e.Graphics.DrawString(pageNumber, printFont, myBrush, rightMargin - pageSize.Width, bottomMargin - pageSize.Height);
 
-                        // Imprimir la línea ajustada
-                        e.Graphics.DrawString(line.Substring(0, charsFitted), printFont, myBrush, new RectangleF(leftMargin, yPos, rightMargin - leftMargin, printFont.Height));
-
-                        // Quitar la parte de la línea que ya se ha impreso
-                        line = line.Substring(charsFitted);
-
-                        yPos += printFont.GetHeight(e.Graphics);
-
-                        // Verificar si necesitamos una nueva página
-                        if (yPos + printFont.GetHeight(e.Graphics) > bottomMargin)
-                        {
-                            e.HasMorePages = true;
-                            return;
-                        }
+                        // Configurar más páginas
+                        e.HasMorePages = true;
+                        myBrush.Dispose();
+                        currentPage++; // Incrementar el número de página antes de continuar con la siguiente página
+                        return;
                     }
+                }
+
+                // Espaciado entre líneas
+                //yPos += printFont.GetHeight(e.Graphics);
+
+                // Verificar si alcanzamos el final de la página
+                if (yPos + printFont.GetHeight(e.Graphics) > bottomMargin)
+                {
+                    // Imprimir el número de página en la parte inferior derecha
+                    string pageNumber = currentPage.ToString();
+                    SizeF pageSize = e.Graphics.MeasureString(pageNumber, printFont);
+                    e.Graphics.DrawString(pageNumber, printFont, myBrush, rightMargin - pageSize.Width, bottomMargin - pageSize.Height);
+
+                    // Configurar más páginas
+                    e.HasMorePages = true;
+                    myBrush.Dispose();
+                    currentPage++; // Incrementar el número de página antes de continuar con la siguiente página
+                    return;
                 }
             }
 
-            // Imprimir el saldo del empleado al final
-            yPos += printFont.GetHeight(e.Graphics); // Dejar un espacio antes del saldo
-            e.Graphics.DrawString("Plata en Cuenta: $" + balanceFilePath, new Font("Arial", 13, FontStyle.Bold), Brushes.Black, leftMargin, yPos);
+            // Imprimir saldo al final de la página
+            yPos += 20; // Espacio antes del saldo
+            e.Graphics.DrawString("Total en Cuenta: $" + saldo, boldFont, Brushes.Black, leftMargin, yPos);
 
+            // Imprimir el número de página en la parte inferior derecha
+            string pageNumberFinal = currentPage.ToString();
+            SizeF pageSizeFinal = e.Graphics.MeasureString(pageNumberFinal, printFont);
+            e.Graphics.DrawString(pageNumberFinal, printFont, myBrush, rightMargin - pageSizeFinal.Width, bottomMargin - pageSizeFinal.Height);
+
+            // Finalizar la página
+            e.HasMorePages = false;
             myBrush.Dispose();
 
+            // Incrementar el número de página para la siguiente vez que se imprima
+            currentPage++;
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)

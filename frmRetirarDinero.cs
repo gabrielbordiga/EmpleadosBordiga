@@ -150,9 +150,9 @@ namespace Gestión_Empleados
 
             // Guardar en el log sin formato
             StreamWriter td = new StreamWriter(valor + ".txt", true);
-            td.WriteLine("** PLATA ANTES DE RETIRO ** $" + numero);
-            td.WriteLine("** PLATA RETIRADA EN " + formadepago + "** -$" + resto);
-            td.WriteLine("** PLATA DESPUES DE RETIRO ** $" + resultado);
+            //td.WriteLine("** PLATA ANTES DE RETIRO ** $" + numero);
+            td.WriteLine("** " + dtpFecha.Text + " PLATA RETIRADA EN " + formadepago + " ** -$" + resto);
+            td.WriteLine("(Antes total cuenta: $" + numero + ", Después total cuenta: $" + resultado + ")");
             td.Close();
 
             StreamWriter cc = new StreamWriter("TodosLosRetiros.txt", true);
