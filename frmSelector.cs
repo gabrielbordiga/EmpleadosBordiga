@@ -126,9 +126,12 @@ namespace Gestión_Empleados
         private void frmSelector_Load(object sender, EventArgs e)
         {
             Directory.CreateDirectory("Archivos");
+            Directory.CreateDirectory("Config");
             Directory.CreateDirectory("Archivos/Detalles");
             Directory.CreateDirectory("Archivos/Retiros");
             bool archivo = File.Exists("empleados.txt");
+            bool archRedondeo = File.Exists("Config/redondeo.txt");
+            bool archRedondeo2 = File.Exists("Config/redondeo2.txt");
             if (archivo == false)
             {
                 StreamWriter escribir = new StreamWriter("empleados.txt");
@@ -158,6 +161,20 @@ namespace Gestión_Empleados
                 }
                 pr.Close();
                 pr.Dispose();
+            }
+            if (archRedondeo == false) 
+            {
+                StreamWriter escribir = new StreamWriter("Config/redondeo.txt", false);
+                escribir.WriteLine("1");
+                escribir.Close();
+                escribir.Dispose();
+            }
+            if (archRedondeo2 == false)
+            {
+                StreamWriter escribir = new StreamWriter("Config/redondeo2.txt", false);
+                escribir.WriteLine("Arriba");
+                escribir.Close();
+                escribir.Dispose();
             }
         }
 
@@ -193,6 +210,12 @@ namespace Gestión_Empleados
         private void cmdCerrar_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void cmdAjustes_Click(object sender, EventArgs e)
+        {
+            frmAjustes Ajustes = new frmAjustes(); Ajustes.Show();
+            this.Hide();
         }
     }
 }

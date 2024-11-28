@@ -68,6 +68,12 @@
     <Compile Include="frmAgregarEmpleado.Designer.cs">
       <DependentUpon>frmAgregarEmpleado.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAjustes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAjustes.Designer.cs">
+      <DependentUpon>frmAjustes.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDetalles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAgregarEmpleado.resx">
       <DependentUpon>frmAgregarEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAjustes.resx">
+      <DependentUpon>frmAjustes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDetalles.resx">
       <DependentUpon>frmDetalles.cs</DependentUpon>

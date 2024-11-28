@@ -76,6 +76,9 @@ namespace Gestión_Empleados
                 bool existea = Directory.Exists("Archivos");
                 bool existea1 = Directory.Exists("Archivos/Detalles");
                 bool existea2 = Directory.Exists("Archivos/Retiros");
+                bool archRedondeo = File.Exists("Config/redondeo.txt");
+                bool archRedondeo2 = File.Exists("Config/redondeo2.txt");
+                bool config = Directory.Exists("Config");
 
                 if (exister)
                 {
@@ -100,6 +103,18 @@ namespace Gestión_Empleados
                 if (existea)
                 {
                     DeleteDirectory("Archivos");
+                }
+                if (archRedondeo) 
+                {
+                    File.Delete("Config/redondeo2.txt");
+                }
+                if (archRedondeo2)
+                {
+                    File.Delete("Config/redondeo2.txt");
+                }
+                if (config)
+                {
+                    DeleteDirectory("Config");
                 }
 
                 MessageBox.Show("Reseteado Correctamente", "", MessageBoxButtons.OK, MessageBoxIcon.Information);

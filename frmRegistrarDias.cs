@@ -1013,11 +1013,66 @@ namespace Gestión_Empleados
             {
                 if (nudHorasExtra.Value != 0)
                 {
+                    StreamReader pr = new StreamReader("Config/redondeo.txt");
+                    string Linea2 = "";
+                    Linea2 = pr.ReadLine();
+                    pr.Close();
+                    pr.Dispose();
+                    StreamReader cr = new StreamReader("Config/redondeo2.txt");
+                    string Linea3 = "";
+                    Linea3 = cr.ReadLine();
+                    cr.Close();
+                    cr.Dispose();
                     contador = Convert.ToInt32(nudHorasExtra.Value);
                     horasExtra = precioxhora * contador;
                     precioextra = precioglobal + horasExtra;
-                    int redondeado = (int)Math.Round(precioextra / 10.0) * 10;
-                    precioextra = redondeado;
+                    if (Linea3 == "Arriba")
+                    {
+                        if (Linea2 == "1")
+                        {
+                            int redondeado = (int)Math.Ceiling(precioextra / 10.0) * 10;
+                            precioextra = redondeado;
+                        }
+                        if (Linea2 == "2")
+                        {
+                            int redondeado = (int)Math.Ceiling(precioextra / 100.0) * 100;
+                            precioextra = redondeado;
+                        }
+                        if (Linea2 == "3")
+                        {
+                            int redondeado = (int)Math.Ceiling(precioextra / 1000.0) * 1000;
+                            precioextra = redondeado;
+                        }
+                        if (Linea2 == "4")
+                        {
+                            int redondeado = (int)Math.Ceiling(precioextra / 10000.0) * 10000;
+                            precioextra = redondeado;
+                        }
+                    }
+                    if (Linea3 == "Abajo")
+                    {
+                        if (Linea2 == "1")
+                        {
+                            int redondeado = (int)Math.Floor(precioextra / 10.0) * 10;
+                            precioextra = redondeado;
+                        }
+                        if (Linea2 == "2")
+                        {
+                            int redondeado = (int)Math.Floor(precioextra / 100.0) * 100;
+                            precioextra = redondeado;
+                        }
+                        if (Linea2 == "3")
+                        {
+                            int redondeado = (int)Math.Floor(precioextra / 1000.0) * 1000;
+                            precioextra = redondeado;
+                        }
+                        if (Linea2 == "4")
+                        {
+                            int redondeado = (int)Math.Floor(precioextra / 10000.0) * 10000;
+                            precioextra = redondeado;
+                        }
+                    }
+                    
                     lblHorasExtra.Text = ("+ $" + horasExtra.ToString() + " = $" + precioextra);
                     horas = contador;
                 }

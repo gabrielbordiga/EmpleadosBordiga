@@ -42,11 +42,13 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.cmdMinimizar = new System.Windows.Forms.PictureBox();
             this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.cmdAjustes = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmdCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmdMinimizar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmdAjustes)).BeginInit();
             this.SuspendLayout();
             // 
             // cmdRegistrarDias
@@ -159,6 +161,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.panel1.Controls.Add(this.cmdAjustes);
             this.panel1.Controls.Add(this.cmdCerrar);
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.cmdMinimizar);
@@ -183,7 +186,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(6, 3);
+            this.pictureBox2.Location = new System.Drawing.Point(32, 3);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(20, 20);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -215,6 +218,17 @@
             this.txtPrecio.TabIndex = 10;
             this.txtPrecio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // cmdAjustes
+            // 
+            this.cmdAjustes.Image = ((System.Drawing.Image)(resources.GetObject("cmdAjustes.Image")));
+            this.cmdAjustes.Location = new System.Drawing.Point(8, 3);
+            this.cmdAjustes.Name = "cmdAjustes";
+            this.cmdAjustes.Size = new System.Drawing.Size(20, 20);
+            this.cmdAjustes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.cmdAjustes.TabIndex = 31;
+            this.cmdAjustes.TabStop = false;
+            this.cmdAjustes.Click += new System.EventHandler(this.cmdAjustes_Click);
+            // 
             // frmSelector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -242,6 +256,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmdCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmdMinimizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmdAjustes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,5 +277,6 @@
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox cmdCerrar;
+        private System.Windows.Forms.PictureBox cmdAjustes;
     }
 }
