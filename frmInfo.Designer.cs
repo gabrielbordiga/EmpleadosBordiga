@@ -125,7 +125,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 20);
             this.label1.TabIndex = 31;
-            this.label1.Text = "v1.6.2";
+            this.label1.Text = "v1.6.3";
             // 
             // label2
             // 
@@ -135,7 +135,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(338, 20);
             this.label2.TabIndex = 32;
-            this.label2.Text = "- Actualización anterior realizada el 21/11/2024";
+            this.label2.Text = "- Actualización anterior realizada el 28/11/2024";
             // 
             // label3
             // 
@@ -145,7 +145,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 20);
             this.label3.TabIndex = 31;
-            this.label3.Text = "v1.6.3";
+            this.label3.Text = "v1.6.4";
             // 
             // label4
             // 
@@ -155,7 +155,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(364, 20);
             this.label4.TabIndex = 32;
-            this.label4.Text = "Última Actualización realizada el 28/11/2024";
+            this.label4.Text = "Última Actualización realizada el 29/11/2024";
             // 
             // label5
             // 
@@ -163,9 +163,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(12, 66);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(253, 20);
+            this.label5.Size = new System.Drawing.Size(196, 20);
             this.label5.TabIndex = 32;
-            this.label5.Text = "└ Nueva ventana de Configuración.";
+            this.label5.Text = "└ Correción en horas extra.";
             // 
             // label6
             // 
@@ -173,9 +173,9 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(12, 86);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(345, 20);
+            this.label6.Size = new System.Drawing.Size(167, 20);
             this.label6.TabIndex = 32;
-            this.label6.Text = "└ Redondeo de precio variable según el usuario.";
+            this.label6.Text = "└ Correcion de errores.";
             // 
             // label7
             // 
@@ -183,9 +183,9 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(20, 164);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(282, 13);
+            this.label7.Size = new System.Drawing.Size(236, 13);
             this.label7.TabIndex = 33;
-            this.label7.Text = "└ Agregado de fecha de retiro en detalles y mejora gráfica.";
+            this.label7.Text = "└ Redondeo de precio variable según el usuario.";
             // 
             // label8
             // 
@@ -193,9 +193,9 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(20, 151);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(271, 13);
+            this.label8.Size = new System.Drawing.Size(176, 13);
             this.label8.TabIndex = 34;
-            this.label8.Text = "└ Correcto funcionamiento y adicionales en la impresión.";
+            this.label8.Text = "└ Nueva ventana de Configuración.";
             // 
             // frmInfo
             // 

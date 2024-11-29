@@ -1074,12 +1074,13 @@ namespace Gestión_Empleados
                     }
                     
                     lblHorasExtra.Text = ("+ $" + horasExtra.ToString() + " = $" + precioextra);
-                    horas = contador;
+                    
                 }
                 else
                 {
                     lblHorasExtra.Text = ("");
                 }
+                horas = contador;
             }
             else 
             {
